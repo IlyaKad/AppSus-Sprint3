@@ -1,7 +1,7 @@
 import { emailService } from '../services/email-service.js'
 import { EmailList } from '../cmps/EmailList.jsx'
-// import { BookDetails } from '../pages/BookDetails.jsx'
-// import { BookEdit } from './BookEdit.jsx'
+import { EmailDetails } from '../pages/EmailDetails.jsx'
+// import { EmailEdit } from './EmailEdit.jsx'
 const { Route, Switch } = ReactRouterDOM
 
 export class EmailApp extends React.Component {
@@ -35,11 +35,11 @@ export class EmailApp extends React.Component {
         if (!emails) return <div>Loading...</div>
 
         return (
-            <section className="email-app column align-center">
+            <section className="email-app">
                 <h1>eMail App</h1>
                 <Switch>
-                    {/* <Route component={BookEdit} path="/book/edit/:id" /> */}
-                    {/* <Route component={BookDetails} path="/book/:id" /> */}
+                    {/* <Route component={EmailEdit} path="/email/edit/:id" /> */}
+                    <Route component={EmailDetails} path="/email/:id" />
                     <Route path="/email" render={(props) => (
                         <EmailList {...props} emails={emails} onSetFilter={this.onSetFilter} />
                     )} />

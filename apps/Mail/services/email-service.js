@@ -59,14 +59,14 @@ function _updateEmail(emailToUpdate) {
         return email.id === emailToUpdate.id;
     })
     gEmails.splice(emailIdx, 1, emailToUpdate)
-    storageService.saveToStorage(KEY, gEmails);
+    storageService.saveToStorage(KEY_email, gEmails);
     return Promise.resolve(emailToUpdate)
 }
 
 function _addEmail(emailToAdd) {
     var email = _createEmail(emailToAdd.title, emailToAdd.listPrice.amount)
     gEmails.unshift(email)
-    storageService.saveToStorage(KEY, gEmails)
+    storageService.saveToStorage(KEY_email, gEmails)
     return Promise.resolve()
 }
 
@@ -88,7 +88,7 @@ function deleteEmail(emailId) {
         return emailId === email.id
     })
     gEmails.splice(emailIdx, 1)
-    storageService.saveToStorage(KEY, gEmails);
+    storageService.saveToStorage(KEY_email, gEmails);
     return Promise.resolve()
 }
 
