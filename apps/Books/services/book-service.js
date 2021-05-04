@@ -43,12 +43,6 @@ function deleteBook(bookId) {
   return Promise.resolve()
 }
 
-function _addBook(bookToAdd) {
-  var book = _createBook(bookToAdd.title, bookToAdd.listPrice.amount)
-  gBooks.unshift(book)
-  storageService.saveToStorage(KEY, gBooks)
-  return Promise.resolve()
-}
 
 function getBookById(bookId) {
   var book = gBooks.find(function (book) {
@@ -76,6 +70,12 @@ function _updateBook(bookToUpdate) {
 function saveBook(book) {
   return book.id ? _updateBook(book) : _addBook(book)
 }
+function _addBook(bookToAdd) {
+  var book = _createBook(bookToAdd.title, bookToAdd.listPrice.amount)
+  gBooks.unshift(book)
+  storageService.saveToStorage(KEY, gBooks)
+  return Promise.resolve()
+}
 
 
 function _createBook(title) {
@@ -102,10 +102,3 @@ function _createBook(title) {
     }
   }
 }
-
-// function _getBooksFromJson() {
-//   var books = storageService.loadFromStorage(KEY)
-//   if (!books || !books.length) {
-//     var books = (_loadBooks())
-//   gBooks = books;
-// }

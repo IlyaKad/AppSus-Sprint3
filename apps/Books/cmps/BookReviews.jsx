@@ -10,7 +10,6 @@ export function BookReviews(props) {
 
     return (
         reviews.map(review => {
-            
             return <div className="book-review column align-center">
                 <h2>{review.name} has shared his opinion: (Date:{review.date})</h2>
                 <p>His Rate For This Book:{review.rating}</p>

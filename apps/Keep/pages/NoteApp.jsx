@@ -26,10 +26,18 @@ export class NoteApp extends React.Component {
     }
 
     render() {
-        <section className="note-app">
-
-            <Switch>
-            </Switch>
-        </section>
+        const { notes } = this.state
+        if (!notes) return <div>Loading...</div>
+        return (
+            <section className="note-app">
+                <Switch>
+                    {/* <Route component={BookEdit} path="/book/edit/:id" />
+                <Route component={BookDetails} path="/book/:id" /> */}
+                    <Route path="/note" render={(props) => (
+                        <NoteList {...props} note={note} onSetFilter={this.onSetFilter} />
+                    )} />
+                </Switch>
+            </section>
+        )
     }
 }
