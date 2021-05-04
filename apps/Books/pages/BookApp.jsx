@@ -36,7 +36,7 @@ export class BookApp extends React.Component {
         return (
             <section className="book-app column align-center">
                 <Switch>
-                    <Route component={BookEdit} path="/book/edit/:id"/>
+                    <Route component={BookEdit} path="/book/edit/:id" />
                     <Route component={BookDetails} path="/book/:id" />
                     <Route path="/book" render={(props) => (
                         <BookList {...props} books={books} onSetFilter={this.onSetFilter} />
