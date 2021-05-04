@@ -1,0 +1,17 @@
+body {
+    margin: 0;
+}
+
+p {
+    margin: 10px;
+}
+
+img {
+    max-width: 100%;
+}
+
+a {
+    text-decoration: none;
+    list-style-type: none;
+    color: rgb(207, 207, 207);
+}
