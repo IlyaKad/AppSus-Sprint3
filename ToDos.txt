@@ -1,1 +1,23 @@
 1. BookApp - 1) refactor functions position to services
+books - add a review is not working
+check.
+
+
+
+Email = 
+1. search - filter
+1.1 filter dropdown - read/unread
+2. sort - date/subject 
+
+3.side bar: (like navbar) nested?
+buttons:
+1. compose - book details 
+2.inbox - open list cmp with buttons
+3.sent - list of sent that were uploded from storage
+4.trash - loaded from storage
+5.starred - (onsale)
+
+note to self : 
+add a messegae to use that mail was sent.
+
+
