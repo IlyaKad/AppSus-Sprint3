@@ -22,7 +22,7 @@ export class ReviewAdd extends React.Component {
         const bookId = this.props.bookId;
         reviewService.addReview(name, date, rating, reviewTxt, bookId)
             .then(addedReview => {
-                this.props.addReview(addedReview); //need to send this func as a props
+                this.props.addReview(addedReview);
             })
         this.setState({
             name: '',

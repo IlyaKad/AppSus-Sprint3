@@ -4,9 +4,9 @@ import { EmailReplies } from './EmailReplies.jsx'
 export class ReplyToEmail extends React.Component {
 
     state = {
-        recipient: '',
+        recipient: this.props.email.author,
         date: '2021-03-04',
-        subject: '',
+        subject: this.props.email.subject,
         replyBody: ''
     }
 
@@ -41,11 +41,11 @@ export class ReplyToEmail extends React.Component {
 
                 <form className="reply-form column" onSubmit={this.onSubmitReply}>
 
-                    <label htmlFor="recipient">Send To</label>
-                    <input type="text" name="recipient" id="recipient" placeholder="sent to" value={recipient} onChange={this.handleChange} />
+                    <label htmlFor="recipient">Reply To</label>
+                    <input type="text" name="recipient" id="recipient" placeholder="email address" value={recipient} onChange={this.handleChange} />
 
                     <label htmlFor="recipient">Subject</label>
-                    <input type="text" name="subject" id="subject" placeholder="Subject" value={subject} onChange={this.handleChange} />
+                    <input type="text" name="subject" id="subject" placeholder="subject" value={subject} onChange={this.handleChange} />
 
                     <label htmlFor="replyBody">Your Reply</label>
                     <textarea name="replyBody" id="replyBody" cols="10" rows="10" value={replyBody} onChange={this.handleChange} />

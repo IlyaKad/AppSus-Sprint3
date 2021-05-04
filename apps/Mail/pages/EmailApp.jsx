@@ -30,7 +30,6 @@ export class EmailApp extends React.Component {
     render() {
 
         const { emails } = this.state
-        console.log('render start', emails);
 
         if (!emails) return <div>Loading...</div>
 

@@ -7,9 +7,9 @@ export const replyService = {
     removeReply,
 }
 
-var gReplies;
 
 function query(id) {
+    console.log('id', id);
     return Promise.resolve(gReplies[id]);
 }
 
@@ -22,7 +22,7 @@ function addReply(recipient, date, subject, replyBody, emailId) {
         recipient,
     }
 
-    if (!gReplies[emailId]) gReplies[emailId] = []
+    if (!gReplies[emailId]) gReplies[emailId] = [];
     gReplies[emailId].push(reply);
     storageService.saveToStorage('replies', gReplies);
     return Promise.resolve(reply);
@@ -34,15 +34,42 @@ function removeReply(replyId, emailId) {
     storageService.saveToStorage('replies', gReplies);
 }
 
-//not sure about this one
-// gReplies = storageService.loadFromStorage('replies') ? storageService.loadFromStorage('replies')
-//     : [
-//         {
-//             id: utilService.makeId(),
-//             subject: 'Subject1',
-//             date: '2021-05-04',
-//             replyBody: 'text text 1',
-//             recipient: 'replier1'
-//         },
-//     ]
+const gReplies = storageService.loadFromStorage('replies') ? storageService.loadFromStorage('replies') : {
+    '2e0Pwuc46GU': [
+        {
+            id: 123,
+            subject: 'Congrats',
+            date: '2021-03-04',
+            replyBody: 'Purchase Confirmed',
+            recipient: 'AliExpress',
+        },
 
+        {
+            id: 1234,
+            subject: 'Confirm Your Email',
+            date: '2021-03-04',
+            replyBody: 'Please confirm your email',
+            recipient: 'AvoCode',
+        },
+    ],
+
+    'OXeMG8wNskc': [
+        {
+            id: 12345,
+            subject: 'Facebook - a new friend request',
+            date: '2021-05-04',
+            replyBody: 'Ali Abdel Tahat has sent you a friend request',
+            recipient: 'Facebook',
+        },
+
+        {
+            id: 123456,
+            subject: 'koko Jambo',
+            date: '2021-10-04',
+            replyBody: 'Purchase Confirmed',
+            recipient: 'PcOnline',
+        },
+    ]
+
+
+}

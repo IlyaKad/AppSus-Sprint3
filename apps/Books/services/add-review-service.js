@@ -19,7 +19,6 @@ function addReview(name, date, rating, reviewTxt, bookId) {
         reviewTxt,
         name,
     }
-
     if (!gReviews[bookId]) gReviews[bookId] = []
     gReviews[bookId].push(review);
     storageService.saveToStorage('reviews', gReviews);

@@ -10,11 +10,13 @@ export class EmailDetails extends React.Component {
     state = {
         isRead: false,
         email: null,
-        replies: null
+        replies: null,
+        body: null
     }
 
     componentDidMount() {
-        const id = this.props.match.params.emailId;
+        // console.log(this.props.match.params);
+        const id = this.props.match.params;
         this.loadEmail()
     }
 
@@ -23,7 +25,7 @@ export class EmailDetails extends React.Component {
     }
 
     updateReplies = () => {
-        const id = this.props.match.params.emailId;
+        const id = this.props.match.params
         this.loadReplyList(id)
     }
 
@@ -70,7 +72,7 @@ export class EmailDetails extends React.Component {
 
     //can be amended to "reply to mail" ?
     addReply = () => {
-        const id = this.props.match.params.emailId
+        const id = this.props.match.params
         this.loadReplyList(id)
     }
 
@@ -123,12 +125,9 @@ export class EmailDetails extends React.Component {
 
                 <section className="email-desc-container column align-center justify-center">
                     <h3>Message : </h3> {body}
-                    {/* <LongTxt isLongTxtShown={isLongTxtShown} txt={description}
-                        toggleIsShown={this.toggleIsShown}></LongTxt> */}
                 </section>
-
                 <section className="replies-section column">
-                    <ReplyToEmail emailId={email.id} replies={this.state.replies} addReply={this.addReply} />
+                    <ReplyToEmail emailId={email.id} replies={this.state.replies} addReply={this.addReply} email={email} />
                     {/* <ReplyToEmail emailId={email.id} replies={this.state.replies} addReply={this.addReply} onRemoveReview={this.onRemoveReview} /> */}
                 </section>
             </div>
