@@ -15,3 +15,45 @@ a {
     list-style-type: none;
     color: rgb(207, 207, 207);
 }
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+}
+
+.note-filter input {
+    margin-top: 20px;
+    font-size: 1.3rem;
+}
+
+.note-app {
+    text-align: center;
+}
+
+.note-list {
+    display: flex;
+    margin: 10px;
+    flex-wrap: wrap;
+}
+
+.note-list>* {
+    margin: 10px;
+}
+
+.note-text, .note-img, .note-todos {
+    width: 250px;
+    text-align: center;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.note-text {
+    background-color: rgb(141, 53, 53);
+}
+
+.note-img {
+    background-color: rgb(42, 163, 31);
+}
+
+.note-todos {
+    background-color: rgb(53, 54, 141);
+}

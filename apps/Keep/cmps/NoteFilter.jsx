@@ -4,8 +4,7 @@ export class NoteFilter extends React.Component {
 
     state = {
         filterBy: {
-            title,
-            text
+            text: ''
         }
     }
 
@@ -23,14 +22,11 @@ export class NoteFilter extends React.Component {
     }
 
     render() {
-        const { title, text } = this.state.filterBy;
+        const { text } = this.state.filterBy;
         return (
             <form className="note-filter" onSubmit={this.onFilter}>
-                <label htmlFor="title"></label>
-                <input type="text" id="title" name="title" value={title} placeholder="By title" onChange={this.handleChange} />
-
-                <label htmlFor="text">Subject</label>
-                <input type="text" id="text" name="text" value={text} placeholder="By text" onChange={this.handleChange} />
+                <label htmlFor="text"></label>
+                <input type="text" id="text" name="text" value={text} placeholder="Search here" onChange={this.handleChange} />
             </form>
         )
     }

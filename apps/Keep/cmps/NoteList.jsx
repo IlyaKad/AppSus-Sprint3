@@ -1,25 +1,29 @@
 import { NoteFilter } from './NoteFilter.jsx'
-import { NotePreview } from './NotePreview.jsx'
+import { NoteText } from './NoteText.jsx'
+import { NoteImg } from './NoteImg.jsx'
+import { NoteTodos } from './NoteTodos.jsx'
+
+const DynamicCmp = (props) => {
+  switch (props.note.type) {
+    case 'NoteText':
+      return <NoteText {...props} />
+    case 'NoteImg':
+      return <NoteImg {...props} />
+    case 'NoteTodos':
+      return <NoteTodos {...props} />
+    default:
+      return <p>Yep it's error...</p>
+  }
+}
 
 export function NoteList({ notes, onSetFilter }) {
-  console.log('notes', notes);
-  debugger
   return (
-    <p>000</p>
-    // <React.Fragment>
-    //   <h4>Filter Notes by:</h4>
-    //   <NoteFilter notes={notes} onSetFilter={onSetFilter} />
-    //   <div className="note-list">
-    //     {notes.map(note => <NotePreview note={note} key={note.title} />)}
-    //   </div>
-    // </React.Fragment>
+    <React.Fragment>
+      {/* <h4>Filter Notes by:</h4> */}
+      <NoteFilter notes={notes} onSetFilter={onSetFilter} />
+      <div className="note-list">
+        {notes.map(note => <DynamicCmp note={note} key={note.id} />)}
+      </div>
+    </React.Fragment>
   )
-
-
-  // switch(note.type){
-  //   case :'txt'
-  //   return <NoteTxt note={note}/>
-  //   case :'img'
-  //   return <NoteImg note={note}/>
-  // }
 }
