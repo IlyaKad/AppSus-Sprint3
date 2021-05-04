@@ -1,1 +1,9 @@
-1. BookApp - 1) refactor functions position to services
+Ilya - Keep
+Benny - eMail
+
+Keep - {
+    search (filter)
+    create - dynamic component
+    rendered list from dynamic
+    onclick - enter by id to specipic square
+}
