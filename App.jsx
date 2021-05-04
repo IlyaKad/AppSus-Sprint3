@@ -1,21 +1,11 @@
 const Router = ReactRouterDOM.HashRouter
-const { Route, Switch, Link } = ReactRouterDOM
-// import { BookApp } from './pages/BookApp.jsx'
-// import { BookDetails } from './pages/BookDetails.jsx'
-// import { AboutUs } from './pages/AboutUs.jsx'
-// import { BookEdit } from './pages/BookEdit.jsx'
-// import { AppHeader } from './cmps/AppHeader.jsx'
-// import { LongTxt } from "LongTxt.jsx";
-
-function Home() {
-    return <section>
-        <h1>Home</h1>
-        <section className="hero">
-            Hero Goes Here
-        </section>
-        <p>Visit Our Book Shop <Link to="/book">Let's do it</Link> </p>
-    </section>
-}
+const { Route, Switch } = ReactRouterDOM
+import { AppHeader } from './cmps/AppHeader.jsx'
+import { HomePage } from './pages/HomePage.jsx'
+import { EmailApp } from './apps/Mail/pages/EmailApp.jsx'
+import { KeepApp } from './apps/Keep/pages/KeepApp.jsx'
+import { BookApp } from './apps/Books/pages/BookApp.jsx'
+import { AboutUs } from './pages/AboutUs.jsx'
 
 export function App() {
     return (
@@ -25,15 +15,15 @@ export function App() {
             </header>
             <main>
                 <Switch>
-                    <Route component={BookEdit} path="/book/edit/:id?" />
-                    <Route component={BookDetails} path="/book/:id" />
                     <Route component={BookApp} path="/book" />
+                    <Route component={EmailApp} path="/email" />
+                    <Route component={KeepApp} path="/keep" />
                     <Route component={AboutUs} path="/about" />
-                    <Route component={Home} path="/" />
+                    <Route component={HomePage} path="/" />
                 </Switch>
             </main>
             <footer>
-                BenZak Corp. &copy;
+                <p>BenZak and IlyaK Corp. &copy;</p>
             </footer>
         </Router>
     )

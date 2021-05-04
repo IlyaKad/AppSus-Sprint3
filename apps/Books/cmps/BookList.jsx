@@ -1,9 +1,14 @@
+import { BookFilter } from './BookFilter.jsx'
 import { BookPreview } from './BookPreview.jsx'
 
-export function BookList({ books }) {
+export function BookList({ books, onSetFilter }) {
   return (
-    <div className="book-list">
-      { books.map(book => <BookPreview book={book} key={book.id} />)}
-    </div>
+    <React.Fragment>
+      <h4>Filter Books by:</h4>
+      <BookFilter books={books} onSetFilter={onSetFilter} />
+      <div className="book-list">
+        {books.map(book => <BookPreview book={book} key={book.id} />)}
+      </div>
+    </React.Fragment>
   )
 }

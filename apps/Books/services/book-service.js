@@ -1,5 +1,5 @@
-import { utilService } from './util-service.js'
-import { storageService } from './storage-service.js'
+import { utilService } from '../../../app-services/util-service.js'
+import { storageService } from '../../../app-services/storage-service.js'
 
 export const bookService = {
   query,
@@ -10,9 +10,8 @@ export const bookService = {
 }
 
 const KEY = 'books';
-var gBooks;
-
-_getBooksFromJson()
+var gBooks = storageService.loadFromStorage(KEY) || null
+// _getBooksFromJson()
 
 function query(filterBy) {
   if (filterBy) {
@@ -24,7 +23,15 @@ function query(filterBy) {
     })
     return Promise.resolve(filteredBooks)
   }
-  return Promise.resolve(gBooks)
+  return Promise.resolve(_loadBooks())
+}
+
+function _loadBooks() {
+  return axios.get('./apps/Books/services/books.json').then(res => {
+      gBooks = res.data.slice()
+      storageService.saveToStorage(KEY, gBooks)
+      return Promise.resolve(gBooks)
+    })
 }
 
 function deleteBook(bookId) {
@@ -32,14 +39,14 @@ function deleteBook(bookId) {
     return bookId === book.id
   })
   gBooks.splice(bookIdx, 1)
-  _saveBooksToStorage();
+  storageService.saveToStorage(KEY, gBooks);
   return Promise.resolve()
 }
 
 function _addBook(bookToAdd) {
   var book = _createBook(bookToAdd.title, bookToAdd.listPrice.amount)
   gBooks.unshift(book)
-  _saveBooksToStorage()
+  storageService.saveToStorage(KEY, gBooks)
   return Promise.resolve()
 }
 
@@ -62,7 +69,7 @@ function _updateBook(bookToUpdate) {
     return book.id === bookToUpdate.id;
   })
   gBooks.splice(bookIdx, 1, bookToUpdate)
-  _saveBooksToStorage();
+  storageService.saveToStorage(KEY, gBooks);
   return Promise.resolve(bookToUpdate)
 }
 
@@ -70,9 +77,6 @@ function saveBook(book) {
   return book.id ? _updateBook(book) : _addBook(book)
 }
 
-function _saveBooksToStorage() {
-  storageService.saveToStorage(KEY, gBooks)
-}
 
 function _createBook(title) {
   return {
@@ -99,22 +103,9 @@ function _createBook(title) {
   }
 }
 
-function _saveBooksToStorage() {
-  storageService.saveToStorage(KEY, gBooks)
-}
-
-function _loadBooks() {
-  return axios.get('./services/books.json').then(res => {
-    gBooks = res.data.slice();
-    _saveBooksToStorage();
-    return Promise.resolve(gBooks);
-  })
-}
-
-function _getBooksFromJson() {
-  var books = storageService.loadFromStorage(KEY)
-  if (!books || !books.length) {
-    var books = _loadBooks()
-  }
-  gBooks = books;
-}
+// function _getBooksFromJson() {
+//   var books = storageService.loadFromStorage(KEY)
+//   if (!books || !books.length) {
+//     var books = (_loadBooks())
+//   gBooks = books;
+// }

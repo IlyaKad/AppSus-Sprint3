@@ -8,13 +8,12 @@ export class BookEdit extends React.Component {
 
     componentDidMount() {
         this.loadBook()
-        console.log(this.state.book);
     }
-
+    
     loadBook() {
-        const id = this.props.match.params.id
+        const { id } = this.props.match.params
         if (!id) return
-        bookService.getBookById(id).then(book => {
+        bookService.getBookById(id).then(book => { 
             this.setState({ book: book })
         })
     }

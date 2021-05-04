@@ -11,11 +11,9 @@ export class BookDetails extends React.Component {
     isLongTxtShown: false,
     book: null,
     reviews: null
-
   }
 
   componentDidMount() {
-    // debugger
     const id = this.props.match.params.bookId;
     this.loadBook()
   }
@@ -60,8 +58,8 @@ export class BookDetails extends React.Component {
   }
 
   handleCategories = (categories) => {
-    return categories.map(category =>
-      <span>{category} </span>)
+    return categories.map((category, idx) =>
+      <span key={category + idx}>{category} </span>)
   }
 
   onDeleteBook = () => {
@@ -71,7 +69,7 @@ export class BookDetails extends React.Component {
       })
   }
 
-  loadReviewList(id) {
+  loadReviewList = (id) => {
     reviewService.query(id)
       .then(reviews => {
         if (!reviews) return
@@ -85,12 +83,11 @@ export class BookDetails extends React.Component {
   }
 
   onRemoveReview = (reviewId, bookId) => {
-    debugger
     reviewService.removeReview(reviewId, bookId)
     this.loadReviewList(bookId)
   }
 
-  loadBook() {
+  loadBook = () => {
 
     const id = this.props.match.params.id
     bookService.getBookById(id).then(book => {
@@ -104,7 +101,6 @@ export class BookDetails extends React.Component {
     const { book } = this.state
     if (!book) return <div>Loading...</div>
     const {
-      id,
       title,
       subtitle,
       thumbnail,

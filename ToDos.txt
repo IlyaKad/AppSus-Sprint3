@@ -1,0 +1,1 @@
+1. BookApp - 1) refactor functions position to services
