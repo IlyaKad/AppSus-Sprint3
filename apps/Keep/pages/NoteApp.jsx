@@ -28,7 +28,6 @@ export class NoteApp extends React.Component {
         if (!notes) return <div>Loading...</div>
         return (
             <section className="note-app">
-                <h1>Keep me</h1>
                 <Switch>
                     <Route path="/keep" render={(props) => (
                         <NoteList {...props} notes={notes} onSetFilter={this.onSetFilter} />
