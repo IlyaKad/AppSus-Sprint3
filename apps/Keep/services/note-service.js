@@ -1,16 +1,23 @@
 import { storageService } from '../../../app-services/storage-service.js'
 
 export const noteService = {
-    query
+    query,
+    deleteNote,
+    // getNoteById,
+    // saveNote
 }
 
-const KEY = 'notes';
-var notes = [
+const KEY_NOTES = 'notes';
+var gNotes = [
     {
         type: "NoteText",
         isPinned: true,
         info: {
-            txt: "Fullstack Me Baby!"
+            title: "Me playing Mi",
+            text: "Fullstack Me Baby!"
+        },
+        style: {
+            backgroundColor: "#00d"
         }
     },
     {
@@ -26,26 +33,42 @@ var notes = [
     {
         type: "NoteTodos",
         info: {
-            label: "How was it:",
+            title: "Me playing Mi",
             todos: [
-                { txt: "Do that", doneAt: null },
-                { txt: "Do this", doneAt: 187111111 }
+                { text: "Do that", doneAt: null },
+                { text: "Do this", doneAt: 187111111 }
             ]
+        },
+        style: {
+            backgroundColor: "#00d"
         }
     }
 ];
 
 function query(filterBy) {
-    // if (filterBy) {
-    //     const filteredBooks = notes.filter(note => {
-    //         return book.title.includes(title) && book.listPrice.amount > minPrice && book.listPrice.amount < maxPrice
-    //     })
-    //     return Promise.resolve(filteredBooks)
-    // }
-    return Promise.resolve(_loadNotes())
+    if (filterBy) {
+        var { title, text } = filterBy
+        title = title ? title : ''
+        text = text ? text : ''
+        const filteredNotes = gNotes.filter(note => {
+            return note.title.includes(title) &&
+                note.text.includes(text)
+        })
+        return Promise.resolve(filteredNotes)
+    }
+    return Promise.resolve(gNotes)
 }
 
-function _loadNotes() {
-    storageService.saveToStorage(KEY, notes);
-    return Promise.resolve(notes);
+// function _loadNotes() {
+//     storageService.saveToStorage(KEY_NOTES, gNotes);
+//     return Promise.resolve(gNotes);
+// }
+
+function deleteNote(noteId) {
+    var noteIdx = gNotes.findIndex(function (note) {
+        return noteId === note.id
+    })
+    gNotes.splice(noteIdx, 1)
+    storageService.saveToStorage(KEY_NOTES, gNotes);
+    return Promise.resolve(gNotes)//check this one.
 }

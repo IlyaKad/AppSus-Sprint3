@@ -1,28 +1,26 @@
 import { noteService } from '../services/note-service.js'
+import { NoteList } from '../cmps/NoteList.jsx'
+
+const { Route, Switch } = ReactRouterDOM
 
 export class NoteApp extends React.Component {
 
     state = {
-        note: ""
+        notes: null,
+        filterBy: null,
     }
 
     componentDidMount() {
-        this.loadNote();
+        this.loadNotes()
     }
 
-    loadNote = (filterBy) => {
-        noteService.query(filterBy)
-            .then(notes => {
-                this.setState({ notes })
-            })
+    loadNotes() {
+        noteService.query(this.state.filterBy)
+            .then((notes) => { this.setState({ notes }) })
     }
 
-    handleChange = ({ target }) => {
-        const field = target.name
-        const value = target.value
-        // this.setState(prevState => ({
-        //     book: { ...prevState.book, [field]: value }
-        // }))
+    onSetFilter = (filterBy) => {
+        this.setState({ filterBy }, this.loadNotes)
     }
 
     render() {
@@ -30,11 +28,10 @@ export class NoteApp extends React.Component {
         if (!notes) return <div>Loading...</div>
         return (
             <section className="note-app">
+                <h1>Keep me</h1>
                 <Switch>
-                    {/* <Route component={BookEdit} path="/book/edit/:id" />
-                <Route component={BookDetails} path="/book/:id" /> */}
                     <Route path="/note" render={(props) => (
-                        <NoteList {...props} note={note} onSetFilter={this.onSetFilter} />
+                        <NoteList {...props} notes={notes} onSetFilter={this.onSetFilter} />
                     )} />
                 </Switch>
             </section>
