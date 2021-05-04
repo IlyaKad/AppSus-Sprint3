@@ -9,22 +9,26 @@ import { AboutUs } from './pages/AboutUs.jsx'
 
 export function App() {
     return (
-        <Router>
-            <header>
-                <AppHeader />
-            </header>
-            <main>
-                <Switch>
-                    <Route component={BookApp} path="/book" />
-                    <Route component={EmailApp} path="/email" />
-                    <Route component={KeepApp} path="/keep" />
-                    <Route component={AboutUs} path="/about" />
-                    <Route component={HomePage} path="/" />
-                </Switch>
-            </main>
-            <footer>
-                <p>BenZak and IlyaK Corp. &copy;</p>
-            </footer>
-        </Router>
+        <section className="main-app">
+            <Router>
+                <header>
+                    <AppHeader />
+                </header>
+
+                <main>
+                    <Switch>
+                        <Route component={BookApp} path="/book" />
+                        <Route component={EmailApp} path="/email" />
+                        <Route component={KeepApp} path="/keep" />
+                        <Route component={AboutUs} path="/about" />
+                        <Route component={HomePage} path="/" />
+                    </Switch>
+                </main>
+                
+                <footer>
+                    <p>BenZak and IlyaK Corp. &copy;</p>
+                </footer>
+            </Router>
+        </section>
     )
 }
