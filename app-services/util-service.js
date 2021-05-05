@@ -1,7 +1,8 @@
 export const utilService = {
     makeId,
     makeLorem,
-    getRandomIntInclusive
+    getRandomIntInclusive,
+    get4DiffColors
 }
 
 function makeId(length = 6) {
@@ -28,5 +29,32 @@ function makeLorem(size = 100) {
 function getRandomIntInclusive(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1)) + min; //The maximum is inclusive and the minimum is inclusive 
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+
+// function getRandomColor() {
+//     var letters = '0123456789ABCDEF';
+//     var color = '#';
+//     for (var i = 0; i < 6; i++) {
+//         color += letters[Math.floor(Math.random() * 16)];
+//     }
+//     return color;
+// }
+
+
+// i know this function is shit:
+
+function get4DiffColors(tag) {
+
+    let str1 = 'ABCDEFG'
+    let str2 = 'HIJKLMN'
+    let str3 = 'OPQRST'
+    let str4 = 'UVWXYZ'
+
+    if (str1.includes(tag)) return 'blue'
+    if (str2.includes(tag)) return 'orange'
+    if (str3.includes(tag)) return 'green'
+    if (str4.includes(tag)) return 'purple'
+
 }

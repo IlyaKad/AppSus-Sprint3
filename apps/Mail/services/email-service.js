@@ -6,19 +6,23 @@ export const emailService = {
     saveEmail,
     deleteEmail,
     getEmailById,
+    starEmail
 }
 
 const KEY_email = 'emails';
 // var gEmails = storageService.loadFromStorage(KEY_email) || null;
 
-var inboxEmails = [
+var emails = [
     {
         id: utilService.makeId(),
         subject: 'Approve Your Account',
         body: 'No one lives forever, approve your insurance account',
         isRead: false,
         sentAt: 'May 1st',
-        author: 'Life Insurance'
+        author: 'Life Insurance',
+        isTrash: true,
+        isStarred: false,
+        isSent: false
     },
     {
         id: utilService.makeId(),
@@ -26,7 +30,10 @@ var inboxEmails = [
         body: 'Hello Google Cloud Customer, We are sending this message to let you know about the following updates to the Google Cloud Platform Subprocessors list',
         isRead: true,
         sentAt: 'March 3rd',
-        author: 'Google Cloud Platform '
+        author: 'Google Cloud Platform ',
+        isTrash: false,
+        isStarred: false,
+        isSent: false
     },
     {
         id: utilService.makeId(),
@@ -34,7 +41,10 @@ var inboxEmails = [
         body: 'If one of your goals is to eventually grow your blog, business or personal brand by landing a spot as a contributor for a major',
         isRead: false,
         sentAt: 'Jan 14',
-        author: 'Robinson'
+        author: 'Robinson',
+        isTrash: false,
+        isStarred: false,
+        isSent: false
     },
     {
         id: utilService.makeId(),
@@ -42,7 +52,10 @@ var inboxEmails = [
         body: 'Open the Uber Eats app and discover some faves in your area. You’re getting 20% off selected sushi',
         isRead: true,
         sentAt: '2020 Dec 26',
-        author: 'Uber Eats '
+        author: 'Uber Eats ',
+        isTrash: false,
+        isStarred: false,
+        isSent: false
     },
     {
         id: utilService.makeId(),
@@ -50,11 +63,14 @@ var inboxEmails = [
         body: 'Nice doing bussines with you',
         isRead: true,
         sentAt: '2020 Sep 22',
-        author: 'Oliver from Avocode'
+        author: 'Oliver from Avocode',
+        isTrash: false,
+        isStarred: false,
+        isSent: false
     },
 ]
 
-var gEmails = inboxEmails;
+var gEmails = emails;
 
 function query(filterBy) {
     if (filterBy) {
@@ -73,17 +89,42 @@ function query(filterBy) {
     // return Promise.resolve(onSideBarClick)
 }
 
-function onSideBarClick(btnVal) {
-    if (val === 'inbox') gEmails = inboxEmails
-    if (val === 'sent') gEmails = sentEmails
-    if (val === 'trash') gEmails = trashEmails
+//  DELETE EMAIL BY ID
+
+function deleteEmail(emailId) {
+    var emailIdx = gEmails.findIndex(email => {
+        return emailId === email.id
+    })
+
+    if (gEmails[emailIdx].isTrash) gEmails.splice(emailIdx, 1)
+    else gEmails[emailIdx].isTrash = true
+
+    storageService.saveToStorage(KEY_email, gEmails);
+    return Promise.resolve()
+}
+
+////Star EMail
+function starEmail(emailId) {
+    var emailIdx = gEmails.findIndex(email => {
+        return emailId === email.id
+    })
+
+    if (gEmails[emailIdx].isStarred) gEmails[emailIdx].isStarred = false
+    else gEmails[emailIdx].isStarred = true
+
+    storageService.saveToStorage(KEY_email, gEmails);
+    return Promise.resolve()
 }
 
 
+/////////////////////
+
+// is there an id? if yes update email if no add a new one
 function saveEmail(email) {
     return email.id ? _updateEmail(email) : _addEmail(email)
 }
 
+// same as delete email
 function _updateEmail(emailToUpdate) {
     var emailIdx = gEmails.findIndex(function (email) {
         return email.id === emailToUpdate.id;
@@ -92,9 +133,11 @@ function _updateEmail(emailToUpdate) {
     storageService.saveToStorage(KEY_email, gEmails);
     return Promise.resolve(emailToUpdate)
 }
+//  fires first Create Emai func and than 
+//unshifts it to gEmails
 
 function _addEmail(emailToAdd) {
-    var email = _createEmail(emailToAdd.title, emailToAdd.listPrice.amount)
+    var email = _createEmail(emailToAdd.title, emailToAdd.listPrice.amount) // change params according to cmp
     gEmails.unshift(email)
     storageService.saveToStorage(KEY_email, gEmails)
     return Promise.resolve()
@@ -107,22 +150,12 @@ function _createEmail(subject, body, author) {
         body,
         isRead: false,
         sentAt: Date.now(),
-        author
+        author,
+        isTrash: false,
     }
 }
 
-//  DELETE EMAIL BY ID
 
-function deleteEmail(emailId) {
-    var emailIdx = gEmails.findIndex(email => {
-        return emailId === email.id
-    })
-    //push to gTrash/gSent(according to action)
-    //add to storage KEY=trash/
-    gEmails.splice(emailIdx, 1)
-    storageService.saveToStorage(KEY_email, gEmails);
-    return Promise.resolve()
-}
 
 
 // GET EMAIL BY ID

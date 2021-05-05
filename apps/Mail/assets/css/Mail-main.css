@@ -4,7 +4,7 @@ body {
 }
 
 p {
-    margin: 10px;
+    margin-bottom: 3px;
 }
 
 img {
@@ -29,4 +29,17 @@ a {
 
 .orange {
     background-color: rgb(231, 122, 19);
+}
+
+.gold {
+    color: gold;
+}
+
+.grey {
+    color: rgb(165, 165, 165);
+}
+
+.bold {
+    font-weight: 600;
+    color: goldenrod;
 }

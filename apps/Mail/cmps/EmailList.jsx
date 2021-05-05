@@ -1,7 +1,7 @@
 
 import { EmailPreview } from './EmailPreview.jsx'
 
-export function EmailList({ emails, onSetFilter }) {
+export function EmailList({ emails, onStaredEmail, onDeleteEmail, toggleStarColor , setTagColor }) {
 
 
     return (
@@ -14,10 +14,10 @@ export function EmailList({ emails, onSetFilter }) {
                             <span className="email-title-name">Name</span>
                             <span className="email-title-subject">Subject</span>
                             <span className="email-title-date">Date</span>
-                            <span className="email-title-date">Delete</span>
                         </li>
                         <div className="email-list">
-                            {emails.map(email => <EmailPreview email={email} key={email.id} />)}
+                            {emails.map(email => <EmailPreview email={email} onStaredEmail={onStaredEmail}
+                                onDeleteEmail={onDeleteEmail} toggleStarColor={toggleStarColor} key={email.id} setTagColor={setTagColor} />)}
                         </div>
                     </ul>
                 </section>

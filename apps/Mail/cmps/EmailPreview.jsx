@@ -1,30 +1,34 @@
-import { emailService } from '../services/email-service.js'
+import { utilService } from '../../../app-services/util-service.js'
 const { Link } = ReactRouterDOM
 
-export class EmailPreview extends React.Component {
+export function EmailPreview({ email, onDeleteEmail, onStaredEmail, toggleStarColor }) {
 
-    onDeleteEmail = () => {
-        emailService.deleteEmail(this.props.email.id)
-            .then(() => {
-                this.props.history.push('/email')
-            })
-    }
+    const { id, subject, body, isRead, sentAt, author, isStarred } = email;
+    let tag = author.charAt(0).toUpperCase()
 
-    render() {
-        const { id, subject, body, isRead, sentAt, author } = this.props.email;
-        let tag = author.charAt(0).toUpperCase()
-
-        return (
+    return (
+        <li className="email-preview flex align-center justify-between">
             <Link to={`/email/${id}`}>
-                <li className="email-preview flex align-center justify-between">
-                    <p className="tag flex align-center justify-center">{tag}</p>
-                    <p>{author}</p>
-                    <h4>{subject}</h4>
-                    <p>{sentAt}</p>
-                    <button className="del-email-btn" onClick={this.onDeleteEmail}><i className="fa fa-trash-o"></i></button>
-                </li >
+                <p style={{ backgroundColor: utilService.get4DiffColors(tag) }} className="tag flex align-center justify-center">{tag}</p>
+                <p>{author}</p>
+                <h4 className={`${isRead ? "bold" : ""}`}>{subject}</h4>
+                <p>{sentAt}</p>
             </Link>
-        )
+            <button className="del-email-btn" onClick={(ev) => {
+                ev.stopPropagation()
+                onDeleteEmail(email.id)
+            }
+            }><i className="fa fa-trash-o"></i></button>
 
-    }
+            <button className={`star-email-btn ${toggleStarColor(isStarred)}`} onClick={(ev) => {
+                ev.stopPropagation()
+                onStaredEmail(email.id)
+            }
+            }><i className="fa fa-star"></i>
+            </button>
+        </li >
+
+    )
+
+
 }

@@ -105,30 +105,30 @@ export class EmailDetails extends React.Component {
         } = email;
 
         return (
-            <div className="email-details column align-center">
+            <div className="email-details column">
                 <div className="email-btns flex align-center">
-                    <button onClick={() => this.props.history.push('/email')} > Go back</button>
-                    <Link to={`/email/edit/${email.id}`}>Reply</Link>
-                    <button onClick={this.onDeleteEmail}>Delete Email</button>
+
                     {/* <Link to={`/email/${emailService.getNextEmailId(email.id)}`}>Next Email</Link> */}
                 </div>
                 <div className="email-panel-container flex">
                     {/* <img src={thumbnail} alt="" /> */}
                     <div className="email-info-container" >
-
-                        <h3>{subject} / <small>{author}</small></h3>
-                        {/* <p>Email participants : {this.handleCategories(categories)}</p> */}
+                        <h3>{subject}</h3>
+                        <small>{author}</small>
 
                         <p>Sent Date: {this.handleDate(sentAt)}</p>
                     </div>
                 </div>
 
                 <section className="email-desc-container column align-center justify-center">
-                    <h3>Message : </h3> {body}
+                    <h3>Message : </h3>
+                    <p className="email-body flex">{body}</p>
                 </section>
-                <section className="replies-section column">
-                    <ReplyToEmail emailId={email.id} replies={this.state.replies} addReply={this.addReply} email={email} />
-                    {/* <ReplyToEmail emailId={email.id} replies={this.state.replies} addReply={this.addReply} onRemoveReview={this.onRemoveReview} /> */}
+                <section className="replies-section flex">
+                    {/* <ReplyToEmail emailId={email.id} replies={this.state.replies} addReply={this.addReply} email={email} /> */}
+                    <button onClick={() => this.props.history.push('/email')} > Go back</button>
+                    {/* <Link to={`/email/edit/${email.id}`}>Reply</Link> */}
+                    {/* <button onClick={this.onDeleteEmail}>Delete Email</button> */}
                 </section>
             </div>
         )
