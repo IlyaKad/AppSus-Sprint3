@@ -9,7 +9,6 @@ export const replyService = {
 
 
 function query(id) {
-    console.log('id', id);
     return Promise.resolve(gReplies[id]);
 }
 

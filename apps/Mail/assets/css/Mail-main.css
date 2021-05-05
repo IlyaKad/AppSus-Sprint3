@@ -1,3 +1,4 @@
+@import './cmps.css';
 body {
     margin: 0;
 }
@@ -14,4 +15,18 @@ a {
     text-decoration: none;
     list-style-type: none;
     color: rgb(207, 207, 207);
+}
+
+/* HELPERS */
+
+.purple {
+    background-color: rgb(139, 95, 160);
+}
+
+.blue {
+    background-color: rgb(95, 107, 160);
+}
+
+.orange {
+    background-color: rgb(231, 122, 19);
 }

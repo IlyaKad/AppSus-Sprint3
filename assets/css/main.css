@@ -1,9 +1,17 @@
 /* BookApp */
 
 @import '../../apps/Books/assets/css/Books-main.css';
+
+/* KeepApp */
+
 @import '../../apps/Keep/assets/css/Keep-main.css';
 
-.main-app{
+/* MailApp */
+
+@import '../../apps/Mail/assets/css/Mail-main.css';
+
+
+.main-app {
     min-height: 100vh;
     display: flex;
     flex-direction: column;

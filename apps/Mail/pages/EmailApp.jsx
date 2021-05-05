@@ -1,8 +1,10 @@
 import { emailService } from '../services/email-service.js'
 import { EmailList } from '../cmps/EmailList.jsx'
+import { EmailSideBar } from '../cmps/EmailSideBar.jsx'
+import { EmailFilter } from '../cmps/EmailFilter.jsx'
 import { EmailDetails } from '../pages/EmailDetails.jsx'
 // import { EmailEdit } from './EmailEdit.jsx'
-const { Route, Switch } = ReactRouterDOM
+const { Route, } = ReactRouterDOM
 
 export class EmailApp extends React.Component {
 
@@ -18,10 +20,10 @@ export class EmailApp extends React.Component {
     loadEmails() {
         emailService.query(this.state.filterBy)
             .then((emails) => {
-                // console.log(emails);
                 this.setState({ emails })
             })
     }
+  
 
     onSetFilter = (filterBy) => {
         this.setState({ filterBy }, this.loadEmails)
@@ -35,14 +37,18 @@ export class EmailApp extends React.Component {
 
         return (
             <section className="email-app">
-                <h1>eMail App</h1>
-                <Switch>
-                    {/* <Route component={EmailEdit} path="/email/edit/:id" /> */}
-                    <Route component={EmailDetails} path="/email/:id" />
-                    <Route path="/email" render={(props) => (
-                        <EmailList {...props} emails={emails} onSetFilter={this.onSetFilter} />
-                    )} />
-                </Switch>
+
+                <Route component={EmailDetails} path="/email/:id" />
+
+                <EmailFilter emails={this.state.emails} onSetFilter={this.onSetFilter} />
+
+                <section className="flex">
+                    <EmailSideBar />
+
+                    <EmailList emails={emails} onSetFilter={this.onSetFilter} />
+
+                </section>
+
             </section>
 
         )

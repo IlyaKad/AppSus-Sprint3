@@ -1,0 +1,48 @@
+.email-preview {
+    padding: 10px;
+    background-color: rgba(228, 228, 222, 0.548);
+    color: black;
+    border-bottom: solid rgb(160, 159, 159) 0.5mm;
+    cursor: default;
+}
+
+.tag {
+    background-color: cadetblue;
+    border-radius: 33px;
+    width: 30px;
+    height: 30px;
+    color: cornsilk;
+}
+
+.del-email-btn{
+    font-size: 15px;
+    border: solid grey 0.5mm;
+    color: crimson;
+    padding: 3px;
+    cursor: pointer;
+}
+
+
+.email-subjects {
+    padding: 0 5px;
+}
+
+.search-emails{
+    margin: 10px;
+    flex-direction: row-reverse;
+}
+
+.compose-btn{
+    border-radius: 20px;
+    width: 100px;
+    height: 30px;
+    background-color: #f0f8ff00;
+}
+
+.nav-email>*{
+margin: 5px 0;
+}
+
+.email-sidebar{
+    margin: 0 10px;
+}

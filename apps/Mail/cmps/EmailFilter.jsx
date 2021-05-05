@@ -24,18 +24,20 @@ export class EmailFilter extends React.Component {
     render() {
         const { author, subject, body } = this.state.filterBy
         return (
+            <section className = "search-emails flex">
+                <form className="email-filter flex wrap justify-center" onSubmit={this.onFilter}>
+                    <label htmlFor="author">Sender</label>
 
-            <form className="email-filter flex wrap justify-center" onSubmit={this.onFilter}>
-                <label htmlFor="author">Sender</label>
-                <input type="text" id="author" name="author" value={author} onChange={this.handleChange} />
+                    <input type="text" id="author" name="author" value={author} onChange={this.handleChange} />
 
-                <label htmlFor="subject">Subject</label>
-                <input type="text" id="subject" name="subject" value={subject} onChange={this.handleChange} />
+                    <label htmlFor="subject">Subject</label>
+                    <input type="text" id="subject" name="subject" value={subject} onChange={this.handleChange} />
 
-                <label htmlFor="body">Body Text</label>
-                <input type="text" id="body" name="body" value={body} onChange={this.handleChange} />
-                <button>Filter</button>
-            </form>
+                    <label htmlFor="body">Body Text</label>
+                    <input type="text" id="body" name="body" value={body} onChange={this.handleChange} />
+                    <button>Filter</button>
+                </form>
+            </section>
         )
     }
 }

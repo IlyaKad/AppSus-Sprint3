@@ -217,8 +217,16 @@ button {
     justify-content: center;
 }
 
-.space-between {
+.justify-between {
     justify-content: space-between;
+}
+
+.justify-evenly {
+    justify-content: space-evenly;
+}
+
+.space-around {
+    justify-content: space-around;
 }
 
 .clean-list {
