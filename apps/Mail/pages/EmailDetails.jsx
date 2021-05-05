@@ -8,14 +8,12 @@ import { ReplyToEmail } from '../cmps/ReplyToEmail.jsx'
 export class EmailDetails extends React.Component {
 
     state = {
-        isRead: false,
         email: null,
         replies: null,
         body: null
     }
 
     componentDidMount() {
-        // console.log(this.props.match.params);
         const id = this.props.match.params;
         this.loadEmail()
     }
@@ -28,10 +26,6 @@ export class EmailDetails extends React.Component {
         const id = this.props.match.params
         this.loadReplyList(id)
     }
-
-    // toggleIsShown = () => {
-    //     this.setState({ isLongTxtShown: !this.state.isLongTxtShown })
-    // }
 
     // amend this so it will show : |NEW / 1/2/3/4/5/6 days ago/ over a week ago 
     handleDate = (publishedDate) => {
@@ -53,12 +47,12 @@ export class EmailDetails extends React.Component {
     //         <span key={category + idx}>{category} </span>)
     // }
 
-    onDeleteEmail = () => {
-        emailService.deleteEmail(this.state.email.id)
-            .then(() => {
-                this.props.history.push('/email')
-            })
-    }
+    // onDeleteEmail = () => {
+    //     emailService.deleteEmail(this.state.email.id)
+    //         .then(() => {
+    //             this.props.history.push('/email')
+    //         })
+    // }
 
     // can be amended to load replies
 
@@ -76,11 +70,10 @@ export class EmailDetails extends React.Component {
         this.loadReplyList(id)
     }
 
-    // can i use this to delete email preview? ?
-    // onRemoveReview = (reviewId, emailId) => {
-    //     reviewService.removeReview(reviewId, emailId)
-    //     this.loadReviewList(emailId)
-    // }
+    changeEmailIsRead = (email) => {
+        emailService.updateEmail(email)
+        .then(this.loadEmails)
+    }
 
     loadEmail = () => {
         const id = this.props.match.params.id
@@ -91,7 +84,6 @@ export class EmailDetails extends React.Component {
     }
 
     render() {
-        const { isRead } = this.state
         const { email } = this.state
         if (!email) return <div>Loading...</div>
 

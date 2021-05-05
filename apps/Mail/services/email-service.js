@@ -6,7 +6,9 @@ export const emailService = {
     saveEmail,
     deleteEmail,
     getEmailById,
-    starEmail
+    starEmail,
+    addEmail,
+    updateEmail
 }
 
 const KEY_email = 'emails';
@@ -17,7 +19,7 @@ var emails = [
         id: utilService.makeId(),
         subject: 'Approve Your Account',
         body: 'No one lives forever, approve your insurance account',
-        isRead: false,
+        isRead: true,
         sentAt: 'May 1st',
         author: 'Life Insurance',
         isTrash: true,
@@ -28,7 +30,7 @@ var emails = [
         id: utilService.makeId(),
         subject: 'Updates to the Google Cloud Platform',
         body: 'Hello Google Cloud Customer, We are sending this message to let you know about the following updates to the Google Cloud Platform Subprocessors list',
-        isRead: true,
+        isRead: false,
         sentAt: 'March 3rd',
         author: 'Google Cloud Platform ',
         isTrash: false,
@@ -50,7 +52,7 @@ var emails = [
         id: utilService.makeId(),
         subject: 'Ready to roll with Sushi Week?',
         body: 'Open the Uber Eats app and discover some faves in your area. You’re getting 20% off selected sushi',
-        isRead: true,
+        isRead: false,
         sentAt: '2020 Dec 26',
         author: 'Uber Eats ',
         isTrash: false,
@@ -125,7 +127,7 @@ function saveEmail(email) {
 }
 
 // same as delete email
-function _updateEmail(emailToUpdate) {
+function updateEmail(emailToUpdate) {
     var emailIdx = gEmails.findIndex(function (email) {
         return email.id === emailToUpdate.id;
     })
@@ -133,11 +135,10 @@ function _updateEmail(emailToUpdate) {
     storageService.saveToStorage(KEY_email, gEmails);
     return Promise.resolve(emailToUpdate)
 }
-//  fires first Create Emai func and than 
-//unshifts it to gEmails
 
-function _addEmail(emailToAdd) {
-    var email = _createEmail(emailToAdd.title, emailToAdd.listPrice.amount) // change params according to cmp
+
+function addEmail({ subject, body, author }) {
+    var email = _createEmail(subject, body, author)
     gEmails.unshift(email)
     storageService.saveToStorage(KEY_email, gEmails)
     return Promise.resolve()
@@ -152,10 +153,10 @@ function _createEmail(subject, body, author) {
         sentAt: Date.now(),
         author,
         isTrash: false,
+        isStarred: false,
+        isSent: true
     }
 }
-
-
 
 
 // GET EMAIL BY ID

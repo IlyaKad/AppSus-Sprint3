@@ -7,7 +7,6 @@
 }
 
 .tag {
-
     border-radius: 33px;
     width: 30px;
     height: 30px;
@@ -61,8 +60,16 @@
     height: 200px;
 }
 
-.email-body{
+.email-body {
     flex-wrap: wrap;
     max-width: 500px;
+}
 
+.new-email-container {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    background-color: blueviolet;
+    padding: 50px;
+    bottom: 0;
 }
