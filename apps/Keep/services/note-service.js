@@ -94,8 +94,8 @@ function query(filterBy) {
         var { text } = filterBy
         text = text ? text : ''
         const filteredNotes = gNotes.filter(note => {
-            return note.title.includes(text) &&
-                note.text.includes(text)
+            return note.info.title.includes(text) 
+            && (note.info.text) ? note.info.text.includes(text) : note.info.text
         })
         return Promise.resolve(filteredNotes)
     }

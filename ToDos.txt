@@ -1,15 +1,10 @@
 Ilya - Keep
 Benny - eMail
 
-Keep - {
-    search (filter)
-    create - dynamic component
-    rendered list from dynamic
-    onclick - enter by id to specipic square
-}
-1. BookApp - 1) refactor functions position to services
-books - add a review is not working
-check.
+Keep - 
+dynamic creator 
+repear search - if todos / img
+crudel
 
 
 

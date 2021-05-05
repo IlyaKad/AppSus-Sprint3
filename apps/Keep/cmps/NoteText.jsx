@@ -7,7 +7,7 @@ export function NoteText({ note }) {
         <Link to={`/keep/${id}`}>
             <article className="note-text">
                 <h4>{title}</h4>
-                {/* <textarea name="text" id={`${id}`} value={text} cols="30" rows="10"></textarea> */}
+                {/* <textarea name="text" id={id} value={text}></textarea> */}
                 <p>{text}</p>
             </article >
         </Link>
