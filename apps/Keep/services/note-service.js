@@ -95,22 +95,24 @@ var gNotes = [
 ];
 
 function query(filterBy) {
-    if (filterBy) {
-        var { text } = filterBy
-        text = text ? text : ''
-        const filteredNotes = gNotes.filter(note => {
-            return note.info.title.includes(text)
-                && (note.info.text) ? note.info.text.includes(text) : note.info.text
-        })
-        return Promise.resolve(filteredNotes)
-    }
+    // if (filterBy) {
+    //     var { text } = filterBy
+    //     text = text ? text : ''
+    //     const filteredNotes = gNotes.filter(note => {
+    //         return note.info.title.includes(text)
+    //             && (note.info.text) ? note.info.text.includes(text) : note.info.text
+    //     })
+    //     return Promise.resolve(filteredNotes)
+    // }
     return Promise.resolve(gNotes)
 }
 
 function addNote(note) {
     const noteToAdd = _createNote(note)
     //unshift ,push....storage...
+    if (!note) return
     gNotes.unshift(noteToAdd);
+    return Promise.resolve(gNotes);
 }
 
 function _createNote(note) {
@@ -138,16 +140,18 @@ function _createNote(note) {
         case 'todos':
             noteToAdd.info = {
                 title: note.title,
-                todos: note.inputVal.split(',')
+                todos: {
+                    text: note.inputVal
+                }
             }
-            break;
     }
+    console.log('noteToAdd', noteToAdd);
+    return noteToAdd;
 }
-
-// function todosSep(todoStr) {
-//     const todos = todoStr.split(',');
-//     return todos.map(todo => todo);
-// }
+function todosSep(todoStr) {
+    const todos = todoStr.split(',');
+    return todos.map(todo => todo);
+}
 
 function deleteNote(noteId) {
     var noteIdx = gNotes.findIndex(function (note) {
