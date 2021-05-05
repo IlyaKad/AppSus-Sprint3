@@ -33,8 +33,12 @@ export class NoteApp extends React.Component {
     render() {
         const { notes } = this.state
         if (!notes) return <div>Loading...</div>
-        const pinnedNotes = notes.filter(note => note.isPinned)
-        const unPinnedNotes = notes.filter(note => !note.isPinned)
+        // console.log('before filter: notes', notes);
+        const pinnedNotes = notes.filter((note) => note.isPinned)
+        // console.log('pinnedNotes', pinnedNotes);
+        const unPinnedNotes = notes.filter((note) => !note.isPinned)
+        // console.log('unPinnedNotes', unPinnedNotes);
+        // console.log('after filter', notes, notes.isPinned);
         return (
             <section className="note-app">
                 <NoteCreator onAddNote={this.onAddNote} />

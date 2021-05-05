@@ -1,5 +1,6 @@
 
 export class NoteCreator extends React.Component {
+
     state = {
         noteToAdd: {
             type: 'txt',
@@ -27,7 +28,7 @@ export class NoteCreator extends React.Component {
     // }
 
     render() {
-
+        const { type, inputVal, title } = this.state.noteToAdd
         return (
             <section className="note-new">
                 <form>
@@ -41,7 +42,7 @@ export class NoteCreator extends React.Component {
                     <button onClick={() => this.onSetType('img')} className="fa fa-picture-o fa-2x"></button>
                     <button onClick={() => this.onSetType('todos')} className="fa fa-list-ul fa-2x"></button>
                     {/* <input type="color" name="text-color" id="" /> */}
-                    <button onClick={this.props.onAddNote} className="fa fa-plus-square fa-2x"></button>
+                    <button onClick={() => this.props.onAddNote(this.state.noteToAdd)} className="fa fa-plus-square fa-2x"></button>
                     {/* <button>Close</button> */}
                 </div>
             </section>

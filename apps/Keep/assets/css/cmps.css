@@ -1,0 +1,62 @@
+button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+button, i {
+    font-size: 1.15rem;
+    margin: 5px 2px;
+}
+
+.note-filter input {
+    margin: 20px;
+    font-size: 1.3rem;
+}
+
+.note-app {
+    text-align: center;
+}
+
+.note-list {
+    display: flex;
+    margin: 10px;
+    flex-wrap: wrap;
+}
+
+.note-list>* {
+    margin: 10px;
+}
+
+.note-text, .note-img, .note-todos {
+    width: 250px;
+    text-align: center;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.note-text {
+    background-color: rgb(201, 109, 109);
+}
+
+.note-img {
+    background-color: rgb(88, 201, 77);
+}
+
+.note-todos {
+    background-color: rgb(124, 124, 190);
+}
+
+.note-new {
+    background-color: rgb(208, 240, 255);
+    max-width: 400px;
+    padding: 10px;
+    border-radius: 5px;
+    margin: auto;
+}
+
+.new-input-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
