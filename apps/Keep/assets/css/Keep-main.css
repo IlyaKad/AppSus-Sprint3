@@ -20,6 +20,17 @@ h1, h2, h3, h4, h5, h6 {
     margin: 0;
 }
 
+button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+button, i {
+    font-size: 1.15rem;
+    margin: 5px 2px;
+}
+
 .note-filter input {
     margin: 20px;
     font-size: 1.3rem;
@@ -47,15 +58,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .note-text {
-    background-color: rgb(141, 53, 53);
+    background-color: rgb(201, 109, 109);
 }
 
 .note-img {
-    background-color: rgb(42, 163, 31);
+    background-color: rgb(88, 201, 77);
 }
 
 .note-todos {
-    background-color: rgb(53, 54, 141);
+    background-color: rgb(124, 124, 190);
 }
 
 .note-new {

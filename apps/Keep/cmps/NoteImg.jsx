@@ -1,14 +1,12 @@
-const { Link } = ReactRouterDOM
-
+import { NoteButtons } from '../cmps/NoteButtons.jsx'
 export function NoteImg({ note }) {
     const { info: { title, url }, id } = note;
 
     return (
-        <Link to={`/keep/${id}`}>
-            <article className="note-img">
-                <h4>{title}</h4>
-                <img src={url} alt="Keep img" />
-            </article >
-        </Link>
+        <article className="note-img">
+            <h4>{title}</h4>
+            <img src={url} alt="Keep img" />
+            <NoteButtons />
+        </article >
     )
 }
