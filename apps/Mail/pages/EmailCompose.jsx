@@ -10,6 +10,12 @@ export class EmailCompose extends React.Component {
         }
     }
 
+    componentDidMount() {
+        // debugger
+        const { noteText } = this.props
+        if (noteText) this.setState({ email: { ...this.state.email, body: noteText } })
+    }
+
     handleChange = ({ target }) => {
         const field = target.name
         const value = target.type === 'number' ? +target.value : target.value
