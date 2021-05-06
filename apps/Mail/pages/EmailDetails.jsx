@@ -70,11 +70,7 @@ export class EmailDetails extends React.Component {
         this.loadReplyList(id)
     }
 
-    changeEmailIsRead = (email) => {
-        emailService.updateEmail(email)
-            .then(this.loadEmails)
-    }
-
+  
     loadEmail = () => {
         const id = this.props.match.params.id
         emailService.getEmailById(id).then(email => {

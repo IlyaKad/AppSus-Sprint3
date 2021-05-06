@@ -127,13 +127,11 @@ function saveEmail(email) {
 }
 
 // same as delete email
-function updateEmail(emailToUpdate) {
-    var emailIdx = gEmails.findIndex(function (email) {
-        return email.id === emailToUpdate.id;
-    })
-    gEmails.splice(emailIdx, 1, emailToUpdate)
+function updateEmail(emailId) {
+    var emailIdx = gEmails.findIndex((email) => email.id === emailId)
+    gEmails[emailIdx].isRead = !gEmails[emailIdx].isRead
     storageService.saveToStorage(KEY_email, gEmails);
-    return Promise.resolve(emailToUpdate)
+    return Promise.resolve()
 }
 
 

@@ -11,7 +11,9 @@ export class UserMsg extends React.Component {
 
   componentDidMount() {
     this.removeEvent = eventBusService.on('show-user-msg', (msg) => {
-      this.setState({ msg })
+      this.setState({ msg }, () => {
+        setTimeout(() => this.setState({ msg: null }), 3000)
+      })
     })
   }
 
@@ -23,7 +25,7 @@ export class UserMsg extends React.Component {
     if (!this.state.msg) return <span></span>
     const msgClass = this.state.msg.type || ''
     return (
-      <section className={'user-msg ' + msgClass}>
+      <section className={'user-msg slide-in-bck-bottom ' + msgClass}>
         <button onClick={() => {
           this.setState({ msg: null })
         }}>x</button>
