@@ -25,3 +25,22 @@ note to self :
 add a messegae to use that mail was sent.
 
 
+//  const obj= {"a":"a", "b":"b"};
+//  const newObj = {"a": obj.a, "b": obj.b}
+//  const newObj1 = {...obj}
+
+
+state = {
+        noteToAdd: {
+            type: 'txt',
+            inputVal: '',
+            title: ''
+        }
+        // noteToAdd2: {
+        //     type: 'txt',
+        //     inputVal: '',
+        //     title: ''
+        // }
+    }
+    // if (emailText) this.setState(...{ noteToAdd: { ...this.state.noteToAdd, inputVal: emailText }, noteToAdd2:{...this.state.noteToAdd2, inputVal: this.state.noteToAdd.inputVal } })
+        if (emailText) this.setState({ noteToAdd: { ...this.state.noteToAdd, inputVal: emailText } })

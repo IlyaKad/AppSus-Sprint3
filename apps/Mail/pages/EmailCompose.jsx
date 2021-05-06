@@ -38,7 +38,7 @@ export class EmailCompose extends React.Component {
 
     render() {
 
-        let { subject, body, author } = this.state.email
+        const { subject, body, author } = this.state.email;
 
         return (
             <div className="new-email-container hidden" >
