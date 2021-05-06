@@ -76,3 +76,13 @@ button, i {
     align-items: center;
     justify-content: center;
 }
+
+.colors-palette>* {
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+    margin: 0.5px;
+    border-radius: 20%;
+    border: 1px solid #00000026;
+    cursor: pointer;
+}
