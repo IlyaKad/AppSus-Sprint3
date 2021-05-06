@@ -5,6 +5,9 @@ import { EmailSideBar } from '../cmps/EmailSideBar.jsx'
 import { EmailFilter } from '../cmps/EmailFilter.jsx'
 import { EmailDetails } from '../pages/EmailDetails.jsx'
 import { EmailCompose } from '../pages/EmailCompose.jsx'
+import { utilService } from '../../../app-services/util-service.js'
+import { eventBusService } from '../../../app-services/event-bus-service.js'
+import { UserMsg } from '../cmps/UserMsg.jsx'
 // import { EmailEdit } from './EmailEdit.jsx'
 
 export class EmailApp extends React.Component {
@@ -24,12 +27,15 @@ export class EmailApp extends React.Component {
         emailService.query(this.state.filterBy)
             .then((emails) => {
                 this.setState({ emails })
+                let viewEmails= this.getEmailsForDisplay()
+                eventBusService.emit('email-count', viewEmails.length)
             })
     }
 
     onDeleteEmail = (emailId) => {
         emailService.deleteEmail(emailId)
             .then(this.loadEmails)
+            .then(eventBusService.emit('show-user-msg', 'Email Deleted'))
     }
 
     onStaredEmail = (emailId) => {
@@ -39,7 +45,7 @@ export class EmailApp extends React.Component {
 
     changeEmailIsRead = (email) => {
         emailService.updateEmail(email)
-        .then(this.loadEmails)
+            .then(this.loadEmails)
     }
 
     onComposeEmail = () => {
@@ -59,6 +65,11 @@ export class EmailApp extends React.Component {
         return isRead ? "" : "bold"
     }
 
+    getColorForTag = (tag) => {
+        let tagColor = utilService.getFourColors(tag)
+        return tagColor
+    }
+
     onSetFilter = (filterBy) => {
         this.setState({ filterBy }, this.loadEmails)
     }
@@ -71,10 +82,10 @@ export class EmailApp extends React.Component {
         const { emails, view } = this.state
 
         switch (view) {
-            case 'inbox': return emails.filter(mail => !mail.isTrash)
+            case 'inbox': return emails.filter(mail => (!mail.isTrash && !mail.isSent))
             case 'trash': return emails.filter(mail => mail.isTrash)
-            case 'starred': return emails.filter(mail => mail.isStarred)
-            case 'sent': return emails.filter(mail => mail.isSent)
+            case 'starred': return emails.filter(mail => (mail.isStarred && !mail.isTrash))
+            case 'sent': return emails.filter(mail => (mail.isSent && !mail.isTrash))
             default:
                 break;
         }
@@ -82,14 +93,16 @@ export class EmailApp extends React.Component {
 
     render() {
 
-        const { emails } = this.state
+        const { emails, view } = this.state
         if (!emails) return <div>Loading...</div>
 
         return (
             <section className="email-app">
                 <EmailFilter emails={this.state.emails} onSetFilter={this.onSetFilter} />
                 <section className="flex">
-                    <EmailSideBar onComposeEmail={this.onComposeEmail} toggleView={this.toggleView} />
+                <UserMsg />
+                    <EmailSideBar emails={this.getEmailsForDisplay()} view={this.state.view}
+                        onComposeEmail={this.onComposeEmail} toggleView={this.toggleView} />
                     {(this.state.isComposed) && <EmailCompose hideComposeWindow={this.hideComposeWindow} />}
                     <Switch>
                         <Route component={EmailDetails} path="/email/:id" />
@@ -97,7 +110,8 @@ export class EmailApp extends React.Component {
 
                             <EmailList emails={this.getEmailsForDisplay()} onSetFilter={this.onSetFilter}
                                 onDeleteEmail={this.onDeleteEmail} onStaredEmail={this.onStaredEmail}
-                                toggleStarColor={this.toggleStarColor} markReadEmails={this.markReadEmails} />
+                                toggleStarColor={this.toggleStarColor} markReadEmails={this.markReadEmails}
+                                getColorForTag={this.getColorForTag} />
                         )} />
                     </Switch>
                 </section>

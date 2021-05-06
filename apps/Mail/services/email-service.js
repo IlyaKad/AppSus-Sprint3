@@ -19,10 +19,10 @@ var emails = [
         id: utilService.makeId(),
         subject: 'Approve Your Account',
         body: 'No one lives forever, approve your insurance account',
-        isRead: true,
+        isRead: false,
         sentAt: 'May 1st',
         author: 'Life Insurance',
-        isTrash: true,
+        isTrash: false,
         isStarred: false,
         isSent: false
     },
@@ -63,7 +63,7 @@ var emails = [
         id: utilService.makeId(),
         subject: 'Your account has been charged',
         body: 'Nice doing bussines with you',
-        isRead: true,
+        isRead: false,
         sentAt: '2020 Sep 22',
         author: 'Oliver from Avocode',
         isTrash: false,
@@ -150,13 +150,22 @@ function _createEmail(subject, body, author) {
         subject,
         body,
         isRead: false,
-        sentAt: Date.now(),
+        sentAt: getDate(),
         author,
         isTrash: false,
         isStarred: false,
         isSent: true
     }
 }
+
+function getDate() {
+    const date = new Date(2021, 5, 6)
+    const month = date.toLocaleString('default', { month: 'long' })
+    const day = new Date().getDate()
+
+    return `${month} ${day}`
+}
+
 
 
 // GET EMAIL BY ID

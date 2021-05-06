@@ -34,18 +34,18 @@ export class EmailCompose extends React.Component {
         return (
             <div className="new-email-container hidden">
 
+                <button onClick={() => this.props.hideComposeWindow()} ><i className="fa fa-times"></i></button>
                 <form className="email-form column" onSubmit={this.onSubmitEmail}>
-
                     <label htmlFor="author">Send To</label>
                     <input type="text" name="author" id="author" placeholder="email address" value={author} onChange={this.handleChange} />
 
                     <label htmlFor="subject">Subject</label>
                     <input type="text" name="subject" id="subject" placeholder="subject" value={subject} onChange={this.handleChange} />
 
-                    <label htmlFor="body">Your Reply</label>
+                    <label htmlFor="body">Message</label>
                     <textarea name="body" id="body" cols="10" rows="10" value={body} onChange={this.handleChange} />
 
-                    <button type="submit">Send</button>
+                    <button className="send-email-btn" type="submit" name="send">Send</button>
 
                 </form >
 

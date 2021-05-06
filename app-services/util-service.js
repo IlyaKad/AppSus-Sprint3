@@ -2,7 +2,7 @@ export const utilService = {
     makeId,
     makeLorem,
     getRandomIntInclusive,
-    get4DiffColors
+    getFourColors
 }
 
 function makeId(length = 6) {
@@ -42,19 +42,17 @@ function getRandomIntInclusive(min, max) {
 //     return color;
 // }
 
-
 // i know this function is shit:
+function getFourColors(tag) {
 
-function get4DiffColors(tag) {
+    let str1 = 'ABCDEFGאבגדהו'
+    let str2 = 'HIJKLMNזחטיכל'
+    let str3 = 'OPQRSTמנסעפ'
+    let str4 = 'UVWXYZצקרשת'
 
-    let str1 = 'ABCDEFG'
-    let str2 = 'HIJKLMN'
-    let str3 = 'OPQRST'
-    let str4 = 'UVWXYZ'
-
-    if (str1.includes(tag)) return 'blue'
-    if (str2.includes(tag)) return 'orange'
-    if (str3.includes(tag)) return 'green'
-    if (str4.includes(tag)) return 'purple'
+    if (str1.includes(tag)) return '#1a73e8'
+    if (str2.includes(tag)) return '#ea5ca7'
+    if (str3.includes(tag)) return '#66ce66'
+    if (str4.includes(tag)) return '#05e6c2'
 
 }
