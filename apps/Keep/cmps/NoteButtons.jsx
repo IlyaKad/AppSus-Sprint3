@@ -8,6 +8,9 @@ export function NoteButtons({ note, onRemoveNote, onPinNote, onCopyNote }) {
             <button className="btn-1" onClick={() => onRemoveNote(note.id)}><i className="fa fa-trash-o"></i></button>
             <button className="btn-1"><i className="fa fa-envelope"></i></button>
             <button className="btn-1" onClick={() => onPinNote(note.id)}><i className="fa fa-thumb-tack"></i></button>
+            <div className="colors-palette">
+                <span></span>
+            </div>
             {/* <button><i className="fa fa-palette"></i></button> */}
         </div>
     )

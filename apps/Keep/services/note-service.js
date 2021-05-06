@@ -22,7 +22,7 @@ var gNotes = [
             text: "Fullstack Me Baby!"
         },
         style: {
-            backgroundColor: "#00d"
+            backgroundColor: "pink"
         }
     },
     {
@@ -110,9 +110,9 @@ function query(filterBy) {
 }
 
 function copyNote(note) {
-    // debugger
-    note.id = utilService.makeId();
-    gNotes.unshift(note);
+    const copyNote = JSON.parse(JSON.stringify(note))
+    copyNote.id = utilService.makeId();
+    gNotes.unshift(copyNote);
     storageService.saveToStorage(KEY_NOTES, gNotes);
     return Promise.resolve(gNotes);
 }
@@ -148,19 +148,21 @@ function _createNote(note) {
             }
             break;
         case 'todos':
+
             noteToAdd.info = {
                 title: note.title,
-                todos: {
-                    text: note.inputVal
-                }
+                todos: todosSep(note.inputVal)
             }
     }
     return noteToAdd;
 }
+
 function todosSep(todoStr) {
-    const todos = todoStr.split(',');
-    todos.forEach(todo => { text: todo });
-    return todos.map(todo => todo);
+    const todosTxt = todoStr.split(',');
+    return todosTxt.map(todo => {
+        return { id: utilService.makeId(), text: todo, doneAt: null }
+    });
+
 }
 
 function deleteNote(noteId) {

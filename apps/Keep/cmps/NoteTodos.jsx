@@ -6,7 +6,7 @@ export function NoteTodos({ note, onRemoveNote, onPinNote, onCopyNote }) {
         <article className="note-todos">
             <h4>{title}</h4>
             <ul>
-                {todos.map(todo => <li key={todo.id} >{todo.text}</li>)}
+                {todos.map(todo => <li className={todo.doneAt ? 'done' : ''} key={todo.id} >{todo.text}</li>)}
             </ul>
             <NoteButtons note={note} onRemoveNote={onRemoveNote} onPinNote={onPinNote} onCopyNote={onCopyNote} />
         </article >
