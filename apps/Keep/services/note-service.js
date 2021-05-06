@@ -4,7 +4,9 @@ import { storageService } from '../../../app-services/storage-service.js'
 export const noteService = {
     query,
     deleteNote,
-    addNote
+    addNote,
+    pinNote,
+    copyNote
     // getNoteById,
     // saveNote
 }
@@ -107,11 +109,19 @@ function query(filterBy) {
     return Promise.resolve(gNotes)
 }
 
+function copyNote(note) {
+    // debugger
+    note.id = utilService.makeId();
+    gNotes.unshift(note);
+    storageService.saveToStorage(KEY_NOTES, gNotes);
+    return Promise.resolve(gNotes);
+}
+
 function addNote(note) {
     const noteToAdd = _createNote(note)
-    //unshift ,push....storage...
     if (!note) return
     gNotes.unshift(noteToAdd);
+    storageService.saveToStorage(KEY_NOTES, gNotes);
     return Promise.resolve(gNotes);
 }
 
@@ -145,21 +155,33 @@ function _createNote(note) {
                 }
             }
     }
-    console.log('noteToAdd', noteToAdd);
     return noteToAdd;
 }
 function todosSep(todoStr) {
     const todos = todoStr.split(',');
+    todos.forEach(todo => { text: todo });
     return todos.map(todo => todo);
 }
 
 function deleteNote(noteId) {
-    var noteIdx = gNotes.findIndex(function (note) {
+    var noteIdx = gNotes.findIndex(note => {
         return noteId === note.id
     })
     gNotes.splice(noteIdx, 1)
     storageService.saveToStorage(KEY_NOTES, gNotes);
     return Promise.resolve(gNotes)//check this one.
+}
+
+function pinNote(noteId) {
+    var noteIdx = gNotes.findIndex(note => {
+        return noteId === note.id
+    })
+
+    if (gNotes[noteIdx].isPinned) gNotes[noteIdx].isPinned = false
+    else gNotes[noteIdx].isPinned = true
+
+    storageService.saveToStorage(KEY_NOTES, gNotes);
+    return Promise.resolve(gNotes)
 }
 
 function getRandomColor() {

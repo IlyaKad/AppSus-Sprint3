@@ -30,25 +30,37 @@ export class NoteApp extends React.Component {
             .then(this.loadNotes)
     }
 
+    onCopyNote = (note) => {
+        noteService.copyNote(note)
+            .then(this.loadNotes)
+    }
+    
+    onRemoveNote = (noteId) => {
+        noteService.deleteNote(noteId)
+            .then(this.loadNotes)
+    }
+
+    onPinNote = (noteId) => {
+        noteService.pinNote(noteId)
+            .then(this.loadNotes)
+    }
+
     render() {
         const { notes } = this.state
         if (!notes) return <div>Loading...</div>
-        // console.log('before filter: notes', notes);
+
         const pinnedNotes = notes.filter((note) => note.isPinned)
-        // console.log('pinnedNotes', pinnedNotes);
         const unPinnedNotes = notes.filter((note) => !note.isPinned)
-        // console.log('unPinnedNotes', unPinnedNotes);
-        // console.log('after filter', notes, notes.isPinned);
+
         return (
             <section className="note-app">
                 <NoteCreator onAddNote={this.onAddNote} />
-                {/* <NoteFilter notes={notes} onSetFilter={this.onSetFilter} /> */}
                 <Switch>
                     <Route path="/keep" render={(props) => (
                         <React.Fragment>
-                            <NoteList {...props} notes={pinnedNotes} onSetFilter={this.onSetFilter} />
+                            <NoteList {...props} notes={pinnedNotes} onCopyNote={this.onCopyNote} onPinNote={this.onPinNote} onSetFilter={this.onSetFilter} onRemoveNote={this.onRemoveNote} />
                             <hr />
-                            <NoteList {...props} notes={unPinnedNotes} onSetFilter={this.onSetFilter} />
+                            <NoteList {...props} notes={unPinnedNotes} onCopyNote={this.onCopyNote} onPinNote={this.onPinNote} onSetFilter={this.onSetFilter} onRemoveNote={this.onRemoveNote} />
                         </React.Fragment>
                     )} />
                 </Switch>

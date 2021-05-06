@@ -1,5 +1,5 @@
 import { NoteButtons } from '../cmps/NoteButtons.jsx'
-export function NoteText({ note }) {
+export function NoteText({ note, onRemoveNote, onPinNote, onCopyNote }) {
     const { info: { title, text }, id } = note;
 
     return (
@@ -7,7 +7,7 @@ export function NoteText({ note }) {
             <h4>{title}</h4>
             {/* <textarea name="text" id={id} value={text}></textarea> */}
             <p>{text}</p>
-            <NoteButtons />
+            <NoteButtons note={note} onRemoveNote={onRemoveNote} onPinNote={onPinNote} onCopyNote={onCopyNote} />
         </article >
     )
 }

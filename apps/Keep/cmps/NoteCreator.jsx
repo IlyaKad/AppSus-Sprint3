@@ -22,19 +22,22 @@ export class NoteCreator extends React.Component {
         this.setState({ noteToAdd: copyNote })
     }
 
-    // onAddNote = () => {
-    //     debugger
-    //     this.props.onAddNote(this.state.noteToAdd)
-    // }
+    placeholderText = () => {
+        switch (this.state.noteToAdd.type) {
+            case 'txt': return 'Write your note here';
+            case 'img': return 'Paste img URL';
+            case 'todos': return 'Write todos, use comma to separate them';
+        }
+    }
 
     render() {
-        const { type, inputVal, title } = this.state.noteToAdd
+        // const { type, inputVal, title } = this.state.noteToAdd
         return (
             <section className="note-new">
                 <form>
                     <div className="new-input-area">
                         <input type="text" placeholder="title" name="title" onChange={this.handleChange} />
-                        <textarea name="text" id="1" name="inputVal" onChange={this.handleChange} ></textarea>
+                        <textarea name="text" placeholder={this.placeholderText()} name="inputVal" onChange={this.handleChange} cols="30" rows="10"></textarea>
                     </div>
                 </form>
                 <div className="btn-area">
