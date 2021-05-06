@@ -19,7 +19,6 @@ export class EmailStatus extends React.Component {
 
 
     render() {
-        console.log(this.props.emails.length);
         return (
             <span>
                 ({this.state.emailCount})

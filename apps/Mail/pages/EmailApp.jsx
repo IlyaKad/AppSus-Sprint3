@@ -19,29 +19,21 @@ export class EmailApp extends React.Component {
         noteText: null
     }
 
-    // componentDidMount() {
-    //     this.loadEmails();
-    // }
-
     componentDidMount() {
-        const noteToMail = new URLSearchParams(window.location.href).get('note');
-        // console.log('test in NoteApp copy', noteToMail);
-        if (noteToMail) {
-            // this.loadEmails()
-            this.setState({ noteText: noteToMail, isComposed: true })
-            // this.setState({ isComposed: !this.state.isComposed })
-            // this.onComposeEmail()
-        }
-        this.loadEmails();
-        console.log(this.state.emails);
+        this.loadEmails()
+        this.getTxtFromNote()
     }
-    
+
+    getTxtFromNote = () => {
+        const noteToMail = new URLSearchParams(window.location.href).get('note');
+        if (noteToMail) this.setState({ noteText: noteToMail, isComposed: true })
+    }
+
     loadEmails = () => {
         emailService.query(this.state.filterBy)
-        .then((emails) => {
-            this.setState({ emails })
-            console.log(this.state.emails);
-        })
+            .then((emails) => {
+                this.setState({ emails })
+            })
     }
 
     onDeleteEmail = (emailId) => {
@@ -103,8 +95,8 @@ export class EmailApp extends React.Component {
 
     render() {
 
-        const { emails, view, isComposed, noteText } = this.state
-        console.log('emails',emails);
+        const { emails, isComposed, noteText } = this.state
+
         if (!emails) return <div>Loading...</div>
         const length = emails.filter(mail => (!mail.isTrash && !mail.isSent)).length
 
@@ -118,7 +110,7 @@ export class EmailApp extends React.Component {
                     {isComposed && <EmailCompose hideComposeWindow={this.hideComposeWindow} noteText={noteText} />}
                     <Switch>
                         <Route component={EmailDetails} path="/email/:id" />
-                        <Route path="/email" render={() => (
+                        <Route path="/email/" render={() => (
 
                             <EmailList emails={this.getEmailsForDisplay()} onSetFilter={this.onSetFilter}
                                 onDeleteEmail={this.onDeleteEmail} onStaredEmail={this.onStaredEmail}

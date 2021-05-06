@@ -19,7 +19,7 @@ export function App() {
                     <Switch>
                         <Route component={BookApp} path="/book" />
                         <Route component={EmailApp} path="/email" />
-                        <Route component={NoteApp} path="/keep" />
+                        <Route component={NoteApp} path="/keep"/>
                         <Route component={AboutUs} path="/about" />
                         <Route component={HomePage} path="/" />
                     </Switch>

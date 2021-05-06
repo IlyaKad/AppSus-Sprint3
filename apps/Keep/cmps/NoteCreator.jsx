@@ -46,7 +46,8 @@ export class NoteCreator extends React.Component {
                 <form>
                     <div className="new-input-area">
                         <input type="text" placeholder="title" name="title" onChange={this.handleChange} />
-                        <textarea name="text" placeholder={this.placeholderText()} value={inputVal} name="inputVal" onChange={this.handleChange} cols="30" rows="10"></textarea>
+                        <textarea name="text" placeholder={this.placeholderText()} value={inputVal} name="inputVal"
+                            onChange={this.handleChange} cols="30" rows="10"></textarea>
                     </div>
                 </form>
                 <div className="btn-area">
