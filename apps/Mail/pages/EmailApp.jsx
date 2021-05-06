@@ -25,7 +25,6 @@ export class EmailApp extends React.Component {
 
     componentDidMount() {
         const noteToMail = new URLSearchParams(window.location.href).get('note');
-        // console.log('test in NoteApp copy', noteToMail);
         if (noteToMail) {
             // this.loadEmails()
             this.setState({ noteText: noteToMail, isComposed: true })
@@ -33,15 +32,13 @@ export class EmailApp extends React.Component {
             // this.onComposeEmail()
         }
         this.loadEmails();
-        console.log(this.state.emails);
     }
-    
+
     loadEmails = () => {
         emailService.query(this.state.filterBy)
-        .then((emails) => {
-            this.setState({ emails })
-            console.log(this.state.emails);
-        })
+            .then((emails) => {
+                this.setState({ emails })
+            })
     }
 
     onDeleteEmail = (emailId) => {
@@ -104,7 +101,6 @@ export class EmailApp extends React.Component {
     render() {
 
         const { emails, view, isComposed, noteText } = this.state
-        console.log('emails',emails);
         if (!emails) return <div>Loading...</div>
         const length = emails.filter(mail => (!mail.isTrash && !mail.isSent)).length
 

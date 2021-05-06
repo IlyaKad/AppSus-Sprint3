@@ -11,7 +11,6 @@ export class EmailCompose extends React.Component {
     }
 
     componentDidMount() {
-        // debugger
         const { noteText } = this.props
         if (noteText) this.setState({ email: { ...this.state.email, body: noteText } })
     }
@@ -35,7 +34,7 @@ export class EmailCompose extends React.Component {
 
     render() {
 
-        const { subject, body, author } = this.state;
+        const { subject, body, author } = this.state.email;
 
         return (
             <div className="new-email-container hidden">

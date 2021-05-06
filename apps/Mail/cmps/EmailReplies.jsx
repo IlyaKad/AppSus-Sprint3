@@ -1,7 +1,6 @@
 export function EmailReplies(props) {
 
     const { replies, emailId, email } = props;
-    // console.log(props);
 
     if (!replies) {
         return <div className="email-replies no-replies">
