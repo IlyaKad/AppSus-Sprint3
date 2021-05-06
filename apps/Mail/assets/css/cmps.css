@@ -69,7 +69,31 @@
     position: absolute;
     left: 50%;
     transform: translate(-50%);
-    background-color: blueviolet;
+    background-color: rgb(161, 161, 161);
     padding: 50px;
     bottom: 0;
+    color: whitesmoke;
+}
+
+.fa-times {
+    color: white;
+    border: solid white 0.5mm;
+    font-size: 14px;
+    margin: 0px
+}
+
+.send-email-btn {
+    background-color: #1a73e8;
+    color: #d9e8fb;
+}
+
+.user-msg {
+    bottom: 0;
+    display: block;
+    position: absolute;
+    right: 0;
+    padding: 20px;
+    background-color: #73c393;
+    color: ghostwhite;
+    border-radius: 15px;
 }

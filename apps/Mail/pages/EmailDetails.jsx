@@ -47,12 +47,12 @@ export class EmailDetails extends React.Component {
     //         <span key={category + idx}>{category} </span>)
     // }
 
-    // onDeleteEmail = () => {
-    //     emailService.deleteEmail(this.state.email.id)
-    //         .then(() => {
-    //             this.props.history.push('/email')
-    //         })
-    // }
+    onDeleteEmail = () => {
+        emailService.deleteEmail(this.state.email.id)
+            .then(() => {
+                this.props.history.push('/email')
+            })
+    }
 
     // can be amended to load replies
 
@@ -72,7 +72,7 @@ export class EmailDetails extends React.Component {
 
     changeEmailIsRead = (email) => {
         emailService.updateEmail(email)
-        .then(this.loadEmails)
+            .then(this.loadEmails)
     }
 
     loadEmail = () => {
@@ -120,7 +120,7 @@ export class EmailDetails extends React.Component {
                     {/* <ReplyToEmail emailId={email.id} replies={this.state.replies} addReply={this.addReply} email={email} /> */}
                     <button onClick={() => this.props.history.push('/email')} > Go back</button>
                     {/* <Link to={`/email/edit/${email.id}`}>Reply</Link> */}
-                    {/* <button onClick={this.onDeleteEmail}>Delete Email</button> */}
+                    <button className="del-email-btn" onClick={this.onDeleteEmail}><i className="fa fa-trash-o"></i></button>
                 </section>
             </div>
         )

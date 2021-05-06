@@ -1,8 +1,8 @@
 
 import { EmailPreview } from './EmailPreview.jsx'
 
-export function EmailList({ emails, onStaredEmail, onDeleteEmail, toggleStarColor, setTagColor, markReadEmails }) {
-
+export function EmailList({ emails, onStaredEmail, onDeleteEmail, toggleStarColor, setTagColor, markReadEmails,
+    getColorForTag }) {
 
     return (
         <React.Fragment>
@@ -17,8 +17,9 @@ export function EmailList({ emails, onStaredEmail, onDeleteEmail, toggleStarColo
                         </li>
                         <div className="email-list">
                             {emails.map(email => <EmailPreview email={email} onStaredEmail={onStaredEmail}
-                                onDeleteEmail={onDeleteEmail} toggleStarColor={toggleStarColor} key={email.id} 
-                                setTagColor={setTagColor} markReadEmails={markReadEmails} />)}
+                                onDeleteEmail={onDeleteEmail} toggleStarColor={toggleStarColor} key={email.id}
+                                setTagColor={setTagColor} markReadEmails={markReadEmails}
+                                getColorForTag={getColorForTag} />)}
                         </div>
                     </ul>
                 </section>
