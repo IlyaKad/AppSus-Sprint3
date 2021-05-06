@@ -8,7 +8,6 @@ import { EmailCompose } from '../pages/EmailCompose.jsx'
 import { utilService } from '../../../app-services/util-service.js'
 import { eventBusService } from '../../../app-services/event-bus-service.js'
 import { UserMsg } from '../cmps/UserMsg.jsx'
-// import { EmailEdit } from './EmailEdit.jsx'
 
 export class EmailApp extends React.Component {
 
@@ -27,8 +26,8 @@ export class EmailApp extends React.Component {
         emailService.query(this.state.filterBy)
             .then((emails) => {
                 this.setState({ emails })
-                let viewEmails= this.getEmailsForDisplay()
-                eventBusService.emit('email-count', viewEmails.length)
+                // let viewEmails = this.getEmailsForDisplay()
+                // eventBusService.emit('email-count', viewEmails.length)
             })
     }
 
@@ -41,29 +40,24 @@ export class EmailApp extends React.Component {
     onStaredEmail = (emailId) => {
         emailService.starEmail(emailId)
             .then(this.loadEmails)
+            .then(eventBusService.emit('show-user-msg', 'Email Starred'))
     }
 
-    changeEmailIsRead = (email) => {
-        emailService.updateEmail(email)
+    changeEmailIsRead = (emailId) => {
+        emailService.updateEmail(emailId)
             .then(this.loadEmails)
     }
 
     onComposeEmail = () => {
-        this.setState({ isComposed: true })
+        this.setState({ isComposed: !this.state.isComposed })
     }
 
     hideComposeWindow = () => {
         this.setState({ isComposed: false })
+        eventBusService.emit('show-user-msg', 'Email Sent')
     }
 
-    toggleStarColor = (isStarred) => {
-        if (isStarred) return 'gold'
-        else return 'grey'
-    }
 
-    markReadEmails = (isRead) => {
-        return isRead ? "" : "bold"
-    }
 
     getColorForTag = (tag) => {
         let tagColor = utilService.getFourColors(tag)
@@ -93,25 +87,26 @@ export class EmailApp extends React.Component {
 
     render() {
 
-        const { emails, view } = this.state
+        const { emails, view, isComposed } = this.state
         if (!emails) return <div>Loading...</div>
+        const length = emails.filter(mail => (!mail.isTrash && !mail.isSent)).length
 
         return (
             <section className="email-app">
                 <EmailFilter emails={this.state.emails} onSetFilter={this.onSetFilter} />
                 <section className="flex">
-                <UserMsg />
-                    <EmailSideBar emails={this.getEmailsForDisplay()} view={this.state.view}
+                    <UserMsg />
+                    <EmailSideBar emails={this.getEmailsForDisplay()} length={length}
                         onComposeEmail={this.onComposeEmail} toggleView={this.toggleView} />
-                    {(this.state.isComposed) && <EmailCompose hideComposeWindow={this.hideComposeWindow} />}
+                    {isComposed && <EmailCompose hideComposeWindow={this.hideComposeWindow} />}
                     <Switch>
                         <Route component={EmailDetails} path="/email/:id" />
                         <Route path="/email" render={() => (
 
                             <EmailList emails={this.getEmailsForDisplay()} onSetFilter={this.onSetFilter}
                                 onDeleteEmail={this.onDeleteEmail} onStaredEmail={this.onStaredEmail}
-                                toggleStarColor={this.toggleStarColor} markReadEmails={this.markReadEmails}
-                                getColorForTag={this.getColorForTag} />
+                                toggleStarColor={this.toggleStarColor}
+                                getColorForTag={this.getColorForTag} changeEmailIsRead={this.changeEmailIsRead} />
                         )} />
                     </Switch>
                 </section>
