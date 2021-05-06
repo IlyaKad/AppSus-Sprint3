@@ -1,4 +1,4 @@
-import { eventBusService } from '../../../app-services/event-bus-service.js'
+import { eventBusService } from '../app-services/event-bus-service.js'
 
 
 export class UserMsg extends React.Component {
@@ -12,7 +12,7 @@ export class UserMsg extends React.Component {
   componentDidMount() {
     this.removeEvent = eventBusService.on('show-user-msg', (msg) => {
       this.setState({ msg }, () => {
-        setTimeout(() => this.setState({ msg: null }), 3000)
+        setTimeout(() => this.setState({ msg: null }), 2500)
       })
     })
   }
@@ -23,9 +23,9 @@ export class UserMsg extends React.Component {
 
   render() {
     if (!this.state.msg) return <span></span>
-    const msgClass = this.state.msg.type || ''
+ 
     return (
-      <section className={'user-msg slide-in-bck-bottom ' + msgClass}>
+      <section className={'user-msg slide-in-bck-bottom '}>
         <button onClick={() => {
           this.setState({ msg: null })
         }}>x</button>

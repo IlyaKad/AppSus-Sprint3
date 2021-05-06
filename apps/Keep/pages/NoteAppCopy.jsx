@@ -1,19 +1,28 @@
 import { noteService } from '../services/note-service.js'
 import { NoteList } from '../cmps/NoteList.jsx'
-import { NoteCreator } from '../cmps/NoteCreator.jsx'
+// import { NoteCreator } from '../cmps/NoteCreator.jsx'
+import { NoteCreatorCopy } from '../cmps/NoteCreatorCopy.jsx'
 import { NoteFilter } from '../cmps/NoteFilter.jsx'
 
 const { Route, Switch } = ReactRouterDOM
 
-export class NoteApp extends React.Component {
+export class NoteAppCopy extends React.Component {
 
     state = {
         notes: null,
         filterBy: null,
+        emailText: null
     }
 
     componentDidMount() {
-        this.loadNotes()
+        const mailToNote = new URLSearchParams(window.location.href).get('mail');
+        console.log('test in NoteApp copy', mailToNote);
+        if (mailToNote) {
+            this.setState({ emailText: mailToNote })
+            this.loadNotes()
+        }
+
+        else this.loadNotes();
     }
 
     loadNotes = () => {
@@ -54,7 +63,7 @@ export class NoteApp extends React.Component {
 
         return (
             <section className="note-app">
-                <NoteCreator onAddNote={this.onAddNote} />
+                <NoteCreatorCopy onAddNote={this.onAddNote} emailText={this.state.emailText} />
                 <Switch>
                     <Route path="/keep" render={(props) => (
                         <React.Fragment>
