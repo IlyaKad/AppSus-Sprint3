@@ -9,6 +9,10 @@ export class NoteCreator extends React.Component {
         }
     }
 
+    componentDidMount() {
+        this.checkforEmailText()
+    }
+
     handleChange = (ev) => {
         const copyNote = { ...this.state.noteToAdd }
         const { name, value } = ev.target
@@ -22,6 +26,11 @@ export class NoteCreator extends React.Component {
         this.setState({ noteToAdd: copyNote })
     }
 
+    checkforEmailText = () => {
+        const { emailText } = this.props
+        if (emailText) this.setState({ noteToAdd: { ...this.state.noteToAdd, inputVal: emailText } })
+    }
+
     placeholderText = () => {
         switch (this.state.noteToAdd.type) {
             case 'txt': return 'Write your note here';
@@ -31,22 +40,20 @@ export class NoteCreator extends React.Component {
     }
 
     render() {
-        // const { type, inputVal, title } = this.state.noteToAdd
+        const { inputVal } = this.state.noteToAdd
         return (
             <section className="note-new">
                 <form>
                     <div className="new-input-area">
                         <input type="text" placeholder="title" name="title" onChange={this.handleChange} />
-                        <textarea name="text" placeholder={this.placeholderText()} name="inputVal" onChange={this.handleChange} cols="30" rows="10"></textarea>
+                        <textarea name="text" placeholder={this.placeholderText()} value={inputVal} name="inputVal" onChange={this.handleChange} cols="30" rows="10"></textarea>
                     </div>
                 </form>
                 <div className="btn-area">
                     <button onClick={() => this.onSetType('txt')} className="fa fa-sticky-note-o fa-2x"></button>
                     <button onClick={() => this.onSetType('img')} className="fa fa-picture-o fa-2x"></button>
                     <button onClick={() => this.onSetType('todos')} className="fa fa-list-ul fa-2x"></button>
-                    {/* <input type="color" name="text-color" id="" /> */}
                     <button onClick={() => this.props.onAddNote(this.state.noteToAdd)} className="fa fa-plus-square fa-2x"></button>
-                    {/* <button>Close</button> */}
                 </div>
             </section>
         )

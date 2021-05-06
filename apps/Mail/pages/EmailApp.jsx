@@ -15,18 +15,33 @@ export class EmailApp extends React.Component {
         emails: null,
         filterBy: null,
         view: 'inbox',
-        isComposed: false
+        isComposed: false,
+        noteText: null
     }
+
+    // componentDidMount() {
+    //     this.loadEmails();
+    // }
 
     componentDidMount() {
-        this.loadEmails()
+        const noteToMail = new URLSearchParams(window.location.href).get('note');
+        // console.log('test in NoteApp copy', noteToMail);
+        if (noteToMail) {
+            // this.loadEmails()
+            this.setState({ noteText: noteToMail, isComposed: true })
+            // this.setState({ isComposed: !this.state.isComposed })
+            // this.onComposeEmail()
+        }
+        this.loadEmails();
+        console.log(this.state.emails);
     }
-
+    
     loadEmails = () => {
         emailService.query(this.state.filterBy)
-            .then((emails) => {
-                this.setState({ emails })
-            })
+        .then((emails) => {
+            this.setState({ emails })
+            console.log(this.state.emails);
+        })
     }
 
     onDeleteEmail = (emailId) => {
@@ -88,7 +103,8 @@ export class EmailApp extends React.Component {
 
     render() {
 
-        const { emails, view, isComposed } = this.state
+        const { emails, view, isComposed, noteText } = this.state
+        console.log('emails',emails);
         if (!emails) return <div>Loading...</div>
         const length = emails.filter(mail => (!mail.isTrash && !mail.isSent)).length
 
@@ -99,7 +115,7 @@ export class EmailApp extends React.Component {
                     <UserMsg />
                     <EmailSideBar emails={this.getEmailsForDisplay()} length={length}
                         onComposeEmail={this.onComposeEmail} toggleView={this.toggleView} />
-                    {isComposed && <EmailCompose hideComposeWindow={this.hideComposeWindow} />}
+                    {isComposed && <EmailCompose hideComposeWindow={this.hideComposeWindow} noteText={noteText} />}
                     <Switch>
                         <Route component={EmailDetails} path="/email/:id" />
                         <Route path="/email" render={() => (

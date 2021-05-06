@@ -10,10 +10,16 @@ export class NoteApp extends React.Component {
     state = {
         notes: null,
         filterBy: null,
+        emailText: null
     }
 
     componentDidMount() {
-        this.loadNotes()
+        const mailToNote = new URLSearchParams(window.location.href).get('mail');
+        if (mailToNote) {
+            this.setState({ emailText: mailToNote })
+            this.loadNotes()
+        }
+        else this.loadNotes();
     }
 
     loadNotes = () => {
@@ -54,7 +60,7 @@ export class NoteApp extends React.Component {
 
         return (
             <section className="note-app">
-                <NoteCreator onAddNote={this.onAddNote} />
+                <NoteCreator onAddNote={this.onAddNote} emailText={this.state.emailText} />
                 <Switch>
                     <Route path="/keep" render={(props) => (
                         <React.Fragment>
