@@ -7,7 +7,7 @@ import { EmailDetails } from '../pages/EmailDetails.jsx'
 import { EmailCompose } from '../pages/EmailCompose.jsx'
 import { utilService } from '../../../app-services/util-service.js'
 import { eventBusService } from '../../../app-services/event-bus-service.js'
-import { UserMsg } from '../cmps/UserMsg.jsx'
+import { UserMsg } from '../../../cmps/UserMsg.jsx'
 
 export class EmailApp extends React.Component {
 
@@ -26,8 +26,6 @@ export class EmailApp extends React.Component {
         emailService.query(this.state.filterBy)
             .then((emails) => {
                 this.setState({ emails })
-                // let viewEmails = this.getEmailsForDisplay()
-                // eventBusService.emit('email-count', viewEmails.length)
             })
     }
 
@@ -48,6 +46,11 @@ export class EmailApp extends React.Component {
             .then(this.loadEmails)
     }
 
+    onReadUnreadClick = (emailId) => {
+        emailService.toggleReadUnread(emailId)
+            .then(this.loadEmails)
+    }
+
     onComposeEmail = () => {
         this.setState({ isComposed: !this.state.isComposed })
     }
@@ -56,8 +59,6 @@ export class EmailApp extends React.Component {
         this.setState({ isComposed: false })
         eventBusService.emit('show-user-msg', 'Email Sent')
     }
-
-
 
     getColorForTag = (tag) => {
         let tagColor = utilService.getFourColors(tag)
@@ -106,7 +107,8 @@ export class EmailApp extends React.Component {
                             <EmailList emails={this.getEmailsForDisplay()} onSetFilter={this.onSetFilter}
                                 onDeleteEmail={this.onDeleteEmail} onStaredEmail={this.onStaredEmail}
                                 toggleStarColor={this.toggleStarColor}
-                                getColorForTag={this.getColorForTag} changeEmailIsRead={this.changeEmailIsRead} />
+                                getColorForTag={this.getColorForTag} changeEmailIsRead={this.changeEmailIsRead}
+                                onReadUnreadClick={this.onReadUnreadClick} />
                         )} />
                     </Switch>
                 </section>

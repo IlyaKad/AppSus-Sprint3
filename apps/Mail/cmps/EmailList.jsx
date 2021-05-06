@@ -2,7 +2,7 @@
 import { EmailPreview } from './EmailPreview.jsx'
 
 export function EmailList({ emails, onStaredEmail, onDeleteEmail, setTagColor,
-    getColorForTag,changeEmailIsRead }) {
+    getColorForTag, changeEmailIsRead, onReadUnreadClick }) {
 
     return (
         <React.Fragment>
@@ -18,8 +18,8 @@ export function EmailList({ emails, onStaredEmail, onDeleteEmail, setTagColor,
                         <div className="email-list">
                             {emails.map(email => <EmailPreview email={email} onStaredEmail={onStaredEmail}
                                 onDeleteEmail={onDeleteEmail} key={email.id}
-                                setTagColor={setTagColor}changeEmailIsRead={changeEmailIsRead}
-                                getColorForTag={getColorForTag} />)}
+                                setTagColor={setTagColor} changeEmailIsRead={changeEmailIsRead}
+                                getColorForTag={getColorForTag} onReadUnreadClick={onReadUnreadClick} />)}
                         </div>
                     </ul>
                 </section>

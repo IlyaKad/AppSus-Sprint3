@@ -70,7 +70,7 @@ export class EmailDetails extends React.Component {
         this.loadReplyList(id)
     }
 
-  
+
     loadEmail = () => {
         const id = this.props.match.params.id
         emailService.getEmailById(id).then(email => {
@@ -112,10 +112,11 @@ export class EmailDetails extends React.Component {
                     <h3>Message : </h3>
                     <p className="email-body flex">{body}</p>
                 </section>
-                <section className="replies-section flex">
+                <section className="email-btns-panel flex">
                     {/* <ReplyToEmail emailId={email.id} replies={this.state.replies} addReply={this.addReply} email={email} /> */}
-                    <button onClick={() => this.props.history.push('/email')} > Go back</button>
                     {/* <Link to={`/email/edit/${email.id}`}>Reply</Link> */}
+                    <Link to={`/keep/mail?&mail=${body}`}>Send To Keep</Link>
+                    <button onClick={() => this.props.history.push('/email')} > Go back</button>
                     <button className="del-email-btn" onClick={this.onDeleteEmail}><i className="fa fa-trash-o"></i></button>
                 </section>
             </div>

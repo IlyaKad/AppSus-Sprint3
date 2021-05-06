@@ -8,11 +8,12 @@ export const emailService = {
     getEmailById,
     starEmail,
     addEmail,
-    updateEmail
+    updateEmail,
+    toggleReadUnread
 }
 
 const KEY_email = 'emails';
-// var gEmails = storageService.loadFromStorage(KEY_email) || null;
+var gEmails = storageService.loadFromStorage(KEY_email) || emails;
 
 var emails = [
     {
@@ -41,7 +42,7 @@ var emails = [
         id: utilService.makeId(),
         subject: 'How to write for publications',
         body: 'If one of your goals is to eventually grow your blog, business or personal brand by landing a spot as a contributor for a major',
-        isRead: false,
+        isRead: true,
         sentAt: 'Jan 14',
         author: 'Robinson',
         isTrash: false,
@@ -52,7 +53,7 @@ var emails = [
         id: utilService.makeId(),
         subject: 'Ready to roll with Sushi Week?',
         body: 'Open the Uber Eats app and discover some faves in your area. You’re getting 20% off selected sushi',
-        isRead: false,
+        isRead: true,
         sentAt: '2020 Dec 26',
         author: 'Uber Eats ',
         isTrash: false,
@@ -63,7 +64,7 @@ var emails = [
         id: utilService.makeId(),
         subject: 'Your account has been charged',
         body: 'Nice doing bussines with you',
-        isRead: false,
+        isRead: true,
         sentAt: '2020 Sep 22',
         author: 'Oliver from Avocode',
         isTrash: false,
@@ -71,8 +72,8 @@ var emails = [
         isSent: false
     },
 ]
-
-var gEmails = emails;
+var gEmails = storageService.loadFromStorage(KEY_email) || emails;
+// var gEmails = emails;
 
 function query(filterBy) {
     if (filterBy) {
@@ -126,8 +127,16 @@ function saveEmail(email) {
     return email.id ? _updateEmail(email) : _addEmail(email)
 }
 
-// same as delete email
+
 function updateEmail(emailId) {
+    var emailIdx = gEmails.findIndex((email) => email.id === emailId)
+    if (!gEmails[emailIdx].isRead) gEmails[emailIdx].isRead = !gEmails[emailIdx].isRead
+
+    storageService.saveToStorage(KEY_email, gEmails);
+    return Promise.resolve()
+}
+
+function toggleReadUnread(emailId) {
     var emailIdx = gEmails.findIndex((email) => email.id === emailId)
     gEmails[emailIdx].isRead = !gEmails[emailIdx].isRead
     storageService.saveToStorage(KEY_email, gEmails);
