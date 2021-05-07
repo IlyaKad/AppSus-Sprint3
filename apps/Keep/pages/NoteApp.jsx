@@ -17,6 +17,21 @@ export class NoteApp extends React.Component {
         const mailToNote = new URLSearchParams(window.location.href).get('mail');
         if (mailToNote) {
             this.setState({ emailText: mailToNote })
+            // console.log('mailToNote', mailToNote);
+            // // const { info: { text, url, todos } } = mailToNote
+            // switch (mailToNote.info.type) {
+            //     case 'text':
+            //         this.setState({ emailText: text })
+            //         break;
+            //     case 'url':
+            //         this.setState({ emailText: url })
+            //         break;
+            //     case 'todos':
+            //         const todosStrArray = todos.map(() => todo['text'])
+            //         const todosStr = todosStrArray.toString()
+            //         this.setState({ emailText: todosStr })
+            //         break;
+            // }
             this.loadNotes()
         }
         else this.loadNotes();
