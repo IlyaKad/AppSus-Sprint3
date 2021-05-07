@@ -6,7 +6,8 @@ export const noteService = {
     deleteNote,
     addNote,
     pinNote,
-    copyNote
+    copyNote,
+    changeNoteBgc
     // getNoteById,
     // saveNote
 }
@@ -185,6 +186,28 @@ function pinNote(noteId) {
     storageService.saveToStorage(KEY_NOTES, gNotes);
     return Promise.resolve(gNotes)
 }
+
+function changeNoteBgc(color, noteId) {
+    var noteIdx = gNotes.findIndex(note => {
+        return noteId === note.id
+    })
+    gNotes[noteIdx].style.backgroundColor = color;
+    storageService.saveToStorage(KEY_NOTES, gNotes);
+    return Promise.resolve(gNotes)
+}
+
+// {
+//     id: utilService.makeId(),
+//     type: "img",
+//     isPinned: false,
+//     info: {
+//         title: "Me playing Mi",
+//         url: "https://robohash.org/dsfhg"
+//     },
+//     style: {
+//         backgroundColor: "#00d"
+//     }
+// }
 
 function getRandomColor() {
     var letters = '0123456789ABCDEF';

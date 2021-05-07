@@ -51,6 +51,25 @@ export class NoteApp extends React.Component {
             .then(this.loadNotes)
     }
 
+    onChangeNoteBgc = (color, noteId) => {
+        noteService.changeNoteBgc(color, noteId)
+            .then(this.loadNotes)
+    }
+
+    onNoteTextCase = (note) => {
+        const { info: { text, url, todos } } = note
+        let emailText = '';
+        switch (note.type) {
+            case 'text': emailText = text
+            case 'url': emailText = url
+            case 'todos':
+                const todosStrArray = todos.map(todo => todo.text)
+                const todosStr = todosStrArray.toString()
+                emailText = todosStr
+        }
+        return `/email/?&note=${emailText}`
+    }
+
     render() {
         const { notes } = this.state
         if (!notes) return <div>Loading...</div>
@@ -66,11 +85,11 @@ export class NoteApp extends React.Component {
                         <React.Fragment>
                             <NoteList {...props} notes={pinnedNotes} onCopyNote={this.onCopyNote}
                                 onPinNote={this.onPinNote} onSetFilter={this.onSetFilter}
-                                onRemoveNote={this.onRemoveNote} />
+                                onRemoveNote={this.onRemoveNote} onChangeNoteBgc={this.onChangeNoteBgc} onNoteTextCase={this.onNoteTextCase} />
                             <hr />
                             <NoteList {...props} notes={unPinnedNotes} onCopyNote={this.onCopyNote}
                                 onPinNote={this.onPinNote} onSetFilter={this.onSetFilter}
-                                onRemoveNote={this.onRemoveNote} />
+                                onRemoveNote={this.onRemoveNote} onChangeNoteBgc={this.onChangeNoteBgc} onNoteTextCase={this.onNoteTextCase} />
                         </React.Fragment>
                     )} />
                 </Switch>
