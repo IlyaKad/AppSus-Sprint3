@@ -66,6 +66,11 @@ export class NoteApp extends React.Component {
             .then(this.loadNotes)
     }
 
+    onChangeNoteBgc = (color, noteId) => {
+        noteService.changeNoteBgc(color, noteId)
+            .then(this.loadNotes)
+    }
+
     render() {
         const { notes } = this.state
         if (!notes) return <div>Loading...</div>
@@ -81,11 +86,11 @@ export class NoteApp extends React.Component {
                         <React.Fragment>
                             <NoteList {...props} notes={pinnedNotes} onCopyNote={this.onCopyNote}
                                 onPinNote={this.onPinNote} onSetFilter={this.onSetFilter}
-                                onRemoveNote={this.onRemoveNote} />
+                                onRemoveNote={this.onRemoveNote} onChangeNoteBgc={this.onChangeNoteBgc} />
                             <hr />
                             <NoteList {...props} notes={unPinnedNotes} onCopyNote={this.onCopyNote}
                                 onPinNote={this.onPinNote} onSetFilter={this.onSetFilter}
-                                onRemoveNote={this.onRemoveNote} />
+                                onRemoveNote={this.onRemoveNote} onChangeNoteBgc={this.onChangeNoteBgc} />
                         </React.Fragment>
                     )} />
                 </Switch>

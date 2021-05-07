@@ -1,5 +1,5 @@
 import { NoteButtons } from '../cmps/NoteButtons.jsx'
-export function NoteTodos({ note, onRemoveNote, onPinNote, onCopyNote }) {
+export function NoteTodos({ note, onRemoveNote, onPinNote, onCopyNote, onChangeNoteBgc }) {
     const { info: { title, todos } } = note;
 
     return (
@@ -8,7 +8,7 @@ export function NoteTodos({ note, onRemoveNote, onPinNote, onCopyNote }) {
             <ul>
                 {todos.map(todo => <li className={todo.doneAt ? 'done' : ''} key={todo.id} >{todo.text}</li>)}
             </ul>
-            <NoteButtons note={note} onRemoveNote={onRemoveNote} onPinNote={onPinNote} onCopyNote={onCopyNote} />
+            <NoteButtons note={note} onRemoveNote={onRemoveNote} onPinNote={onPinNote} onCopyNote={onCopyNote} onChangeNoteBgc={onChangeNoteBgc} />
         </article >
     )
 }

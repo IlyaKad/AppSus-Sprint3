@@ -1,6 +1,7 @@
+import { ColorPalette } from './ColorPalette.jsx'
 const { Link } = ReactRouterDOM
 
-export function NoteButtons({ note, onRemoveNote, onPinNote, onCopyNote }) {
+export function NoteButtons({ note, onRemoveNote, onPinNote, onCopyNote, onChangeNoteBgc }) {
 
     return (
         <div className="note-btns flex">
@@ -10,17 +11,7 @@ export function NoteButtons({ note, onRemoveNote, onPinNote, onCopyNote }) {
             <button className="btn-1" onClick={() => onRemoveNote(note.id)}><i className="fa fa-trash-o"></i></button>
             <button className="btn-1"><Link to={`/email/?&note=${note.info.text}`}><i className="fa fa-envelope"></i></Link></button>
             <button className="btn-1" onClick={() => onPinNote(note.id)}><i className="fa fa-thumb-tack"></i></button>
-            <div className="colors-palette">
-                <span style={{ backgroundColor: "#5bd7c6" }}></span>
-                <span style={{ backgroundColor: "#5bd76a" }}></span>
-                <span style={{ backgroundColor: "#d5d75b" }}></span>
-                <span style={{ backgroundColor: "#f29647" }}></span>
-                <span style={{ backgroundColor: "#e36060" }}></span>
-                <span style={{ backgroundColor: "#ec58e0" }}></span>
-                <span style={{ backgroundColor: "#c97aea" }}></span>
-                <span style={{ backgroundColor: "#7c7aea" }}></span>
-            </div>
+            <ColorPalette onChangeNoteBgc={onChangeNoteBgc} note={note.id} />
         </div>
     )
 }
-// onClick={() => changeNoteBgc(note.id)}

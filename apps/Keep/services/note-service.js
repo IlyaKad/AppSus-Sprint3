@@ -6,7 +6,8 @@ export const noteService = {
     deleteNote,
     addNote,
     pinNote,
-    copyNote
+    copyNote,
+    changeNoteBgc
     // getNoteById,
     // saveNote
 }
@@ -182,6 +183,15 @@ function pinNote(noteId) {
     if (gNotes[noteIdx].isPinned) gNotes[noteIdx].isPinned = false
     else gNotes[noteIdx].isPinned = true
 
+    storageService.saveToStorage(KEY_NOTES, gNotes);
+    return Promise.resolve(gNotes)
+}
+
+function changeNoteBgc(color, noteId) {
+    var noteIdx = gNotes.findIndex(note => {
+        return noteId === note.id
+    })
+    gNotes[noteIdx].style.backgroundColor = color;
     storageService.saveToStorage(KEY_NOTES, gNotes);
     return Promise.resolve(gNotes)
 }
