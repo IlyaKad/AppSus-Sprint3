@@ -1,4 +1,4 @@
-export function ColorPalette(onChangeNoteBgc, noteId) {
+export function ColorPalette({ onChangeNoteBgc, noteId }) {
 
     return (
         <div className="colors-palette">

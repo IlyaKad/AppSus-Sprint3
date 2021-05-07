@@ -196,6 +196,19 @@ function changeNoteBgc(color, noteId) {
     return Promise.resolve(gNotes)
 }
 
+// {
+//     id: utilService.makeId(),
+//     type: "img",
+//     isPinned: false,
+//     info: {
+//         title: "Me playing Mi",
+//         url: "https://robohash.org/dsfhg"
+//     },
+//     style: {
+//         backgroundColor: "#00d"
+//     }
+// }
+
 function getRandomColor() {
     var letters = '0123456789ABCDEF';
     var color = '#';

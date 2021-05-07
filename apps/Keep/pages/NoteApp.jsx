@@ -17,21 +17,6 @@ export class NoteApp extends React.Component {
         const mailToNote = new URLSearchParams(window.location.href).get('mail');
         if (mailToNote) {
             this.setState({ emailText: mailToNote })
-            // console.log('mailToNote', mailToNote);
-            // // const { info: { text, url, todos } } = mailToNote
-            // switch (mailToNote.info.type) {
-            //     case 'text':
-            //         this.setState({ emailText: text })
-            //         break;
-            //     case 'url':
-            //         this.setState({ emailText: url })
-            //         break;
-            //     case 'todos':
-            //         const todosStrArray = todos.map(() => todo['text'])
-            //         const todosStr = todosStrArray.toString()
-            //         this.setState({ emailText: todosStr })
-            //         break;
-            // }
             this.loadNotes()
         }
         else this.loadNotes();
@@ -71,6 +56,20 @@ export class NoteApp extends React.Component {
             .then(this.loadNotes)
     }
 
+    onNoteTextCase = (note) => {
+        const { info: { text, url, todos } } = note
+        let emailText = '';
+        switch (note.type) {
+            case 'text': emailText = text
+            case 'url': emailText = url
+            case 'todos':
+                const todosStrArray = todos.map(todo => todo.text)
+                const todosStr = todosStrArray.toString()
+                emailText = todosStr
+        }
+        return `/email/?&note=${emailText}`
+    }
+
     render() {
         const { notes } = this.state
         if (!notes) return <div>Loading...</div>
@@ -86,11 +85,11 @@ export class NoteApp extends React.Component {
                         <React.Fragment>
                             <NoteList {...props} notes={pinnedNotes} onCopyNote={this.onCopyNote}
                                 onPinNote={this.onPinNote} onSetFilter={this.onSetFilter}
-                                onRemoveNote={this.onRemoveNote} onChangeNoteBgc={this.onChangeNoteBgc} />
+                                onRemoveNote={this.onRemoveNote} onChangeNoteBgc={this.onChangeNoteBgc} onNoteTextCase={this.onNoteTextCase} />
                             <hr />
                             <NoteList {...props} notes={unPinnedNotes} onCopyNote={this.onCopyNote}
                                 onPinNote={this.onPinNote} onSetFilter={this.onSetFilter}
-                                onRemoveNote={this.onRemoveNote} onChangeNoteBgc={this.onChangeNoteBgc} />
+                                onRemoveNote={this.onRemoveNote} onChangeNoteBgc={this.onChangeNoteBgc} onNoteTextCase={this.onNoteTextCase} />
                         </React.Fragment>
                     )} />
                 </Switch>
