@@ -9,6 +9,7 @@ import { utilService } from '../../../app-services/util-service.js'
 import { eventBusService } from '../../../app-services/event-bus-service.js'
 import { UserMsg } from '../../../cmps/UserMsg.jsx'
 
+
 export class EmailApp extends React.Component {
 
     state = {
@@ -64,7 +65,6 @@ export class EmailApp extends React.Component {
 
     hideComposeWindow = () => {
         this.setState({ isComposed: false })
-        eventBusService.emit('show-user-msg', 'Email Sent')
     }
 
     getColorForTag = (tag) => {
@@ -72,12 +72,13 @@ export class EmailApp extends React.Component {
         return tagColor
     }
 
-    onSetFilter = (filterBy) => {
-        this.setState({ filterBy }, this.loadEmails)
+    onSetFilter = (ev) => {
+        this.setState({ filterBy: ev.target }, this.loadEmails)
     }
 
     toggleView = (view) => {
         this.setState({ view })
+        this.props.history.push('/email')
     }
 
     getEmailsForDisplay = () => {
@@ -102,7 +103,7 @@ export class EmailApp extends React.Component {
 
         return (
             <section className="email-app">
-                <EmailFilter emails={this.state.emails} onSetFilter={this.onSetFilter} />
+                <EmailFilter onSetFilter={this.onSetFilter} />
                 <section className="flex">
                     <UserMsg />
                     <EmailSideBar emails={this.getEmailsForDisplay()} length={length}
@@ -112,7 +113,7 @@ export class EmailApp extends React.Component {
                         <Route component={EmailDetails} path="/email/:id" />
                         <Route path="/email/" render={() => (
 
-                            <EmailList emails={this.getEmailsForDisplay()} onSetFilter={this.onSetFilter}
+                            <EmailList emails={this.getEmailsForDisplay()}
                                 onDeleteEmail={this.onDeleteEmail} onStaredEmail={this.onStaredEmail}
                                 toggleStarColor={this.toggleStarColor}
                                 getColorForTag={this.getColorForTag} changeEmailIsRead={this.changeEmailIsRead}

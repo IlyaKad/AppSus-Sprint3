@@ -1,4 +1,5 @@
 import { emailService } from '../services/email-service.js'
+import { eventBusService } from '../../../app-services/event-bus-service.js'
 
 export class EmailCompose extends React.Component {
 
@@ -34,6 +35,7 @@ export class EmailCompose extends React.Component {
         ev.preventDefault()
         emailService.addEmail(this.state.email)
         this.props.hideComposeWindow()
+        eventBusService.emit('show-user-msg', 'Email Sent')
     }
 
     render() {

@@ -3,7 +3,7 @@ import { storageService } from '../../../app-services/storage-service.js'
 
 export const emailService = {
     query,
-    saveEmail,
+    // saveEmail,
     deleteEmail,
     getEmailById,
     starEmail,
@@ -73,26 +73,40 @@ var emails = [
     },
 ]
 var gEmails = storageService.loadFromStorage(KEY_email) || emails;
-// var gEmails = emails;
 
 function query(filterBy) {
-    if (filterBy) {
-        var { subject, author, body } = filterBy //check filterBy that was sent
-        author = author ? author : ''
-        subject = subject ? subject : ''
-        body = body ? body : ''
-        const filteredEmails = gEmails.filter(email => {
-            return email.author.includes(author) &&
-                email.subject.includes(subject) &&
-                email.body.includes(body)
-        })
+    if (!filterBy || filterBy.value === 'all') return Promise.resolve(gEmails)
+
+    else if (filterBy) {
+        const { value, type } = filterBy
+        // console.log('type:', type, 'value:', value);
+        let filteredEmails;
+        if (type === 'search') filteredEmails = getEamilsBySearch(value)
+        if (type === 'radio') filteredEmails = getEamilsByRadio(value)
         return Promise.resolve(filteredEmails)
     }
-    return Promise.resolve(gEmails)
-    // return Promise.resolve(onSideBarClick)
 }
 
-//  DELETE EMAIL BY ID
+function getEamilsBySearch(value) {
+    value = value ? value.toUpperCase() : ''
+    console.log('getEamilsBySearch value:', value);
+    const serchedEmails = gEmails.filter(email => {
+        return email.author.toUpperCase().includes(value)
+            || email.subject.toUpperCase().includes(value) ||
+            email.body.toUpperCase().includes(value)
+    })
+    return serchedEmails
+}
+
+function getEamilsByRadio(value) {
+    console.log('getEamilsByRadio value:', value)
+    let condition = (value === 'read') ? true : false
+    const sortedEmails = gEmails.filter(email => {
+        return email.isRead === condition
+    })
+    return sortedEmails
+}
+
 
 function deleteEmail(emailId) {
     var emailIdx = gEmails.findIndex(email => {
@@ -106,7 +120,6 @@ function deleteEmail(emailId) {
     return Promise.resolve()
 }
 
-////Star EMail
 function starEmail(emailId) {
     var emailIdx = gEmails.findIndex(email => {
         return emailId === email.id
@@ -120,13 +133,9 @@ function starEmail(emailId) {
 }
 
 
-/////////////////////
-
-// is there an id? if yes update email if no add a new one
-function saveEmail(email) {
-    return email.id ? _updateEmail(email) : _addEmail(email)
-}
-
+// function saveEmail(email) {
+//     return email.id ? _updateEmail(email) : _addEmail(email)
+// }
 
 function updateEmail(emailId) {
     var emailIdx = gEmails.findIndex((email) => email.id === emailId)
@@ -154,11 +163,11 @@ function addEmail({ subject, body, author }) {
 function _createEmail(subject, body, author) {
     return {
         id: utilService.makeId(),
+        sentAt: getDate(),
         subject,
         body,
-        isRead: false,
-        sentAt: getDate(),
         author,
+        isRead: false,
         isTrash: false,
         isStarred: false,
         isSent: true
@@ -172,10 +181,6 @@ function getDate() {
 
     return `${month} ${day}`
 }
-
-
-
-// GET EMAIL BY ID
 
 function getEmailById(emailId) {
     var email = gEmails.find(email => {

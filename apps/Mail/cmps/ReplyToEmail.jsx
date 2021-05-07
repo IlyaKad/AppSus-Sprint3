@@ -16,6 +16,11 @@ export class ReplyToEmail extends React.Component {
         this.setState({ ...this.state, [field]: val })
     }
 
+    containerShowToggle = () => {
+        if (!this.props.isReplyShown) return 'hidden'
+        else return ''
+    }
+
     onSubmitReply = (ev) => {
         ev.preventDefault();
         const { recipient, date, subject, replyBody } = this.state
@@ -30,6 +35,7 @@ export class ReplyToEmail extends React.Component {
             subject: '',
             replyBody: '',
         })
+        this.props.replyShowToggle()
     }
 
     render() {
@@ -37,7 +43,7 @@ export class ReplyToEmail extends React.Component {
         const { recipient, date, subject, replyBody } = this.state;
 
         return (
-            <div className="replies-container">
+            <div className={`replies-container ${this.containerShowToggle()} `} >
 
                 <form className="reply-form column" onSubmit={this.onSubmitReply}>
 
@@ -59,7 +65,7 @@ export class ReplyToEmail extends React.Component {
                     {/* <EmailReplies replies={this.props.replies}
                         emailId={this.props.emailId} onRemoveReply={this.props.onRemoveReply} /> */}
                 </div>
-            </div>
+            </div >
         )
 
     }

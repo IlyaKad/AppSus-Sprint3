@@ -10,11 +10,12 @@ export class EmailDetails extends React.Component {
     state = {
         email: null,
         replies: null,
-        body: null
+        body: null,
+        isReplyShown: false
     }
 
     componentDidMount() {
-        const id = this.props.match.params;
+        // const id = this.props.match.params;
         this.loadEmail()
     }
 
@@ -70,6 +71,11 @@ export class EmailDetails extends React.Component {
         this.loadReplyList(id)
     }
 
+    replyShowToggle = () => {
+        this.setState({ isReplyShown: !this.state.isReplyShown })
+        console.log(this.state.isReplyShown);
+    }
+
 
     loadEmail = () => {
         const id = this.props.match.params.id
@@ -80,14 +86,13 @@ export class EmailDetails extends React.Component {
     }
 
     render() {
-        const { email } = this.state
+        const { email, isReplyShown } = this.state
         if (!email) return <div>Loading...</div>
 
         const {
             id,
             subject,
             body,
-            // isRead,
             sentAt,
             author,
         } = email;
@@ -99,11 +104,9 @@ export class EmailDetails extends React.Component {
                     {/* <Link to={`/email/${emailService.getNextEmailId(email.id)}`}>Next Email</Link> */}
                 </div>
                 <div className="email-panel-container flex">
-                    {/* <img src={thumbnail} alt="" /> */}
                     <div className="email-info-container" >
                         <h3>{subject}</h3>
                         <small>{author}</small>
-
                         <p>Sent Date: {this.handleDate(sentAt)}</p>
                     </div>
                 </div>
@@ -113,8 +116,9 @@ export class EmailDetails extends React.Component {
                     <p className="email-body flex">{body}</p>
                 </section>
                 <section className="email-btns-panel flex">
-                    {/* <ReplyToEmail emailId={email.id} replies={this.state.replies} addReply={this.addReply} email={email} /> */}
-                    {/* <Link to={`/email/edit/${email.id}`}>Reply</Link> */}
+                    <ReplyToEmail isReplyShown={isReplyShown} replyShowToggle={this.replyShowToggle} emailId={email.id}
+                        replies={this.state.replies} addReply={this.addReply} email={email} />
+                    <button onClick={this.replyShowToggle}>Reply</button>
                     <Link to={`/keep/mail?&mail=${body}`}>Send To Keep</Link>
                     <button onClick={() => this.props.history.push('/email')} > Go back</button>
                     <button className="del-email-btn" onClick={this.onDeleteEmail}><i className="fa fa-trash-o"></i></button>
