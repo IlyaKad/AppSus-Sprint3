@@ -9,6 +9,7 @@
     border: solid 0.5px;
     border-radius: 10px;
     transition: 0.25s;
+    padding: 5px 10px;
 }
 
 .compose-btn:hover {
