@@ -1,32 +1,29 @@
+export function NoteFilter({ onSetFilter }) {
 
-export class NoteFilter extends React.Component {
+    return (
+        <section className="note-filter">
+            <input type="search" placeholder="search by title" onChange={(ev) => { onSetFilter(ev) }} />
+            <div className="radio-sort">
+                <label htmlFor="all"> All
+                <input type="radio" name="sort-notes" value="all" onChange={(ev) => onSetFilter(ev)} />
+                </label>
+                <label htmlFor="note"> Notes
+                <input type="radio" name="sort-notes" value="txt" onChange={(ev) => onSetFilter(ev)} />
+                </label>
+                <label htmlFor="todos"> Todos
+                <input type="radio" name="sort-notes" value="todos" onChange={(ev) => onSetFilter(ev)} />
+                </label>
+                <label htmlFor="img"> Images
+                <input type="radio" name="sort-notes" value="img" onChange={(ev) => onSetFilter(ev)} />
+                </label>
+                {/* <select name="notes" id="notes" onChange={(ev) => { onSetFilter(ev) }}>
+                    <option value="all">All</option>
+                    <option value="note">Notes</option>
+                    <option value="todos">Todos</option>
+                    <option value="img">Images</option>
+                </select> */}
+            </div>
+        </section>
 
-    state = {
-        filterBy: {
-            text: ''
-        }
-    }
-
-    handleChange = (ev) => {
-        const field = ev.target.name
-        const value = ev.target.type === 'number' ? +ev.target.value : ev.target.value
-        this.setState({ filterBy: { ...this.state.filterBy, [field]: value } }, () => {
-            this.props.onSetFilter(this.state.filterBy)
-        })
-    }
-
-    onFilter = (ev) => {
-        ev.preventDefault()
-        this.props.onSetFilter(this.state.filterBy)
-    }
-
-    render() {
-        const { text } = this.state.filterBy;
-        return (
-            <form className="note-filter" onSubmit={this.onFilter}>
-                <label htmlFor="text"></label>
-                <input type="text" id="text" name="text" value={text} placeholder="Search here" onChange={this.handleChange} />
-            </form>
-        )
-    }
+    )
 }

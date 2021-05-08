@@ -2,6 +2,7 @@ import { noteService } from '../services/note-service.js'
 import { NoteList } from '../cmps/NoteList.jsx'
 import { NoteCreator } from '../cmps/NoteCreator.jsx'
 import { NoteFilter } from '../cmps/NoteFilter.jsx'
+import { UserMsg } from '../../../cmps/UserMsg.jsx'
 
 const { Route, Switch } = ReactRouterDOM
 
@@ -56,6 +57,10 @@ export class NoteApp extends React.Component {
             .then(this.loadNotes)
     }
 
+    onSetFilter = (ev) => {
+        this.setState({ filterBy: ev.target }, this.loadNotes)
+    }
+
     onNoteTextCase = (note) => {
         const { info: { text, url, todos } } = note
         let emailText = '';
@@ -67,7 +72,7 @@ export class NoteApp extends React.Component {
                 const todosStr = todosStrArray.toString()
                 emailText = todosStr
         }
-        return `/email/?&note=${emailText}`
+        return '/email/?&note=' + emailText
     }
 
     render() {
@@ -78,17 +83,18 @@ export class NoteApp extends React.Component {
         const unPinnedNotes = notes.filter((note) => !note.isPinned)
 
         return (
+
             <section className="note-app">
+                <NoteFilter onSetFilter={this.onSetFilter} />
                 <NoteCreator onAddNote={this.onAddNote} emailText={this.state.emailText} />
+                {/* <UserMsg /> */}
                 <Switch>
                     <Route path="/keep" render={(props) => (
                         <React.Fragment>
-                            <NoteList {...props} notes={pinnedNotes} onCopyNote={this.onCopyNote}
-                                onPinNote={this.onPinNote} onSetFilter={this.onSetFilter}
+                            <NoteList {...props} notes={pinnedNotes} onCopyNote={this.onCopyNote} onPinNote={this.onPinNote}
                                 onRemoveNote={this.onRemoveNote} onChangeNoteBgc={this.onChangeNoteBgc} onNoteTextCase={this.onNoteTextCase} />
                             <hr />
-                            <NoteList {...props} notes={unPinnedNotes} onCopyNote={this.onCopyNote}
-                                onPinNote={this.onPinNote} onSetFilter={this.onSetFilter}
+                            <NoteList {...props} notes={unPinnedNotes} onCopyNote={this.onCopyNote} onPinNote={this.onPinNote}
                                 onRemoveNote={this.onRemoveNote} onChangeNoteBgc={this.onChangeNoteBgc} onNoteTextCase={this.onNoteTextCase} />
                         </React.Fragment>
                     )} />
