@@ -8,8 +8,9 @@
 }
 
 .book-preview {
-    box-shadow: 0 0px 3px 2px #c8c7c7d5;
+    box-shadow: 0 0px 7px 0px #3cae8c;
     padding: 5px 10px;
     text-align: center;
+    border-radius: 7px;
     margin: 10px;
 }
