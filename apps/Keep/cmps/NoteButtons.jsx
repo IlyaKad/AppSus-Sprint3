@@ -5,7 +5,7 @@ export function NoteButtons({ note, onRemoveNote, onPinNote, onCopyNote, onChang
 
     return (
         <div className="note-btns">
-            <button className="btn-color"><i className="fa fa-eyedropper"></i></button>
+            {/* <button className="btn-color"><i className="fa fa-eyedropper"></i></button> */}
             {/* <button className="btn-edit"><i className="fa fa-pencil"></i></button> */}
             <button className="btn-copy" onClick={() => onCopyNote(note)}><i className="fa fa-files-o"></i></button>
             <button className="btn-remove" onClick={() => onRemoveNote(note.id)}><i className="fa fa-trash-o"></i></button>

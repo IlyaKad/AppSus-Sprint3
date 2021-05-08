@@ -47,6 +47,8 @@
     border: none;
     outline: none;
     margin-top: 10px;
+    resize: none;
+    flex-grow: 1;
 }
 
 .compose-author {

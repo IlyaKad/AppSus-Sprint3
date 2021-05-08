@@ -8,4 +8,15 @@
 
 .book-filter input {
     margin-left: 5px;
+    border: 1.8px solid #f99d16a8;
+    border-radius: 5px;
+}
+
+.book-filter .fa {
+    font-size: 1rem;
+    margin-left: 0.5rem;
+}
+
+.book-filter .fa:hover {
+    color: #f99d16a8;
 }
