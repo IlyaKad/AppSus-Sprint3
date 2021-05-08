@@ -1,13 +1,20 @@
 .sort-search-contianer {
     justify-content: flex-end;
-    margin:0px 25px;
+    margin: 0px 25px;
 }
 
 .panel input {
-    margin-bottom: 0.3rem;
     font-size: .9rem;
     border-radius: 5px;
     border: 1.8px solid #f99d16a8;
+}
+
+.panel {
+    margin: 1rem;
+}
+
+.panel small {
+    margin: 0.5rem;
 }
 
 .panel input::placeholder {

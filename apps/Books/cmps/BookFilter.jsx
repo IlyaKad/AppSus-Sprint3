@@ -34,7 +34,7 @@ export class BookFilter extends React.Component {
 
         <label htmlFor="maxPrice">Max Price</label>
         <input type="number" id="maxPrice" name="maxPrice" value={maxPrice} onChange={this.handleChange} />
-        <button>Filter</button>
+        <button ><i className="fa fa-search"></i></button>
       </form>
     )
   }
