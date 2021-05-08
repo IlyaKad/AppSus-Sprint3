@@ -8,6 +8,7 @@
 
 .email-app-container{
     align-items:flex-start;
+    margin: 0 25px;
 }
 
 /* HELPERS */

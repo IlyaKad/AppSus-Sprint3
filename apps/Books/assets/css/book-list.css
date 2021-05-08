@@ -3,7 +3,7 @@
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    background-color: rgb(127 164 204);
+    background-color: #f7f8f9
 }
 
 .book-list>* {
