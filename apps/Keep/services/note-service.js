@@ -8,8 +8,6 @@ export const noteService = {
     pinNote,
     copyNote,
     changeNoteBgc
-    // getNoteById,
-    // saveNote
 }
 
 const KEY_NOTES = 'notes';
@@ -21,8 +19,8 @@ var gNotes = [
         type: "txt",
         isPinned: true,
         info: {
-            title: "Me playing Mi",
-            text: "Fullstack Me Baby!"
+            title: "Remember:",
+            text: "Always Wash Behind Your Ears"
         },
         style: {
             backgroundColor: "ee8eff"
@@ -33,11 +31,11 @@ var gNotes = [
         type: "img",
         isPinned: false,
         info: {
-            title: "Me playing Mi",
+            title: "Love This MadaFaka Robot",
             url: "https://robohash.org/dsfhg"
         },
         style: {
-            backgroundColor: "#dcfff7"
+            backgroundColor: "#86cf8f"
         }
     },
     {
@@ -45,7 +43,7 @@ var gNotes = [
         type: "todos",
         isPinned: true,
         info: {
-            title: "Me playing Mi",
+            title: "For Next Monday:",
             todos: [
                 { text: "Do that", doneAt: null, id: utilService.makeId() },
                 { text: "Do this", doneAt: 187111111, id: utilService.makeId() },
@@ -53,7 +51,7 @@ var gNotes = [
             ]
         },
         style: {
-            backgroundColor: "#b5b5ff"
+            backgroundColor: "#fad076"
         }
     },
     {
@@ -61,11 +59,38 @@ var gNotes = [
         type: "txt",
         isPinned: true,
         info: {
-            title: "Me playing Mi",
+            title: "Come On Already",
             text: "Fullstack Me Baby!"
         },
         style: {
-            backgroundColor: "#ee8eff"
+            backgroundColor: "#c28fd7"
+        }
+    },
+    {
+        id: utilService.makeId(),
+        type: "txt",
+        isPinned: true,
+        info: {
+            title: "Amba Recipe",
+            text: `Ingredients
+            4 large mangoes (unripe and firm)
+            3 tablespoons salt
+            ...`
+        },
+        style: {
+            backgroundColor: "#c28fd7"
+        }
+    },
+    {
+        id: utilService.makeId(),
+        type: "txt",
+        isPinned: false,
+        info: {
+            title: "Self-Reminder",
+            text: "Never ever listen to Grandma"
+        },
+        style: {
+            backgroundColor: "#c28fd7"
         }
     },
     {
@@ -73,7 +98,7 @@ var gNotes = [
         type: "todos",
         isPinned: false,
         info: {
-            title: "Me playing Mi",
+            title: "Must Be Done",
             todos: [
                 { text: "Do that", doneAt: null, id: utilService.makeId() },
                 { text: "Do this", doneAt: 187111111, id: utilService.makeId() },
@@ -81,7 +106,7 @@ var gNotes = [
             ]
         },
         style: {
-            backgroundColor: "#b5b5ff"
+            backgroundColor: "#ff91de"
         }
     },
     {
@@ -93,10 +118,37 @@ var gNotes = [
             url: "https://www.akcpetinsurance.com/res/akc/blog/2020/three-common-puppy-illnesses/akc-pupill-hdr.jpg"
         },
         style: {
-            backgroundColor: "#dcfff7"
+            backgroundColor: "#86cf8f"
         }
-    }
-
+    },
+    {
+        id: utilService.makeId(),
+        type: "img",
+        isPinned: false,
+        info: {
+            title: "Self-Reminder",
+            url: "http://img-9gag-fun.9cache.com/photo/a9PrzoD_700bwp.webp"
+        },
+        style: {
+            backgroundColor: "#86cf8f"
+        }
+    },
+    {
+        id: utilService.makeId(),
+        type: "todos",
+        isPinned: false,
+        info: {
+            title: "When CA Course is done:",
+            todos: [
+                { text: "Sleep on the beach", doneAt: null, id: utilService.makeId() },
+                { text: "Get F$#@ing Drunk", doneAt: 187111111, id: utilService.makeId() },
+                { text: "Scream a lil' bit", doneAt: 187112111, id: utilService.makeId() }
+            ]
+        },
+        style: {
+            backgroundColor: "#ff91de"
+        }
+    },
 ];
 
 function query(filterBy) {

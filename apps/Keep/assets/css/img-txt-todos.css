@@ -16,4 +16,5 @@
 
 .note-text p {
     flex-grow: 1;
+    color: rgb(233, 228, 220);
 }

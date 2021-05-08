@@ -15,11 +15,13 @@
 }
 
 .new-input-form textarea {
+    font-family: ubuntu;
     resize: none;
     flex-grow: 1;
 }
 
 .new-input-form input, textarea {
+    font-family: ubuntu;
     font-size: 1rem;
     border: 1.8px solid #f99d16a8;
     margin: 5px;
@@ -48,4 +50,8 @@
 
 .btn-area .fa:hover {
     color: #f99d16a8;
+}
+
+.creator-inputs{
+    font-family: ubuntu;
 }

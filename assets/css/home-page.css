@@ -1,7 +1,7 @@
 .hero {
     background-position: center;
     background-size: cover;
-    height: 70vh;
+    height: 80vh;
     background-repeat: no-repeat;
     background-image: linear-gradient(rgb(224 13 13 / 0%), rgb(0 0 0 / 66%)), url(/assets/app.img/hero-bg.jpg);
 }
