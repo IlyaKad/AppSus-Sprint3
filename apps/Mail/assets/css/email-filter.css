@@ -1,5 +1,6 @@
 .sort-search-contianer {
     justify-content: flex-end;
+    margin:0px 25px;
 }
 
 .panel input {

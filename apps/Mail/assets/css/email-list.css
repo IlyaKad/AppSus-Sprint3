@@ -52,11 +52,11 @@
 }
 
 .email-title-tag {
-    width: 3.4%
+    width: 4.4%
 }
 
 .email-title-name {
-    width: 19.5%;
+    width: 20.5%;
 }
 
 .email-title-subject {
@@ -64,5 +64,6 @@
 }
 
 .email-title-date {
-    width: 12.6%;
+    width: 10.6%;
+    padding-left:16px
 }

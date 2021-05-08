@@ -6,7 +6,7 @@ function _AppHeader(props) {
     <nav className="app-header flex space-between">
       <Link to={"/"}>
         <div className="logo flex align-center">
-          <img src="../assets/app.img/logo.png" alt="logo" />
+          <img src="assets/app.img/logo.png" alt="logo" />
         </div>
       </Link>
       <ol className='nav-header clean-list flex align-center'>

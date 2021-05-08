@@ -42,18 +42,18 @@ export class ReviewAdd extends React.Component {
                 <form className="review-form column" onSubmit={this.onSubmitReview}>
 
                     <label htmlFor="name">Your Name</label>
-                    <input type="text" name="name" id="name" placeholder="full name" value={name} onChange={this.handleChange} />
+                    <input className="books-review-inputs"  type="text" name="name" id="name" placeholder="full name" value={name} onChange={this.handleChange} />
 
                     <label htmlFor="date">Date-Read</label>
-                    <input type="date" name="date" id="date" value={date} onChange={this.handleChange} />
+                    <input className="books-review-inputs"  type="date" name="date" id="date" value={date} onChange={this.handleChange} />
 
                     <label htmlFor="rating">Rate This Book</label>
-                    <input placeholder="1~5" min="1" max="5" type="number" id="rating" name="rating" value={rating} onChange={this.handleChange} />
+                    <input className="books-review-inputs" placeholder="1~5" min="1" max="5" type="number" id="rating" name="rating" value={rating} onChange={this.handleChange} />
 
                     <label htmlFor="review-txt">Your Review</label>
-                    <textarea name="reviewTxt" id="reviewTxt" cols="10" rows="10" value={reviewTxt} onChange={this.handleChange} />
+                    <textarea className="books-review-inputs" name="reviewTxt" id="reviewTxt" cols="10" rows="10" value={reviewTxt} onChange={this.handleChange} />
 
-                    <button type="submit">Submit</button>
+                    <button className="send-email-btn" type="submit">Submit</button>
 
                 </form >
                 <div>
