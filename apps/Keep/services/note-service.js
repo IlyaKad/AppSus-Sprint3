@@ -124,6 +124,42 @@ var gNotes = [
     {
         id: utilService.makeId(),
         type: "img",
+        isPinned: true,
+        info: {
+            title: "I'm in love with the coco!",
+            url: "https://www.simplyquinoa.com/wp-content/uploads/2012/12/dairy-free-hot-chocolate-10.jpg"
+        },
+        style: {
+            backgroundColor: "#86cf8f"
+        }
+    },
+    {
+        id: utilService.makeId(),
+        type: "img",
+        isPinned: true,
+        info: {
+            title: "Hey You",
+            url: "https://www.swagmugs.co.uk/wp-content/uploads/2019/10/Hey-you-drop-this-design.png"
+        },
+        style: {
+            backgroundColor: "#e36060"
+        }
+    },
+    {
+        id: utilService.makeId(),
+        type: "img",
+        isPinned: true,
+        info: {
+            title: "Can't Touch This",
+            url: "https://ctl.s6img.com/society6/img/9aELNyli3iNFJDc4q_qfnKrLC60/w_700/canvas/~artwork/s6-original-art-uploads/society6/uploads/misc/d648e658481849fd9b3dec912a040611/~~/cant-touch-this-canvas.jpg"
+        },
+        style: {
+            backgroundColor: "#f29647"
+        }
+    },
+    {
+        id: utilService.makeId(),
+        type: "img",
         isPinned: false,
         info: {
             title: "Self-Reminder",

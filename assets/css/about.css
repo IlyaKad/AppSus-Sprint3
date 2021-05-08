@@ -1,5 +1,10 @@
 .about-container {
     margin: 0 40px;
+    font-family: ubuntu-bold;
+}
+.about-container p{
+    font-family: ubuntu-bold;
+    line-height: 20px;
 }
 
 .about-container img {
