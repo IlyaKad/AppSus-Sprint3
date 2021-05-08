@@ -5,7 +5,8 @@ export class NoteCreator extends React.Component {
         noteToAdd: {
             type: 'txt',
             inputVal: '',
-            title: ''
+            title: '',
+            titleVal: ''
         }
     }
 
@@ -39,22 +40,29 @@ export class NoteCreator extends React.Component {
         }
     }
 
+    // cleanInput = () => {
+    //     this.setState({ titleVal: '' })
+    // }
+
     render() {
-        const { inputVal } = this.state.noteToAdd
+        const { inputVal, titleVal } = this.state.noteToAdd
         return (
             <section className="note-new">
-                <form>
-                    <div className="new-input-area">
-                        <input type="text" placeholder="title" name="title" onChange={this.handleChange} />
-                        <textarea name="text" placeholder={this.placeholderText()} value={inputVal} name="inputVal"
-                            onChange={this.handleChange} cols="30" rows="10"></textarea>
-                    </div>
+                <form className="new-input-form">
+                    {/* <div className="new-input-area"> */}
+                    <input type="text" placeholder="title" name="title" onChange={this.handleChange} />
+                    <textarea name="text" placeholder={this.placeholderText()} value={inputVal} name="inputVal"
+                        onChange={this.handleChange}></textarea>
+                    {/* </div> */}
                 </form>
                 <div className="btn-area">
                     <button onClick={() => this.onSetType('txt')} className="fa fa-sticky-note-o fa-2x"></button>
                     <button onClick={() => this.onSetType('img')} className="fa fa-picture-o fa-2x"></button>
                     <button onClick={() => this.onSetType('todos')} className="fa fa-list-ul fa-2x"></button>
-                    <button onClick={() => this.props.onAddNote(this.state.noteToAdd)} className="fa fa-plus-square fa-2x"></button>
+                    <button onClick={() => {
+                        this.props.onAddNote(this.state.noteToAdd)
+                        // this.cleanInput()
+                    }} className="fa fa-plus-square fa-2x"></button>
                 </div>
             </section>
         )

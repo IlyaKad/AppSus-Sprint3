@@ -1,0 +1,47 @@
+.note-new {
+    display: flex;
+    background-color: rgb(208, 240, 255);
+    max-width: 400px;
+    padding: 10px;
+    border-radius: 8px;
+    margin: auto;
+}
+
+.new-input-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.new-input-form textarea {
+    resize: none;
+    flex-grow: 1;
+}
+
+.new-input-form input, textarea {
+    font-size: 1rem;
+    border: 1.8px solid #f99d16a8;
+    margin: 5px;
+    border-radius: 3px;
+    width: 100%;
+    color: rgb(48, 139, 112);
+}
+
+.new-input-form input::placeholder {
+    color: rgb(60, 174, 140);
+}
+
+.new-input-form textarea::placeholder {
+    color: rgb(60, 174, 140);
+}
+
+.btn-area {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.btn-area>* {
+    margin: 3px;
+}

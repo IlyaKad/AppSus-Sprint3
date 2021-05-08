@@ -1,0 +1,30 @@
+.note-filter {
+    margin: 0.8rem;
+}
+
+.note-filter input {
+    margin-bottom: 0.3rem;
+    font-size: 1.3rem;
+    border-radius: 5px;
+    border: 1.8px solid #f99d16a8;
+}
+
+.note-filter input::placeholder {
+    color: rgb(60, 174, 140);
+}
+
+.radio-sort input {
+    display: none;
+}
+
+.radio-sort label {
+    margin: 11px;
+}
+
+.radio-sort label:hover {
+    color: rgb(41, 121, 97);
+}
+
+label {
+    cursor: pointer;
+}

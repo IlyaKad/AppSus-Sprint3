@@ -46,6 +46,7 @@
 
 * {
     box-sizing: border-box;
+    outline: none;
 }
 
 body {
@@ -53,10 +54,6 @@ body {
     font-family: ubuntu-bold, sans-serif, lato-regular;
     background-color: #f7f8f9;
     color: rgb(60, 174, 140);
-}
-
-p {
-    /* margin-bottom: 3px; */
 }
 
 img {
@@ -89,56 +86,4 @@ button {
 
 .main-app main {
     flex-grow: 1;
-}
-
-.slide-in-br {
-    animation: slide-in-br 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-}
-
-@-webkit-keyframes slide-in-br {
-    0% {
-        transform: translateY(1000px) translateX(1000px);
-        opacity: 0;
-    }
-    100% {
-        transform: translateY(0) translateX(0);
-        opacity: 1;
-    }
-}
-
-@keyframes slide-in-br {
-    0% {
-        transform: translateY(1000px) translateX(1000px);
-        opacity: 0;
-    }
-    100% {
-        transform: translateY(0) translateX(0);
-        opacity: 1;
-    }
-}
-
-.slide-out-br {
-    animation: slide-out-br 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
-}
-
-@-webkit-keyframes slide-out-br {
-    0% {
-        transform: translateY(0) translateX(0);
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(1000px) translateX(1000px);
-        opacity: 0;
-    }
-}
-
-@keyframes slide-out-br {
-    0% {
-        transform: translateY(0) translateX(0);
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(1000px) translateX(1000px);
-        opacity: 0;
-    }
 }

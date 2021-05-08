@@ -13,6 +13,8 @@ export const noteService = {
 }
 
 const KEY_NOTES = 'notes';
+var gNotes = storageService.loadFromStorage(KEY_NOTES) || gNotes;
+
 var gNotes = [
     {
         id: utilService.makeId(),

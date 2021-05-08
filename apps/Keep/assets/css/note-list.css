@@ -1,0 +1,28 @@
+.note-list {
+    display: flex;
+    margin: 10px;
+    flex-wrap: wrap;
+}
+
+.note-list>* {
+    margin: 10px;
+}
+
+.note-text, .note-img, .note-todos {
+    width: 250px;
+    text-align: center;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.note-text {
+    background-color: rgb(201, 109, 109);
+}
+
+.note-img {
+    background-color: rgb(88, 201, 77);
+}
+
+.note-todos {
+    background-color: rgb(124, 124, 190);
+}
