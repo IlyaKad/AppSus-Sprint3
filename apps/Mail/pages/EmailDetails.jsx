@@ -2,7 +2,7 @@ const { Link } = ReactRouterDOM
 import { emailService } from '../services/email-service.js'
 import { replyService } from '../services/reply-service.js'
 import { ReplyToEmail } from '../cmps/ReplyToEmail.jsx'
-// import { LongTxt } from '../cmps/LongTxt.jsx'
+import { EmailReplies } from '../cmps/EmailReplies.jsx'
 
 
 export class EmailDetails extends React.Component {
@@ -115,13 +115,15 @@ export class EmailDetails extends React.Component {
                     <h3>Message : </h3>
                     <p className="email-body flex">{body}</p>
                 </section>
-                <section className="email-btns-panel flex">
+                <section className="email-btns-panel cloumn">
                     <ReplyToEmail isReplyShown={isReplyShown} replyShowToggle={this.replyShowToggle} emailId={email.id}
                         replies={this.state.replies} addReply={this.addReply} email={email} />
                     <button onClick={this.replyShowToggle}>Reply</button>
-                    <Link to={`/keep/mail?&mail=${body}`}>Send To Keep</Link>
+                    
                     <button onClick={() => this.props.history.push('/email')} > Go back</button>
-                    <button className="del-email-btn" onClick={this.onDeleteEmail}><i className="fa fa-trash-o"></i></button>
+                    <button className="del-email-btn" onClick={this.onDeleteEmail}>
+                        <i className="fa fa-trash-o"></i></button>
+                    <EmailReplies replies={this.state.replies} emailId={email.id} email={this.state.email} />
                 </section>
             </div>
         )

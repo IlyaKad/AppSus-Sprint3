@@ -1,0 +1,28 @@
+.app-header {
+    background-color: #fffffff2;
+    justify-content: space-between;
+    border-bottom: solid 0.5px rgba(60, 174, 115, 0.514);
+    margin-bottom: 10px;
+}
+
+.logo {
+    max-width: 120px;
+}
+
+.nav-header {
+    color: whitesmoke;
+}
+
+.nav-a>* {
+    padding: 5px 10px;
+    margin: 0 10px;
+    border: rgb(0, 0, 0) solid 1 px;
+    border-radius: 33px;
+    transition: .3s;
+    color: rgb(60, 174, 116);
+}
+
+.nav-a>*:hover {
+    border: solid white 1px;
+    border-radius: 33px;
+}

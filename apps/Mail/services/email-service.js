@@ -9,7 +9,8 @@ export const emailService = {
     starEmail,
     addEmail,
     updateEmail,
-    toggleReadUnread
+    toggleReadUnread,
+    getDate
 }
 
 const KEY_email = 'emails';
@@ -175,7 +176,7 @@ function _createEmail(subject, body, author) {
 }
 
 function getDate() {
-    const date = new Date(2021, 5, 6)
+    const date = new Date
     const month = date.toLocaleString('default', { month: 'long' })
     const day = new Date().getDate()
 

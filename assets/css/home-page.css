@@ -1,0 +1,18 @@
+.hero {
+    background-position: center;
+    background-size: cover;
+    height: 60vh;
+    background-repeat: no-repeat;
+    background-image: linear-gradient(rgba(0, 0, 0, 0%), rgba(0, 0, 0, 0.5)), url('https://s3.amazonaws.com/media.skillcrush.com/skillcrush/wp-content/uploads/2017/12/Blog_From-the-beach-768x513.jpg.webp');
+}
+
+.hero-p {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+}
+
+.hero-p a {
+ padding: 10px;
+    color: rgb(226, 228, 227);
+}

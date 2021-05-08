@@ -1,11 +1,11 @@
 import { replyService } from '../services/reply-service.js'
-import { EmailReplies } from './EmailReplies.jsx'
+
 
 export class ReplyToEmail extends React.Component {
 
     state = {
         recipient: this.props.email.author,
-        date: '2021-03-04',
+        date: '',
         subject: this.props.email.subject,
         replyBody: ''
     }
@@ -23,18 +23,18 @@ export class ReplyToEmail extends React.Component {
 
     onSubmitReply = (ev) => {
         ev.preventDefault();
-        const { recipient, date, subject, replyBody } = this.state
+        const { subject, replyBody } = this.state
         const { emailId } = this.props
-        replyService.addReply(recipient, date, subject, replyBody, emailId)
+        replyService.addReply(subject, replyBody, emailId)
             .then(addedReply => {
-                this.props.addReply(addedReply); //need to amend this func as in the props
+                this.props.addReply(addedReply)
             })
-        this.setState({
-            recipient: '',
-            date: '2021-03-04',
-            subject: '',
-            replyBody: '',
-        })
+        // this.setState({
+        //     recipient: '',
+        //     date: '',
+        //     subject: '',
+        //     replyBody: '',
+        // })
         this.props.replyShowToggle()
     }
 
@@ -59,12 +59,6 @@ export class ReplyToEmail extends React.Component {
                     <button type="submit">Send</button>
 
                 </form >
-                <div>
-
-                    <EmailReplies replies={this.props.replies} emailId={this.props.emailId} email={this.props.email} />
-                    {/* <EmailReplies replies={this.props.replies}
-                        emailId={this.props.emailId} onRemoveReply={this.props.onRemoveReply} /> */}
-                </div>
             </div >
         )
 

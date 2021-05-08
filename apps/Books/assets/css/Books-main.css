@@ -1,5 +1,6 @@
 body {
     margin: 0;
+    font-family: sans-serif;
 }
 
 p {
@@ -22,31 +23,7 @@ button {
 
 /* COMPONENTS */
 
-.app-header {
-    background-color: #636363f2;
-    padding: 10px;
-}
 
-.logo {
-    max-width: 75px;
-}
-
-.nav-header {
-    color: whitesmoke;
-}
-
-.nav-a>* {
-    padding: 5px 10px;
-    margin: 0 10px;
-    border: black solid 1 px;
-    border-radius: 33px;
-    transition: .3s;
-}
-
-.nav-a>*:hover {
-    border: solid white 1px;
-    border-radius: 33px;
-}
 
 .book-app {
     background-color: #ffdfb5;

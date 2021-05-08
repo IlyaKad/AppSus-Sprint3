@@ -7,6 +7,14 @@
 /* MailApp */
 
 @import '../../apps/Mail/assets/css/Mail-main.css';
+
+/* HEADER */
+@import '../css/header.css';
+
+/* HomePage */
+@import '../css/home-page.css';
+
+
 .main-app {
     min-height: 100vh;
     display: flex;

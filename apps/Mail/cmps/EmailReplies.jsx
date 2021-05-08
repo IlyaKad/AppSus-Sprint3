@@ -4,17 +4,15 @@ export function EmailReplies(props) {
 
     if (!replies) {
         return <div className="email-replies no-replies">
-            <div>Reply to {email.author} (change later/remove this)</div>
+            <div>Reply to {email.author}</div>
         </div>
     }
 
     return (
         replies.map(reply => {
             return <div className="email-reply column align-center">
-                <h2>{reply.replyAuthor} replied on : (Date:{reply.date})</h2>
-                <div className="reply-txt"> His Answer: {reply.replyTxT}</div>
-                {/* <button onClick={() => { onRemoveReply(reply.id, emailId) }}
-                    className="remove-reply-btn">❌</button> */}
+                <p>You replied on : (Date:{reply.date})</p>
+                <div className="reply-txt"> Message: {reply.replyBody}</div>
             </div>
         })
     )

@@ -1,10 +1,13 @@
 const { Link } = ReactRouterDOM
 export function HomePage() {
     return <section>
-        <h1>Home</h1>
         <section className="hero">
-            Hero Goes Here
+
+            <section className="hero-p">
+                <Link to="/book">Ebook</Link>
+                <Link to="/email">Mail</Link>
+                <Link to="/keep">Keep</Link>
+            </section>
         </section>
-        <p>Visit Our Book Shop <Link to="/book">Let's do it</Link> </p>
     </section>
 }

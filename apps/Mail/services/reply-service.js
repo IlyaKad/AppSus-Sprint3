@@ -1,5 +1,6 @@
 import { utilService } from '../../../app-services/util-service.js'
 import { storageService } from '../../../app-services/storage-service.js'
+import { emailService } from './email-service.js'
 
 export const replyService = {
     query,
@@ -16,7 +17,7 @@ function addReply(recipient, date, subject, replyBody, emailId) {
     const reply = {
         id: utilService.makeId(),
         subject,
-        date,
+        date: emailService.getDate(),
         replyBody,
         recipient,
     }
