@@ -1,5 +1,19 @@
+.note-text, .note-img, .note-todos {
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    text-align: center;
+    border-radius: 5px;
+    padding: 10px 0px 5px 0px;
+}
+
 .note-todos ul {
     list-style: none;
     text-decoration: none;
     list-style-type: none;
+    flex-grow: 1;
+}
+
+.note-text p {
+    flex-grow: 1;
 }

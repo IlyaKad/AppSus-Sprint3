@@ -1,5 +1,17 @@
-/* .note-btns button {
-    display: flex;
-    align-items: center;
+.note-btns button {
+    margin: 5px 0px;
+}
+
+.note-btns {
     justify-content: center;
-} */
+}
+
+.note-btns .fa {
+    margin: 5px;
+    color: rgb(28, 82, 66);
+    font-size: 1.15rem;
+}
+
+.note-btns .fa:hover {
+    color: #f99d16a8;
+}

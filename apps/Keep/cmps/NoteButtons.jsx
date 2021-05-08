@@ -4,7 +4,7 @@ const { Link } = ReactRouterDOM
 export function NoteButtons({ note, onRemoveNote, onPinNote, onCopyNote, onChangeNoteBgc, onNoteTextCase }) {
 
     return (
-        <div className="note-btns flex">
+        <div className="note-btns">
             <button className="btn-color"><i className="fa fa-eyedropper"></i></button>
             {/* <button className="btn-edit"><i className="fa fa-pencil"></i></button> */}
             <button className="btn-copy" onClick={() => onCopyNote(note)}><i className="fa fa-files-o"></i></button>

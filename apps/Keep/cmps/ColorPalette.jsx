@@ -10,7 +10,6 @@ export function ColorPalette({ onChangeNoteBgc, noteId }) {
             <span style={{ backgroundColor: "#ec58e0" }} onClick={() => onChangeNoteBgc('#ec58e0', noteId)}></span>
             <span style={{ backgroundColor: "#c97aea" }} onClick={() => onChangeNoteBgc('#c97aea', noteId)}></span>
             <span style={{ backgroundColor: "#7c7aea" }} onClick={() => onChangeNoteBgc('#7c7aea', noteId)}></span>
-            {/* <span style={{ backgroundColor: "#7c7aea" }} onClick={(ev) => this.onChangeNoteBgc('#7c7aea', ev)}></span> */}
         </div>
     )
 }

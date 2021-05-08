@@ -45,3 +45,7 @@
 .btn-area>* {
     margin: 3px;
 }
+
+.btn-area .fa:hover {
+    color: #f99d16a8;
+}

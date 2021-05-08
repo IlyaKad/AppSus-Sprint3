@@ -90,7 +90,7 @@ var gNotes = [
         isPinned: false,
         info: {
             title: "Me playing Mi",
-            url: "https://robohash.org/dsfhg"
+            url: "https://www.akcpetinsurance.com/res/akc/blog/2020/three-common-puppy-illnesses/akc-pupill-hdr.jpg"
         },
         style: {
             backgroundColor: "#dcfff7"
