@@ -3,8 +3,7 @@
 }
 
 .about-container img {
-    border-radius: 5%;
-    border: solid 1.5px;
+    max-width: 500px;
 }
 
 .about-container div {
