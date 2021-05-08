@@ -1,0 +1,15 @@
+.book-preview h4 {
+    font-size: 1rem;
+    text-transform: capitalize;
+}
+
+.book-preview img {
+    width: 100px;
+}
+
+.book-preview {
+    box-shadow: 0 0px 3px 2px #c8c7c7d5;
+    padding: 5px 10px;
+    text-align: center;
+    margin: 10px;
+}

@@ -104,7 +104,7 @@ export class EmailApp extends React.Component {
         return (
             <section className="email-app">
                 <EmailFilter onSetFilter={this.onSetFilter} />
-                <section className="flex">
+                <section className="email-app-container flex">
                     <UserMsg />
                     <EmailSideBar emails={this.getEmailsForDisplay()} length={length}
                         onComposeEmail={this.onComposeEmail} toggleView={this.toggleView} />

@@ -1,20 +1,17 @@
-
-.about-container{
+.about-container {
     margin: 0 40px;
 }
 
-
-.about-container img{
+.about-container img {
     border-radius: 5%;
     border: solid 1.5px;
-
-
 }
 
-.about-container div{
+.about-container div {
     padding: 0 15px
 }
-.about-container div>*{
+
+.about-container div>* {
     margin-top: 20px;
     padding: 0 80px;
 }

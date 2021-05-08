@@ -1,4 +1,4 @@
-@import './cmps.css';
+/* @import './cmpsREMOVE.css'; */
 @import './email-compose.css';
 @import './email-details.css';
 @import './email-filter.css';
@@ -6,24 +6,8 @@
 @import './email-preview.css';
 @import './email-list.css';
 
-
-@import './cmps.css';
-body {
-    margin: 0;
-}
-
-p {
-    margin-bottom: 3px;
-}
-
-img {
-    max-width: 100%;
-}
-
-a {
-    text-decoration: none;
-    list-style-type: none;
-    color: rgb(207, 207, 207);
+.email-app-container{
+    align-items:flex-start;
 }
 
 /* HELPERS */
@@ -40,17 +24,10 @@ a {
     background-color: rgb(231, 122, 19);
 }
 
-.gold {
-    color: gold;
-}
-
-.grey {
-    color: rgb(165, 165, 165);
-}
 
 .bold {
     font-weight: 600;
-    color: goldenrod;
+    color: rgb(53, 53, 53)
 }
 
 .hidden{

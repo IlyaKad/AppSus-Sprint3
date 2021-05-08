@@ -1,0 +1,18 @@
+.price-p {
+    display: flex;
+    align-items: center;
+}
+
+.price-p>* {
+    margin-right: 5px;
+}
+
+.book-details img {
+    max-width: 150px;
+    margin: 5px 0;
+}
+
+.book-details h3 {
+    font-size: 1rem;
+    text-transform: capitalize;
+}

@@ -15,35 +15,37 @@ export function EmailPreview({ email, onDeleteEmail, onStaredEmail, getColorForT
     }
 
     const showReadUreadIcon = () => {
-        return isRead ? 'fa fa-envelope' : 'fa fa-envelope-open'
+        return isRead ? 'fa fa-envelope-open' : 'fa fa-envelope'
     }
 
     return (
-        <li onClick={() => changeEmailIsRead(email.id)} className="email-preview flex align-center justify-between">
+        <li onClick={() => changeEmailIsRead(email.id)} className="email-preview flex">
+            {/* <div className="email-details-container"> */}
+                <Link className="preview-line flex align-center" to={`/email/${id}`}>
+                    <p style={{ backgroundColor: getColorForTag(tag) }} className="tag-p tag flex align-center justify-center">{tag}</p>
+                    <p className={`author-p ${markReadEmails()}`}>{author}</p>
+                    <p className={`subject-p ${markReadEmails()}`}>{subject}</p>
+                    <p className={`date-p ${markReadEmails()}`}>{sentAt}</p>
+                </Link>
+            {/* </div> */}
+            <div className="preview-btns-container">
+                <button className="del-email-btn" onClick={(ev) => {
+                    ev.stopPropagation()
+                    onDeleteEmail(email.id)
+                }
+                }><i className="fa fa-trash-o"></i></button>
 
-            <Link to={`/email/${id}`}>
-                <p style={{ backgroundColor: getColorForTag(tag) }} className="tag flex align-center justify-center">{tag}</p>
-                <p>{author}</p>
-                <h4 className={markReadEmails()}>{subject}</h4>
-                <p>{sentAt}</p>
-            </Link>
+                <button className="read-unread-btn" onClick={(ev) => {
+                    ev.stopPropagation();
+                    { onReadUnreadClick(email.id) }
+                }
+                }><i className={showReadUreadIcon()}></i></button>
 
-            <button className="del-email-btn" onClick={(ev) => {
-                ev.stopPropagation()
-                onDeleteEmail(email.id)
-            }
-            }><i className="fa fa-trash-o"></i></button>
-
-            <button className="read-unread-btn" onClick={(ev) => {
-                ev.stopPropagation();
-                { onReadUnreadClick(email.id) }
-            }
-            }><i className={showReadUreadIcon()}></i></button>
-
-            <button className={`star-email-btn ${toggleStarColor()}`} onClick={(ev) => {
-                ev.stopPropagation()
-                onStaredEmail(email.id)
-            }}><i className="fa fa-star"></i></button>
+                <button className={`star-email-btn `} onClick={(ev) => {
+                    ev.stopPropagation()
+                    onStaredEmail(email.id)
+                }}><i className={`fa fa-star ${toggleStarColor()}`}></i></button>
+            </div>
         </li >
 
     )
