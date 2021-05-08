@@ -1,0 +1,24 @@
+.nav-email>*{
+    margin-bottom: 20px;
+}
+
+.compose-btn {
+    font-family: ubuntu-bold;
+    color: #ff9800ad;
+    align-items: baseline;
+    border: solid 0.5px;
+    border-radius: 10px;
+    transition: 0.25s;
+}
+
+.compose-btn:hover {
+    color: #f99d15;
+}
+
+.fa {
+    color: #3cae8cb6;
+}
+
+.sideb-btn {
+
+}

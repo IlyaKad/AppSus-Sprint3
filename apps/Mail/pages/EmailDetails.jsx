@@ -1,7 +1,5 @@
 const { Link } = ReactRouterDOM
 import { emailService } from '../services/email-service.js'
-import { replyService } from '../services/reply-service.js'
-import { ReplyToEmail } from '../cmps/ReplyToEmail.jsx'
 import { EmailReplies } from '../cmps/EmailReplies.jsx'
 
 
@@ -11,7 +9,6 @@ export class EmailDetails extends React.Component {
         email: null,
         replies: null,
         body: null,
-        isReplyShown: false
     }
 
     componentDidMount() {
@@ -23,31 +20,6 @@ export class EmailDetails extends React.Component {
         if (prevProps.match.params.id !== this.props.match.params.id) this.loadEmail()
     }
 
-    updateReplies = () => {
-        const id = this.props.match.params
-        this.loadReplyList(id)
-    }
-
-    // amend this so it will show : |NEW / 1/2/3/4/5/6 days ago/ over a week ago 
-    handleDate = (publishedDate) => {
-        let diff = new Date().getFullYear() - publishedDate
-        if (diff > 10) return `${publishedDate} - Old Email`;
-        else if (diff < 1) return `${publishedDate} - New!`;
-        else return publishedDate;
-    }
-
-    // can be amended to change color of something if needed.
-    // changePriceColor = (amount) => {
-    //     if (amount > 150) return 'expesive'
-    //     if (amount < 20) return 'cheap'
-    // }
-
-    // can be amended to participants of mail
-    // handleCategories = (categories) => {
-    //     return categories.map((category, idx) =>
-    //         <span key={category + idx}>{category} </span>)
-    // }
-
     onDeleteEmail = () => {
         emailService.deleteEmail(this.state.email.id)
             .then(() => {
@@ -55,38 +27,15 @@ export class EmailDetails extends React.Component {
             })
     }
 
-    // can be amended to load replies
-
-    loadReplyList = (id) => {
-        replyService.query(id)
-            .then(replies => {
-                if (!replies) return
-                this.setState({ replies })
-            })
-    }
-
-    //can be amended to "reply to mail" ?
-    addReply = () => {
-        const id = this.props.match.params
-        this.loadReplyList(id)
-    }
-
-    replyShowToggle = () => {
-        this.setState({ isReplyShown: !this.state.isReplyShown })
-        console.log(this.state.isReplyShown);
-    }
-
-
     loadEmail = () => {
         const id = this.props.match.params.id
         emailService.getEmailById(id).then(email => {
             this.setState({ email })
         })
-        this.loadReplyList(id)
     }
 
     render() {
-        const { email, isReplyShown } = this.state
+        const { email } = this.state
         if (!email) return <div>Loading...</div>
 
         const {
@@ -98,32 +47,23 @@ export class EmailDetails extends React.Component {
         } = email;
 
         return (
-            <div className="email-details column">
-                <div className="email-btns flex align-center">
-
-                    {/* <Link to={`/email/${emailService.getNextEmailId(email.id)}`}>Next Email</Link> */}
-                </div>
-                <div className="email-panel-container flex">
+            <div className="email-details ">
+                <div className="email-panel-container ">
                     <div className="email-info-container" >
                         <h3>{subject}</h3>
                         <small>{author}</small>
-                        <p>Sent Date: {this.handleDate(sentAt)}</p>
+                        <p>Sent Date: {sentAt}</p>
                     </div>
                 </div>
 
-                <section className="email-desc-container column align-center justify-center">
+                <section className="email-desc-container">
                     <h3>Message : </h3>
-                    <p className="email-body flex">{body}</p>
+                    <p className="email-body">{body}</p>
                 </section>
-                <section className="email-btns-panel cloumn">
-                    <ReplyToEmail isReplyShown={isReplyShown} replyShowToggle={this.replyShowToggle} emailId={email.id}
-                        replies={this.state.replies} addReply={this.addReply} email={email} />
-                    <button onClick={this.replyShowToggle}>Reply</button>
-                    
+                <section className="email-btns-panel">
                     <button onClick={() => this.props.history.push('/email')} > Go back</button>
                     <button className="del-email-btn" onClick={this.onDeleteEmail}>
                         <i className="fa fa-trash-o"></i></button>
-                    <EmailReplies replies={this.state.replies} emailId={email.id} email={this.state.email} />
                 </section>
             </div>
         )

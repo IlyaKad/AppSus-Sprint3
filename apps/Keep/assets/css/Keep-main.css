@@ -2,7 +2,7 @@
 @import './note-filter.css';
 @import './note-creator.css';
 @import './note-buttons.css';
-@import './note-pallete.css';
+@import './color-pallete.css';
 @import './note-filter.css';
 @import './note-list.css';
 @import './img-txt-todos.css';
@@ -11,18 +11,8 @@ body {
     margin: 0;
 }
 
-p {
-    margin-bottom: 3px;
-}
-
 img {
     max-width: 100%;
-}
-
-a {
-    text-decoration: none;
-    list-style-type: none;
-    color: rgb(207, 207, 207);
 }
 
 h1, h2, h3, h4, h5, h6 {

@@ -1,0 +1,23 @@
+.preview-line>*:not(:first-child) {
+    padding-left: 10px;
+}
+
+.preview-line {
+    flex-grow: 1;
+}
+
+.tag-p {
+    width: 2.4%
+}
+
+.author-p {
+    width: 20%;
+}
+
+.subject-p {
+    width: 65%;
+}
+
+.date-p {
+    width: 12.6%;
+}

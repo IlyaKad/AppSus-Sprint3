@@ -1,0 +1,11 @@
+.book-filter {
+    padding: 15px 0;
+}
+
+.book-filter label:not(:first-of-type) {
+    margin-left: 10px;
+}
+
+.book-filter input {
+    margin-left: 5px;
+}

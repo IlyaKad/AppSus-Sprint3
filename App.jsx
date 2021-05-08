@@ -28,8 +28,8 @@ export function App() {
                 <footer>
                     <section className="footer-container column align-center justify-center">
                         <div className="fav-container flex">
-                            <i class="fa fa-github"></i>
-                            <i class="fa fa-linkedin-square"></i>
+                            <i className="fa fa-github"></i>
+                            <i className="fa fa-linkedin-square"></i>
                         </div>
                         <p className="corp-p">BenZak and IlyaK Corp. &copy;</p>
                     </section>

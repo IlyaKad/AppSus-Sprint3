@@ -1,0 +1,14 @@
+.sort-search-contianer {
+    justify-content: flex-end;
+}
+
+.panel input {
+    margin-bottom: 0.3rem;
+    font-size: .9rem;
+    border-radius: 5px;
+    border: 1.8px solid #f99d16a8;
+}
+
+.panel input::placeholder {
+    color: rgb(60, 174, 140);
+}

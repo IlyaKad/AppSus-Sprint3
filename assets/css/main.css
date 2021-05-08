@@ -22,13 +22,9 @@
 /* User-Msg */
 
 @import './user-msg.css';
-
 /* footer */
+
 @import './footer.css';
-
-
-
-
 @font-face {
     font-family: roboto;
     src: url(/assets/fonts/Roboto-Regular.ttf);
@@ -49,14 +45,21 @@
 }
 
 body {
-    margin: 0;
+    margin: 0 25px;
     font-family: ubuntu-bold, sans-serif, lato-regular;
     background-color: #f7f8f9;
     color: rgb(60, 174, 140);
 }
 
+ol, ul {
+    margin: 0;
+    padding: 0;
+}
+
 p {
-    /* margin-bottom: 3px; */
+    margin-bottom: 0px;
+    font-family: ubuntu;
+    color: rgb(78, 78, 78);
 }
 
 img {
@@ -68,7 +71,6 @@ a {
     text-decoration: none;
 }
 
-
 h1, h2, h3, h4, h5, h6 {
     margin: 0;
 }
@@ -76,10 +78,6 @@ h1, h2, h3, h4, h5, h6 {
 button {
     max-width: 120px;
 }
-
-/* button:hover {
-    box-shadow: 1px 1px black;
-} */
 
 .main-app {
     min-height: 100vh;

@@ -1,0 +1,13 @@
+.book-list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    background-color: rgb(127 164 204);
+}
+
+.book-list>* {
+    margin: 0 10px;
+    min-width: 250px;
+    padding: 0;
+}

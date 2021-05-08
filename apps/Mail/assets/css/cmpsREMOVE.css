@@ -6,12 +6,7 @@
     cursor: default;
 }
 
-.tag {
-    border-radius: 33px;
-    width: 30px;
-    height: 30px;
-    color: cornsilk;
-}
+
 
 .del-email-btn {
     font-size: 15px;
@@ -29,21 +24,19 @@
     cursor: pointer;
 }
 
-.email-subjects {
-    min-width: 650px;
-}
+
 
 .search-emails {
     margin: 10px;
     flex-direction: row-reverse;
 }
 
-.compose-btn {
+/* .compose-btn {
     border-radius: 20px;
     width: 100px;
     height: 30px;
     background-color: #f0f8ff00;
-}
+} */
 
 .nav-email>* {
     margin: 5px 0;
