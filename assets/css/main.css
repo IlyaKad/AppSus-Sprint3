@@ -1,43 +1,43 @@
 /* BookApp */
 
-@import 'apps/books/assets/css/Books-maincss';
+@import '../../apps/books/assets/css/Books-main.css';
 /* KeepApp */
 
-@import 'apps/keep/assets/css/Keep-maincss';
+@import '../../apps/keep/assets/css/Keep-main.css';
 /* MailApp */
 
-@import 'apps/mail/assets/css/Mail-maincss';
+@import '../../apps/mail/assets/css/Mail-main.css';
 /* HEADER */
 
-@import 'headercss';
+@import './header.css';
 /* HomePage */
 
-@import 'home-pagecss';
+@import './home-page.css';
 /* Helpers */
 
-@import 'helperscss';
+@import './helpers.css';
 /* About */
 
-@import 'aboutcss';
+@import './about.css';
 /* User-Msg */
 
-@import 'user-msgcss';
+@import './user-msg.css';
 /* footer */
 
-@import 'footercss';
+@import './footer.css';
 @font-face {
     font-family: roboto;
-    src: url(/assets/fonts/Roboto-Regularttf);
+    src: url(/assets/fonts/Roboto-Regular.ttf);
 }
 
 @font-face {
     font-family: ubuntu;
-    src: url(/assets/fonts/Ubuntu-Regularttf);
+    src: url(/assets/fonts/Ubuntu-Regular.ttf);
 }
 
 @font-face {
     font-family: ubuntu-bold;
-    src: url(/assets/fonts/Ubuntu-Boldttf);
+    src: url(/assets/fonts/Ubuntu-Bold.ttf);
 }
 
 * {
@@ -80,12 +80,12 @@ button {
     max-width: 120px;
 }
 
-main-app {
+.main-app {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
 }
 
-main-app main {
+.main-app main {
     flex-grow: 1;
 }

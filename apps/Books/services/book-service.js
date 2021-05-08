@@ -1,5 +1,5 @@
-import { utilService } from 'app-services/util-service.js'
-import { storageService } from 'app-services/storage-service.js'
+import { utilService } from '../../../app-services/util-service.js'
+import { storageService } from '../../../app-services/storage-service.js'
 
 export const bookService = {
   query,
@@ -27,7 +27,7 @@ function query(filterBy) {
 }
 
 function _loadBooks() {
-  return axios.get('apps/Books/services/books.json').then(res => {
+  return axios.get('./apps/Books/services/books.json').then(res => {
       gBooks = res.data.slice()
       storageService.saveToStorage(KEY, gBooks)
       return Promise.resolve(gBooks)

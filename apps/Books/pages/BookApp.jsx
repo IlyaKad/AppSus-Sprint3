@@ -1,7 +1,7 @@
-import { bookService } from 'services/book-service.js'
-import { BookList } from 'cmps/BookList.jsx'
-import { BookDetails } from 'pages/BookDetails.jsx'
-import { BookEdit } from 'BookEdit.jsx'
+import { bookService } from '../services/book-service.js'
+import { BookList } from '../cmps/BookList.jsx'
+import { BookDetails } from '../pages/BookDetails.jsx'
+import { BookEdit } from './BookEdit.jsx'
 const { Route, Switch } = ReactRouterDOM
 
 export class BookApp extends React.Component {

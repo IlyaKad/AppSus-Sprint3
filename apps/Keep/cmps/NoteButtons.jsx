@@ -1,4 +1,4 @@
-import { ColorPalette } from 'ColorPalette.jsx'
+import { ColorPalette } from './ColorPalette.jsx'
 const { Link } = ReactRouterDOM
 
 export function NoteButtons({ note, onRemoveNote, onPinNote, onCopyNote, onChangeNoteBgc, onNoteTextCase }) {

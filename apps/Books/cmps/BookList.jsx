@@ -1,5 +1,5 @@
-import { BookFilter } from 'BookFilter.jsx'
-import { BookPreview } from 'BookPreview.jsx'
+import { BookFilter } from './BookFilter.jsx'
+import { BookPreview } from './BookPreview.jsx'
 
 export function BookList({ books, onSetFilter }) {
   return (
@@ -12,4 +12,11 @@ export function BookList({ books, onSetFilter }) {
     </React.Fragment>
   )
 
+
+  // switch(note.type){
+  //   case :'txt'
+  //   return <NoteTxt note={note}/>
+  //   case :'img'
+  //   return <NoteImg note={note}/>
+  // }
 }

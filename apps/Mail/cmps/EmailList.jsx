@@ -1,5 +1,5 @@
 
-import { EmailPreview } from 'EmailPreview.jsx'
+import { EmailPreview } from './EmailPreview.jsx'
 
 export function EmailList({ emails, onStaredEmail, onDeleteEmail, setTagColor,
     getColorForTag, changeEmailIsRead, onReadUnreadClick }) {

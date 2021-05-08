@@ -1,8 +1,8 @@
-import { noteService } from 'services/note-service.js'
-import { NoteList } from 'cmps/NoteList.jsx'
-import { NoteCreator } from 'cmps/NoteCreator.jsx'
-import { NoteFilter } from 'cmps/NoteFilter.jsx'
-import { UserMsg } from 'cmps/UserMsg.jsx'
+import { noteService } from '../services/note-service.js'
+import { NoteList } from '../cmps/NoteList.jsx'
+import { NoteCreator } from '../cmps/NoteCreator.jsx'
+import { NoteFilter } from '../cmps/NoteFilter.jsx'
+import { UserMsg } from '../../../cmps/UserMsg.jsx'
 
 const { Route, Switch } = ReactRouterDOM
 
