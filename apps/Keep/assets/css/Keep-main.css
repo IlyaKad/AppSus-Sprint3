@@ -1,4 +1,11 @@
-@import './cmps.css';
+@import './cmpsREMOVE.css';
+@import './note-filter.css';
+@import './note-creator.css';
+@import './note-buttons.css';
+@import './note-pallete.css';
+@import './note-filter.css';
+@import './note-list.css';
+@import './img-txt-todos.css';
 
 body {
     margin: 0;

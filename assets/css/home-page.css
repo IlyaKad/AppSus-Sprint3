@@ -1,18 +1,32 @@
 .hero {
     background-position: center;
     background-size: cover;
-    height: 60vh;
+    height: 70vh;
     background-repeat: no-repeat;
-    background-image: linear-gradient(rgba(0, 0, 0, 0%), rgba(0, 0, 0, 0.5)), url('https://s3.amazonaws.com/media.skillcrush.com/skillcrush/wp-content/uploads/2017/12/Blog_From-the-beach-768x513.jpg.webp');
+    background-image: linear-gradient(rgb(224 13 13 / 0%), rgb(0 0 0 / 66%)), url(/assets/app.img/hero-bg.jpg);
 }
 
 .hero-p {
-    position: fixed;
+    position: absolute;
     top: 50%;
     left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .hero-p a {
- padding: 10px;
-    color: rgb(226, 228, 227);
+    margin: 10px;
+    padding: 20px 30px;
+    border: solid #fffffff2 0.5mm;
+    border-radius: 7px;
+    background-color: #f99d16a8;
+    color: whitesmoke;
+    letter-spacing: 0.5px;
+    font-size: 1.6rem;
+    font-family: ubuntu;
+    width: 500px;
+    transition: 0.2s;
+}
+
+.hero-p a:hover {
+    background-color: #eec34d00;
 }

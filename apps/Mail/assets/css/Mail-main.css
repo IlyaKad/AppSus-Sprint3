@@ -1,4 +1,13 @@
 @import './cmps.css';
+@import './email-compose.css';
+@import './email-details.css';
+@import './email-filter.css';
+@import './email-sidebar.css';
+@import './email-preview.css';
+@import './email-list.css';
+
+
+@import './cmps.css';
 body {
     margin: 0;
 }
