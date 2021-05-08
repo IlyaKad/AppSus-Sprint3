@@ -23,7 +23,7 @@ var gNotes = [
             text: "Fullstack Me Baby!"
         },
         style: {
-            backgroundColor: "pink"
+            backgroundColor: "ee8eff"
         }
     },
     {
@@ -35,7 +35,7 @@ var gNotes = [
             url: "https://robohash.org/dsfhg"
         },
         style: {
-            backgroundColor: "#00d"
+            backgroundColor: "#dcfff7"
         }
     },
     {
@@ -51,7 +51,7 @@ var gNotes = [
             ]
         },
         style: {
-            backgroundColor: "#00d"
+            backgroundColor: "#b5b5ff"
         }
     },
     {
@@ -63,7 +63,7 @@ var gNotes = [
             text: "Fullstack Me Baby!"
         },
         style: {
-            backgroundColor: "#00d"
+            backgroundColor: "#ee8eff"
         }
     },
     {
@@ -79,7 +79,7 @@ var gNotes = [
             ]
         },
         style: {
-            backgroundColor: "#00d"
+            backgroundColor: "#b5b5ff"
         }
     },
     {
@@ -91,23 +91,40 @@ var gNotes = [
             url: "https://robohash.org/dsfhg"
         },
         style: {
-            backgroundColor: "#00d"
+            backgroundColor: "#dcfff7"
         }
     }
 
 ];
 
 function query(filterBy) {
-    // if (filterBy) {
-    //     var { text } = filterBy
-    //     text = text ? text : ''
-    //     const filteredNotes = gNotes.filter(note => {
-    //         return note.info.title.includes(text)
-    //             && (note.info.text) ? note.info.text.includes(text) : note.info.text
-    //     })
-    //     return Promise.resolve(filteredNotes)
-    // }
-    return Promise.resolve(gNotes)
+    if (!filterBy || filterBy.value === 'all') return Promise.resolve(gNotes)
+
+    else if (filterBy) {
+        const { value, type } = filterBy
+        // console.log('type:', type, 'value:', value);
+        let filteredNotes;
+        if (type === 'search') filteredNotes = getNotesBySearch(value)
+        if (type === 'radio') filteredNotes = getNotesByRadio(value)
+        return Promise.resolve(filteredNotes)
+    }
+}
+
+function getNotesBySearch(value) {
+    value = value ? value.toUpperCase() : ''
+    // console.log('getNotesBySearch value:', value);
+    const serchedNotes = gNotes.filter(note => {
+        return note.info.title.toUpperCase().includes(value)
+        // || note.info.text.toUpperCase().includes(value) 
+        // || note.body.toUpperCase().includes(value)
+    })
+    return serchedNotes
+}
+
+function getNotesByRadio(type) {
+    if (type === 'all') return gNotes
+    const sortedNotes = gNotes.filter(note => { return note.type === type })
+    return sortedNotes
 }
 
 function copyNote(note) {
@@ -195,19 +212,6 @@ function changeNoteBgc(color, noteId) {
     storageService.saveToStorage(KEY_NOTES, gNotes);
     return Promise.resolve(gNotes)
 }
-
-// {
-//     id: utilService.makeId(),
-//     type: "img",
-//     isPinned: false,
-//     info: {
-//         title: "Me playing Mi",
-//         url: "https://robohash.org/dsfhg"
-//     },
-//     style: {
-//         backgroundColor: "#00d"
-//     }
-// }
 
 function getRandomColor() {
     var letters = '0123456789ABCDEF';
