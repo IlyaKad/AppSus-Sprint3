@@ -1,32 +1,23 @@
 /* BookDetails */
-@import './book-details.css';
+@import 'book-details.css';
 
 /* BookEdit */
-@import './book-edit.css';
+@import 'book-edit.css';
 
 /* BookFilter */
-@import './book-filter.css';
+@import 'book-filter.css';
 
 /* BookPreview */
-@import './book-preview.css';
+@import 'book-preview.css';
 
 /* BookList */
-@import './book-list.css';
+@import 'book-list.css';
 
 
 
 .book-app {
     background-color: #ffdfb5;
 }
-
-
-
-
-
-
-
-
-
 
 
 .book-details {
@@ -78,7 +69,7 @@
 
 .on-sale {
     display: flex;
-    background-image: url('../img/sale.png');
+    background-image: url('img/sale.png');
     background-color: none;
     background-position: center;
     background-size: contain;

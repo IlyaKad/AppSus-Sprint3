@@ -1,13 +1,13 @@
 const { Route, Switch } = ReactRouterDOM
-import { emailService } from '../services/email-service.js'
-import { EmailList } from '../cmps/EmailList.jsx'
-import { EmailSideBar } from '../cmps/EmailSideBar.jsx'
-import { EmailFilter } from '../cmps/EmailFilter.jsx'
-import { EmailDetails } from '../pages/EmailDetails.jsx'
-import { EmailCompose } from '../pages/EmailCompose.jsx'
-import { utilService } from '../../../app-services/util-service.js'
-import { eventBusService } from '../../../app-services/event-bus-service.js'
-import { UserMsg } from '../../../cmps/UserMsg.jsx'
+import { emailService } from 'services/email-service.js'
+import { EmailList } from 'cmps/EmailList.jsx'
+import { EmailSideBar } from 'cmps/EmailSideBar.jsx'
+import { EmailFilter } from 'cmps/EmailFilter.jsx'
+import { EmailDetails } from 'pages/EmailDetails.jsx'
+import { EmailCompose } from 'pages/EmailCompose.jsx'
+import { utilService } from 'app-services/util-service.js'
+import { eventBusService } from 'app-services/event-bus-service.js'
+import { UserMsg } from 'cmps/UserMsg.jsx'
 
 
 export class EmailApp extends React.Component {

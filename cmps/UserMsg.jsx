@@ -1,4 +1,4 @@
-import { eventBusService } from '../app-services/event-bus-service.js'
+import { eventBusService } from 'app-services/event-bus-service.js'
 
 
 export class UserMsg extends React.Component {

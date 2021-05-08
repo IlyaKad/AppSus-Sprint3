@@ -1,6 +1,6 @@
 const { Link } = ReactRouterDOM
-import { emailService } from '../services/email-service.js'
-import { EmailReplies } from '../cmps/EmailReplies.jsx'
+import { emailService } from 'services/email-service.js'
+import { EmailReplies } from 'cmps/EmailReplies.jsx'
 
 
 export class EmailDetails extends React.Component {

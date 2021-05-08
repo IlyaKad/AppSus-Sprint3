@@ -1,4 +1,4 @@
-import { NoteButtons } from '../cmps/NoteButtons.jsx'
+import { NoteButtons } from 'cmps/NoteButtons.jsx'
 export function NoteImg({ note, onRemoveNote, onPinNote, onCopyNote, onChangeNoteBgc, onNoteTextCase }) {
     const { info: { title, url }, id } = note;
 

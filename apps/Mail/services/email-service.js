@@ -1,5 +1,5 @@
-import { utilService } from '../../../app-services/util-service.js'
-import { storageService } from '../../../app-services/storage-service.js'
+import { utilService } from 'app-services/util-service.js'
+import { storageService } from 'app-services/storage-service.js'
 
 export const emailService = {
     query,

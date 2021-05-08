@@ -1,10 +1,10 @@
-@import './note-filter.css';
-@import './note-creator.css';
-@import './note-buttons.css';
-@import './note-pallete.css';
-@import './note-filter.css';
-@import './note-list.css';
-@import './img-txt-todos.css';
+@import 'note-filter.css';
+@import 'note-creator.css';
+@import 'note-buttons.css';
+@import 'note-pallete.css';
+@import 'note-filter.css';
+@import 'note-list.css';
+@import 'img-txt-todos.css';
 
 .note-app {
     text-align: center;

@@ -1,5 +1,5 @@
-import { emailService } from '../services/email-service.js'
-import { eventBusService } from '../../../app-services/event-bus-service.js'
+import { emailService } from 'services/email-service.js'
+import { eventBusService } from 'app-services/event-bus-service.js'
 
 export class EmailCompose extends React.Component {
 

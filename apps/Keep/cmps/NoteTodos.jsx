@@ -1,4 +1,4 @@
-import { NoteButtons } from '../cmps/NoteButtons.jsx'
+import { NoteButtons } from 'cmps/NoteButtons.jsx'
 export function NoteTodos({ note, onRemoveNote, onPinNote, onCopyNote, onChangeNoteBgc, onNoteTextCase }) {
     const { info: { title, todos } } = note;
 
