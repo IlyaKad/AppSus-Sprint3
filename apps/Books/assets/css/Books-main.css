@@ -1,33 +1,22 @@
-body {
-    margin: 0;
-    font-family: sans-serif;
-}
+/* BookDetails */
+@import './book-details.css';
 
-p {
-    margin-bottom: 3px;
-}
+/* BookEdit */
+@import './book-edit.css';
 
-img {
-    max-width: 100%;
-}
+/* BookFilter */
+@import './book-filter.css';
 
-a {
-    text-decoration: none;
-    list-style-type: none;
-    color: rgb(207, 207, 207);
-}
+/* BookPreview */
+@import './book-preview.css';
 
-button {
-    max-width: 120px;
-}
-
-/* COMPONENTS */
+/* BookList */
+@import './book-list.css';
 
 
 
 .book-app {
     background-color: #ffdfb5;
-    font-family: sans-serif;
 }
 
 .book-list {
@@ -86,11 +75,11 @@ button {
     color: whitesmoke;
 }
 
-.book-btns {
+/* .book-btns {
     margin: 10px 0;
-}
+} */
 
-.book-btns a, .book-btns button {
+/* .book-btns a, .book-btns button {
     padding: 5px 10px;
     margin: 5px 5px;
     border: solid white 1px;
@@ -99,14 +88,13 @@ button {
     background-color: whitesmoke;
     color: black;
     font-size: 15px;
-    font-family: sans-serif;
 }
 
 .book-btns a:hover, .book-btns button:hover {
     border: rgb(255, 255, 255) solid 1 px;
     background-color: rgba(255, 255, 255, 0);
     color: whitesmoke;
-}
+} */
 
 .book-panel-container>* {
     margin: 5px;
@@ -141,7 +129,6 @@ button {
 .book-review {
     justify-content: start;
     color: black;
-    font-family: sans-serif;
     background-color: #f5deb394;
     padding: 0 25px;
     margin: 10px 0;
@@ -174,57 +161,3 @@ button {
 .show {
     display: block;
 }
-
-/* HELPERS */
-
-.flex {
-    display: flex;
-}
-
-.column {
-    display: flex;
-    flex-direction: column;
-}
-
-.align-center {
-    align-items: center;
-}
-
-.justify-center {
-    justify-content: center;
-}
-
-.justify-between {
-    justify-content: space-between;
-}
-
-.justify-evenly {
-    justify-content: space-evenly;
-}
-
-.space-around {
-    justify-content: space-around;
-}
-
-.clean-list {
-    list-style: none;
-    text-decoration: none;
-    list-style-type: none;
-}
-
-.wrap {
-    flex-wrap: wrap;
-}
-
-/* button, .btn {
-    padding: 5px 10px;
-    border: black solid 1 px;
-    border-radius: 33px;
-    transition: .3s;
-}
-
-button:hover, btn:hover {
-    padding: 5px 10px;
-    border: solid white 1px;
-    border-radius: 33px;
-} */

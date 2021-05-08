@@ -1,0 +1,12 @@
+.footer-container {
+    color: rgb(182, 182, 182);
+    font-family: roboto;
+}
+
+.fav-container>* {
+    font-size: 25px;
+}
+
+.corp-p{
+    margin: 0;
+}

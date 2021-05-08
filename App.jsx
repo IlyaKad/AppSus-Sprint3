@@ -19,14 +19,20 @@ export function App() {
                     <Switch>
                         <Route component={BookApp} path="/book" />
                         <Route component={EmailApp} path="/email" />
-                        <Route component={NoteApp} path="/keep"/>
+                        <Route component={NoteApp} path="/keep" />
                         <Route component={AboutUs} path="/about" />
                         <Route component={HomePage} path="/" />
                     </Switch>
                 </main>
-                
+
                 <footer>
-                    <p>BenZak and IlyaK Corp. &copy;</p>
+                    <section className="footer-container column align-center justify-center">
+                        <div className="fav-container flex">
+                            <i class="fa fa-github"></i>
+                            <i class="fa fa-linkedin-square"></i>
+                        </div>
+                        <p className="corp-p">BenZak and IlyaK Corp. &copy;</p>
+                    </section>
                 </footer>
             </Router>
         </section>

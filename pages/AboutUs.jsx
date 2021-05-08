@@ -1,40 +1,21 @@
-const { NavLink, Route, Switch } = ReactRouterDOM
-function AboutTeam() {
-  return (
-    <div>
-      <h4>The Team</h4>
-      <ol>
-        <li>Muki ben david</li>
-        <li>Shraga puk</li>
-      </ol>
-    </div>
-  )
-}
-function AboutVision() {
-  return (
-    <div>
-      <h4>Our Vision</h4>
-      <ul>
-        <li>Sell cars</li>
-        <li>Eat good lunch</li>
-      </ul>
-    </div>
-  )
-}
 
 export function AboutUs(props) {
-  return <section>
-    <h2>About Us</h2>
-    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Est laudantium earum veniam in aspernatur nam fuga tempore! Doloribus, possimus nesciunt.</p>
+  return <section className="about-container flex">
 
-    <nav>
-      <NavLink to="/about/team">Team</NavLink>
-      <NavLink to="/about/vision">Vision</NavLink>
-    </nav>
+    <div className="ben column align-center">
+      <img src="https://robohash.org/dfhg" alt="" />
+      <h2>Ben</h2>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis alias cumque fugit, doloribus provident quis sint ducimus earum eos quod aspernatur beatae molestiae illo minima, voluptate deleniti odit libero sequi!</p>
+    </div>
 
-    <Switch>
-      <Route component={AboutTeam} path="/about/team" />
-      <Route component={AboutVision} path="/about/vision" />
-    </Switch>
+    <div className="ilya column align-center">
+      <img src="https://robohash.org/dsfhg" alt="" />
+      <h2>Ilya</h2>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis alias cumque fugit, doloribus provident quis sint ducimus earum eos quod aspernatur beatae molestiae illo minima, voluptate deleniti odit libero sequi!</p>
+    </div>
+
+
+
+
   </section>
 }
