@@ -192,7 +192,7 @@ function query(filterBy) {
 
     else if (filterBy) {
         const { value, type } = filterBy
-        // console.log('type:', type, 'value:', value);
+
         let filteredNotes;
         if (type === 'search') filteredNotes = getNotesBySearch(value)
         if (type === 'radio') filteredNotes = getNotesByRadio(value)
@@ -202,11 +202,9 @@ function query(filterBy) {
 
 function getNotesBySearch(value) {
     value = value ? value.toUpperCase() : ''
-    // console.log('getNotesBySearch value:', value);
+
     const serchedNotes = gNotes.filter(note => {
         return note.info.title.toUpperCase().includes(value)
-        // || note.info.text.toUpperCase().includes(value) 
-        // || note.body.toUpperCase().includes(value)
     })
     return serchedNotes
 }

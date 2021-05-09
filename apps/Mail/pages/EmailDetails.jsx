@@ -61,7 +61,7 @@ export class EmailDetails extends React.Component {
                     <p className="email-body">{body}</p>
                 </section>
                 <section className="email-btns-panel">
-                    <button onClick={() => this.props.history.push('/email')} > Go back</button>
+                    <button className="goback-email-btn" onClick={() => this.props.history.push('/email')} > Go back</button>
                     <button className="del-email-btn" onClick={this.onDeleteEmail}>
                         <i className="fa fa-trash-o"></i></button>
                 </section>

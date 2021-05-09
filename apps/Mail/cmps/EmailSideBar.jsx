@@ -1,4 +1,3 @@
-// import { EmailStatus } from './EmailStatus.jsx'
 const { withRouter } = ReactRouterDOM
 
 function _EmailSideBar({ toggleView, onComposeEmail, length }) {

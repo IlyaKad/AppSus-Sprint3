@@ -17,7 +17,6 @@ export class UserMsg extends React.Component {
         setTimeout(() => {
           this.setState({ msg: null })
           this.setState({ slideClass: 'slide-in-br' })}, 2000)
-        // setTimeout(() => this.setState({ msg: null }), 2500)
       })
     })
   }

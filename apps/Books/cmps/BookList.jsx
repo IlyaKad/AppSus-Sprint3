@@ -12,11 +12,4 @@ export function BookList({ books, onSetFilter }) {
     </React.Fragment>
   )
 
-
-  // switch(note.type){
-  //   case :'txt'
-  //   return <NoteTxt note={note}/>
-  //   case :'img'
-  //   return <NoteImg note={note}/>
-  // }
 }

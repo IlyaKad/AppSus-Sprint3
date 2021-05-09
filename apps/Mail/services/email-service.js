@@ -3,7 +3,6 @@ import { storageService } from '../../../app-services/storage-service.js'
 
 export const emailService = {
     query,
-    // saveEmail,
     deleteEmail,
     getEmailById,
     starEmail,
@@ -135,7 +134,6 @@ function query(filterBy) {
 
     else if (filterBy) {
         const { value, type } = filterBy
-        // console.log('type:', type, 'value:', value);
         let filteredEmails;
         if (type === 'search') filteredEmails = getEamilsBySearch(value)
         if (type === 'radio') filteredEmails = getEamilsByRadio(value)
@@ -187,11 +185,6 @@ function starEmail(emailId) {
     storageService.saveToStorage(KEY_email, gEmails);
     return Promise.resolve()
 }
-
-
-// function saveEmail(email) {
-//     return email.id ? _updateEmail(email) : _addEmail(email)
-// }
 
 function updateEmail(emailId) {
     var emailIdx = gEmails.findIndex((email) => email.id === emailId)

@@ -3,7 +3,7 @@
     background-size: cover;
     height: 80vh;
     background-repeat: no-repeat;
-    background-image: linear-gradient(rgb(224 13 13 / 0%), rgb(0 0 0 / 66%)), url(/assets/app.img/hero-bg.jpg);
+    background-image: linear-gradient(rgb(224 13 13 / 0%), rgb(0 0 0 / 66%)), url(assets/app.img/hero-bg.jpg);
 }
 
 .hero-p {

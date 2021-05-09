@@ -1,6 +1,8 @@
 .about-container {
     margin: 0 40px;
     font-family: ubuntu-bold;
+    align-items: baseline;
+    justify-content: center;
 }
 .about-container p{
     font-family: ubuntu-bold;
@@ -8,13 +10,13 @@
     display: flex;
     flex-wrap: wrap;
     max-width: 500px;
+    align-items: baseline;
+    justify-content: center;
 }
 
 .about-container img {
     max-width: 500px;
     display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .about-container div {
